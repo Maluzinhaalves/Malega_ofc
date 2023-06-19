@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
 
 :root{
-    --green:#27ae60;
-    --dark-color:#219150;
+    --green:#b9e2d3;
+    --dark-color:#325538;
     --black:#444;
     --light-color:#666;
     --border:.1rem solid rgba(0,0,0,.1);
@@ -352,18 +352,18 @@ section{
 
 .icons-container .icons i{
     font-size: 3.5rem;
-    color:var(--green);
+    color:#497e76;
 }
 
 .icons-container .icons h3{
     font-size: 2.2rem;
-    color:var(--black);
+    color:#497e76;
     padding-bottom: .5rem;
 }
 
 .icons-container .icons p{
     font-size: 1.4rem;
-    color:var(--light-color);
+    color:#497e76;
 }
 
 .featured .featured-slider .box{
