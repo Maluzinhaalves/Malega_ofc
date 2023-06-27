@@ -8,16 +8,16 @@
 
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
-    <!-- font awesome cdn link  -->
+    <!-- link da fonte awesome cdn  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    <!-- custom css file link  -->
+    <!-- link do css -->
     <link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
     
-<!-- header section starts  -->
+<!-- cabeçalho (header section)-->
 
 <header class="header">
 
@@ -50,9 +50,9 @@
 
 </header>
 
-<!-- header section ends -->
+<!-- final cabeçalho (header section) -->
 
-<!-- bottom navbar  -->
+<!-- barra de navegação (bottom-navbar) -->
 
 <nav class="bottom-navbar">
     <a href="#home" class="fas fa-home"></a>
@@ -61,7 +61,7 @@
     <a href="#vestibular" class="fas fa-blog"></a>
 </nav>
 
-<!-- login form  -->
+<!-- formulario login (login-form)  -->
 
 <div class="login-form-container">
 
@@ -84,7 +84,7 @@
 
 </div>
 
-<!-- home section starts  -->
+<!-- começo da home section  -->
 
 <div class="home-container">
 
@@ -115,9 +115,9 @@
 
 </div>
 
-<!-- home section ense  -->
+<!-- final da home section  -->
 
-<!-- icons section starts  -->
+<!-- começo dos icons section  -->
 
 <section class="icons-container">
 
@@ -155,9 +155,9 @@
 
 </section>
 
-<!-- icons section ends -->
+<!-- final do icons section -->
 
-<!-- featured section starts  -->
+<!-- começo da featured section -->
 
 <section class="featured" id="livros">
 
@@ -284,7 +284,7 @@
 
 
 
-<!-- arrivals section starts  -->
+<!-- começo da arrivals section  -->
 
 <section class="arrivals" id="vestibular">
 
@@ -437,11 +437,11 @@
 </section>
 
 
-<!-- arrivals section ends -->
+<!-- final da arrivals section -->
 
-<!-- deal section ends -->
+<!-- final da deal section -->
 
-<!-- reviews section starts  -->
+<!-- começo da reviews section -->
 
 <section class="reviews" id="reviews">
 
@@ -534,9 +534,9 @@
     
 </section>
 
-<!-- reviews section ends -->
+<!-- final da reviews section -->
 
-<!-- blogs section starts  -->
+<!-- começo da blogs section  -->
 
 <section class="blogs" id="blogs">
 
@@ -607,9 +607,9 @@
 
 </section>
 
-<!-- blogs section ends -->
+<!-- final da blogs section -->
 
-<!-- footer section starts  -->
+<!-- começo do footer section -->
 
 <section class="footer">
 
@@ -651,7 +651,7 @@
 
 </section>
 
-<!-- footer section ends -->
+<!-- final do footer section -->
 
 <!-- loader  -->
 
@@ -676,7 +676,7 @@
 
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
-<!-- custom js file link  -->
+<!-- link do javascript  -->
 <script src="js/script.js"></script>
 
 </body>

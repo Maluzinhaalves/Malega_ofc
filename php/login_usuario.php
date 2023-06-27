@@ -2,7 +2,7 @@
     include('conexao.php');
     $email = $_POST['email'];
     $senha = $_POST['senha'];
-    $sql = "SELECT * FROM usuario WHERE 
+    $sql = "SELECT * FROM usuarios WHERE 
     email = '$email'
     AND senhaUsuario = '$senha'";
     $result = mysqli_query($con,$sql);
