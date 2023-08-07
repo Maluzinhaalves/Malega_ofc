@@ -43,10 +43,10 @@
             echo "<td>".$row['nomeUsuario']."</td>";
             echo "<td>".$row['emailUsuario']."</td>";
             echo "<td>".$row['senhaUsuario']."</td>";
-            echo "<td><a href='#?idUsuario="
+            echo "<td><a href='alterar_usuario.php?idUsuario="
             .$row['idUsuario']."'> Alterar </a> </td>"; //vai pegar o valor do id exibido 
             echo "<td><a 
-            onclick='funcao1()'>Excluir</a>
+            href='excluir_usuario.php?idUsuario=".$row['idUsuario']."'>Excluir</a>
             </td>";
 
             
@@ -57,7 +57,8 @@
         } while($row = mysqli_fetch_array($result));
         // sempre que estiver algum registro ele vai mostrar, ou seja
         // quando acabar os dados ele para de monstrar(uma repetição).
-        // href='excluir_usuario.php?idUsuario=".$row['idUsuario']."'      
+        // href='excluir_usuario.php?idUsuario=".$row['idUsuario']."'
+        //onclick='funcao1()'>Excluir</a>      
         ?>
     </table>
     </div>
