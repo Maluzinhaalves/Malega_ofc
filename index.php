@@ -34,7 +34,7 @@
             <div id="search-btn" class="fas fa-search"></div>
             <a href="#" class="fas fa-heart"></a>
             <a href="#" class="fas fa-star"></a>
-            <div id="login-btn" class="fas fa-user"></div>
+            <div id="login-btn" class="fas fa-address-card"></div>
         </div>
 
     </section>
@@ -54,11 +54,13 @@
 
 <!-- barra de navegação (bottom-navbar) -->
 
+<!-- fas fa site: https://muffingroup.com/betheme/elements/icons/ -->
+
 <nav class="bottom-navbar">
     <a href="#home" class="fas fa-home"></a>
-    <a href="#livros" class="fas fa-list"></a>
+    <a href="#livros" class="fas fa-book-reader"></a>
     <a href="#reviews" class="fas fa-comments"></a>
-    <a href="#vestibular" class="fas fa-blog"></a>
+    <a href="#vestibular" class="fas fa-book-open"></a>
 </nav>
 
 <!-- formulario login (login-form)  -->
@@ -132,7 +134,7 @@
     <div class="icons">
         <i class="fas fa-book"></i>
         <div class="content">
-            <h3>COMVEST</h3>
+            <h3><a href="">COMVEST</a></h3>
             <p>Leituras obrigatóras da Unicamp</p>
         </div>
     </div>
@@ -140,7 +142,7 @@
     <div class="icons">
         <i class="fas fa-book"></i>
         <div class="content">
-            <h3>VUNESP</h3>
+            <h3><a href="">VUNESP</a></h3>
             <p>Leitutas obrigatórias Unesp</p>
         </div>
     </div>
@@ -148,7 +150,7 @@
     <div class="icons">
         <i class="fas fa-book"></i>
         <div class="content">
-            <h3>ENEM</h3>
+            <h3><a href="">ENEM</a></h3>
             <p>literatura no ENEM</p>
         </div>
     </div>
