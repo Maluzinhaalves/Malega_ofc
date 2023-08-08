@@ -361,6 +361,11 @@ section{
     padding-bottom: .5rem;
 }
 
+.icons-container .icons h3 a{
+    text-decoration: none;
+    color: inherit;
+}
+
 .icons-container .icons p{
     font-size: 1.4rem;
     color:#497e76;
