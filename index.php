@@ -25,9 +25,9 @@
 
         <a href="#" class="logo"> <i class="fas fa-book"></i> Malega </a>
 
-        <form action="" class="search-form">
-            <input type="search" name="" placeholder="Pesquise aqui" id="search-box">
-            <label for="search-box" class="fas fa-search"></label>
+        <form action="php\busca.php" class="search-form">
+            <input type="search" name="titulo" placeholder="Pesquise seu livro" id="search-box">
+            <label for="search-box" class="fas fa-search" type="submit"></label>
         </form>
 
         <div class="icons">

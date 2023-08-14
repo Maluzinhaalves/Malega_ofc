@@ -1,3 +1,23 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1:3307
+-- Tempo de geração: 01-Ago-2023 às 16:56
+-- Versão do servidor: 10.4.22-MariaDB
+-- versão do PHP: 8.0.13
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
 -- Banco de dados: `tcc`
 --
 
@@ -87,11 +107,20 @@ CREATE TABLE `livros_vest` (
 
 CREATE TABLE `usuarios` (
   `idUsuario` int(11) NOT NULL,
-  `nomeUsuario` varchar(255) DEFAULT NULL,
-  `emailUsuario` varchar(255) DEFAULT NULL,
-  `senhaUsuario` varchar(255) DEFAULT NULL,
+  `nomeUsuario` varchar(255) NOT NULL,
+  `emailUsuario` varchar(255) NOT NULL,
+  `senhaUsuario` varchar(255) NOT NULL,
   `imagemUsuario` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `usuarios`
+--
+
+INSERT INTO `usuarios` (`idUsuario`, `nomeUsuario`, `emailUsuario`, `senhaUsuario`, `imagemUsuario`) VALUES
+(1, 'Maluzinha', 'malu@gmail.com', '321', ''),
+(2, 'Guilherme', 'gui@gmail.com', '222', 'imagens/20230801-164225.jpg'),
+(3, '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -234,7 +263,7 @@ ALTER TABLE `livros_vest`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restrições para despejos de tabelas
@@ -280,3 +309,7 @@ ALTER TABLE `usuario_livros`
   ADD CONSTRAINT `usuario_livros_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `usuario_livros_ibfk_2` FOREIGN KEY (`idLivros`) REFERENCES `livros` (`idLivro`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
