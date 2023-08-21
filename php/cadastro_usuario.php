@@ -1,15 +1,8 @@
 <?php 
 include("conexao.php");
 
-$pasta_destino = 'imagens/';
+$pasta_destino = 'imagemDoUsuario/';
 $nome_foto = $pasta_destino."default_profile.jpg";
-if(file_exists($_FILES['imagemUsuario']['tmp_name'])){ //Checa se a pessoa escolheu foto ou não
-
-$extensao = strtolower(substr($_FILES['imagemUsuario']['name'],-4)); // Vai pegar apenas os ultimos 4 digitos do nome
-$nome_foto = $pasta_destino.date("Ymd-His") . $extensao; // não deixa duas fotos no mesmo nome
-move_uploaded_file($_FILES['imagemUsuario']['tmp_name'],$nome_foto); //tmp_name é o nome temporario que é dado à foto
-// isso esta removendo esse nomeo ".jpg"
-}
 
 $nome = $_POST['nomeUsuario'];
 $email = $_POST['emailUsuario'];
@@ -41,4 +34,4 @@ if(empty($nome) || empty($email) || empty($senha)){
         }
 
 ?>
-<a href="cadastro_usuario.html">Voltar</a>
+<a href="../index.php">Voltar</a>

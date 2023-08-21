@@ -10,30 +10,32 @@
 </head>
 <body>
     <div class="container">
-        <h1>Cadastro - Malega Libros</h1>
+        <h1>Cadastro de livros - Malega Libros</h1>
         
-            <form  action="cadastro_usuario.php" method="post" enctype="multipart/form-data"> <!-- enctype especifica
+            <form  action="cadastro_livros.php" method="post" enctype="multipart/form-data"> <!-- enctype especifica
 
             como os dados do usuario devem ser codificados-->
             <div class="form-row"> <!--offset: pula colunas da linha-->         
                 <div class="form-group  col-12 col-md-6">
-                    <label for="nome"><strong>Nome</strong></label>
-                    <input type="text" class="form-control" name="nomeUsuario" id="nome">
+                    <label for="titulo"><strong>Titulo</strong></label>
+                    <input type="text" class="form-control" name="titulo" id="titulo">
                 </div>
                 <div class="form-group col-12 col-md-6">
-                    <label for="email"><strong>E-mail</strong></label>
-                    <input type="email" class="form-control" name="emailUsuario" id="email">
+                    <label for="autor"><strong>Autor</strong></label>
+                    <input type="text" class="form-control" name="autor" id="autor">
                 </div>
             </div>
-                <div class="form-group col-12 col-md-6">
-                    <label for="senha"><strong>Senha</strong></label>
-                    <input type="password" class="form-control" name="senhaUsuario" id="senha">
-                </div>
             </div>                
             <div class="form-row">          
                 <div class="form-group col-4">
-                    <label for="imagem"><strong>insira sua foto</strong></label>
-                    <input type="file" class="form-control-file" name="imagemUsuario" id="imagem" accept="image/*">
+                    <label for="capa"><strong>Primeira capa do livro</strong></label>
+                    <input type="file" class="form-control-file" name="capa" id="capa" accept="image/*">
+                </div>
+            </div>
+            <div class="form-row">          
+                <div class="form-group col-4">
+                    <label for="capa2"><strong>Segunda capa do livro</strong></label>
+                    <input type="file" class="form-control-file" name="capa2" id="capa2" accept="image/*">
                 </div>
             </div>
             <div class="form-row">          

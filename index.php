@@ -70,12 +70,10 @@
     <div class="login-form-container">
     <div id="close-login-btn" class="fas fa-times"></div>
 
-    <form action="php/login_usuario.php" method="post"></form>
-
     <main>
         <div class="login-container" id="login-container">
             <div class="form-container">
-                <form class="form form-login">
+                <form action="php/login_usuario.php" method="post" class="form form-login">
                     <h2 class="form-title">Entrar com</h2>
                     <div class="form-social">
                         <a href="#" class="social-icon">
@@ -88,8 +86,8 @@
                     </div>
                     <p class="form-text">ou utilize sua conta</p>
                     <div class="form-input-container">
-                        <input type="email" class="form-input" placeholder="Email">
-                        <input type="password" class="form-input" placeholder="Senha">
+                        <input type="email" name="emailUsuario" class="form-input" placeholder="Email">
+                        <input type="password" name="senhaUsuario" class="form-input" placeholder="Senha">
                     </div>
                     <a href="#" class="form-link">Esqueceu a senha?</a>
                     <button type="button" class="form-button">Logar</button>
@@ -98,7 +96,7 @@
                         <a href="#" id="open-register-mobile">Registre-se</a>
                     </p>
                 </form>
-                <form class="form form-register">
+                <form action="php/cadastro_usuario.php" method="post" class="form form-register">
                     <h2 class="form-title">Criar Conta</h2>
                     <div class="form-social">
                         <a href="#" class="social-icon">
@@ -111,11 +109,11 @@
                     </div>
                     <p class="form-text">ou cadastre seu email</p>
                     <div class="form-input-container">
-                        <input type="text" class="form-input" placeholder="Nome">
-                        <input type="email" class="form-input" placeholder="Email">
-                        <input type="password" class="form-input" placeholder="Senha">
+                        <input type="text" name="nomeUsuario" class="form-input" placeholder="Nome">
+                        <input type="email" name="emailUsuario" class="form-input" placeholder="Email">
+                        <input type="password" name="senhaUsuario" class="form-input" placeholder="Senha">
                     </div>
-                    <button type="button" class="form-button">Cadastrar</button>
+                    <button type="submit" class="form-button">Cadastrar</button>
                     <p class="mobile-text">
                         Já tem conta?
                         <a href="#" id="open-login-mobile">Login</a>
