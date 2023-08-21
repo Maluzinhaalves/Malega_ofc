@@ -29,8 +29,7 @@
 
             <form action="php\busca.php" class="search-form">
                 <input type="search" name="titulo" placeholder="Pesquise seu livro" id="search-box">
-                <label for="search-box" class="fas fa-search" type="submit"></label> <!--mudar para button
-        ou label type = submit-->
+                <button for="search-box" class="fas fa-search" type="submit"></button> 
             </form>
 
             <div class="icons">
@@ -72,7 +71,7 @@
     <div id="close-login-btn" class="fas fa-times"></div>
 
     <form action="php/login_usuario.php" method="post"></form>
- 
+
     <main>
         <div class="login-container" id="login-container">
             <div class="form-container">
