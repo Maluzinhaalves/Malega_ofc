@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Tempo de geração: 01-Ago-2023 às 16:56
+-- Tempo de geração: 21-Ago-2023 às 14:22
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.0.13
 
@@ -81,8 +81,18 @@ CREATE TABLE `comentarios` (
 CREATE TABLE `livros` (
   `idLivro` int(11) NOT NULL,
   `titulo` varchar(255) DEFAULT NULL,
-  `autor` varchar(255) DEFAULT NULL
+  `autor` varchar(255) DEFAULT NULL,
+  `capa` varchar(255) NOT NULL,
+  `capa2` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `livros`
+--
+
+INSERT INTO `livros` (`idLivro`, `titulo`, `autor`, `capa`, `capa2`) VALUES
+(1, 'Revolução dos bixos', 'George Owell', 'imagemDoUsuario/20230821-132514.jpg', ''),
+(2, 'asdasdasd', 'George Owell', 'capaDoLivro/20230821-142001.jpg', 'capaDoLivro/20230821-142001.jpg');
 
 -- --------------------------------------------------------
 
@@ -120,7 +130,8 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`idUsuario`, `nomeUsuario`, `emailUsuario`, `senhaUsuario`, `imagemUsuario`) VALUES
 (1, 'Maluzinha', 'malu@gmail.com', '321', ''),
 (2, 'Guilherme', 'gui@gmail.com', '222', 'imagens/20230801-164225.jpg'),
-(3, '', '', '', '');
+(3, '', '', '', ''),
+(4, 'guilherme', 'gui@gmailaa.com', '123', 'imagemDoUsuario/default_profile.jpg');
 
 -- --------------------------------------------------------
 
@@ -251,7 +262,7 @@ ALTER TABLE `comentarios`
 -- AUTO_INCREMENT de tabela `livros`
 --
 ALTER TABLE `livros`
-  MODIFY `idLivro` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idLivro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `livros_vest`
@@ -263,7 +274,7 @@ ALTER TABLE `livros_vest`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restrições para despejos de tabelas
