@@ -36,10 +36,7 @@
             do{
             echo "<tr>";
             echo "<td>".$row['idUsuario']."</td>";
-            if($row['imagemUsuario'] == "")
-                {echo "<td></td>";} // caso a imagem esteja vazia, vai imprimir nada
-            else
-                {echo "<td><img src='".$row['imagemUsuario']."' width='80' height='100'/></td>";}
+            echo "<td><img src='".$row['imagemUsuario']."' width='80' height='100'/></td>";
             echo "<td>".$row['nomeUsuario']."</td>";
             echo "<td>".$row['emailUsuario']."</td>";
             echo "<td>".$row['senhaUsuario']."</td>";

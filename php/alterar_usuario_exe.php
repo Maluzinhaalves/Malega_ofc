@@ -6,7 +6,7 @@
     $nome = $_POST['nomeUsuario'];
     $email = $_POST['emailUsuario'];
     $senha = $_POST['senhaUsuario'];
-    $pasta_destino = 'imagens/';
+    $pasta_destino = 'imagemDoUsuario/';
     if(file_exists($_FILES['imagemUsuario']['tmp_name'])){
         $extensao = strtolower(substr($_FILES['imagemUsuario']['name'],-4));
         $nome_foto = $pasta_destino.date("Ymd-His") . $extensao; 
