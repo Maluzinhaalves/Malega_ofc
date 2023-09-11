@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Tempo de geração: 21-Ago-2023 às 14:22
+-- Tempo de geração: 11-Set-2023 às 14:08
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.0.13
 
@@ -20,31 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `tcc`
 --
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `administradores`
---
-
-CREATE TABLE `administradores` (
-  `idAdm` int(11) NOT NULL,
-  `nomeAdm` varchar(255) DEFAULT NULL,
-  `emailAdm` varchar(255) DEFAULT NULL,
-  `cpfAdm` varchar(11) DEFAULT NULL,
-  `senhaAdm` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `administradores_chat`
---
-
-CREATE TABLE `administradores_chat` (
-  `idAdm` int(11) NOT NULL,
-  `idChat` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -106,7 +81,9 @@ CREATE TABLE `livros_vest` (
   `pdf` varchar(255) NOT NULL,
   `titulo` varchar(255) NOT NULL,
   `autor` char(255) NOT NULL,
-  `banca` char(20) NOT NULL
+  `banca` char(20) NOT NULL,
+  `capa` varchar(255) DEFAULT NULL,
+  `capa2` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -120,29 +97,23 @@ CREATE TABLE `usuarios` (
   `nomeUsuario` varchar(255) NOT NULL,
   `emailUsuario` varchar(255) NOT NULL,
   `senhaUsuario` varchar(255) NOT NULL,
-  `imagemUsuario` varchar(255) DEFAULT NULL
+  `imagemUsuario` varchar(255) DEFAULT NULL,
+  `ativo` tinyint(4) NOT NULL DEFAULT 0,
+  `adm` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`idUsuario`, `nomeUsuario`, `emailUsuario`, `senhaUsuario`, `imagemUsuario`) VALUES
-(1, 'Maluzinha', 'malu@gmail.com', '321', ''),
-(2, 'Guilherme', 'gui@gmail.com', '222', 'imagens/20230801-164225.jpg'),
-(3, '', '', '', ''),
-(4, 'guilherme', 'gui@gmailaa.com', '123', 'imagemDoUsuario/default_profile.jpg');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `usuario_administrador`
---
-
-CREATE TABLE `usuario_administrador` (
-  `idUsuario` int(11) NOT NULL,
-  `idAdm` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `usuarios` (`idUsuario`, `nomeUsuario`, `emailUsuario`, `senhaUsuario`, `imagemUsuario`, `ativo`, `adm`) VALUES
+(1, 'Maluzinha', 'malu@gmail.com', '321', '', 0, 0),
+(2, 'Guilherme', 'gui@gmail.com', '222', 'imagens/20230801-164225.jpg', 0, 0),
+(3, '', '', '', '', 0, 0),
+(4, 'guilherme', 'gui@gmailaa.com', '123', 'imagemDoUsuario/default_profile.jpg', 0, 0),
+(5, 'Guilherme', 'leo@gmail.com', '123', 'imagemDoUsuario/default_profile.jpg', 0, 0),
+(6, 'Leozin', 'leover@gmail.com', '333', 'imagemDoUsuario/default_profile.jpg', 0, 0),
+(7, 'Kayc', 'kaycaaa@gmail.com', '333', 'imagemDoUsuario/default_profile.jpg', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -169,19 +140,6 @@ CREATE TABLE `usuario_livros` (
 --
 -- Índices para tabelas despejadas
 --
-
---
--- Índices para tabela `administradores`
---
-ALTER TABLE `administradores`
-  ADD PRIMARY KEY (`idAdm`);
-
---
--- Índices para tabela `administradores_chat`
---
-ALTER TABLE `administradores_chat`
-  ADD PRIMARY KEY (`idAdm`,`idChat`),
-  ADD KEY `idChat` (`idChat`);
 
 --
 -- Índices para tabela `chat`
@@ -216,13 +174,6 @@ ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`idUsuario`);
 
 --
--- Índices para tabela `usuario_administrador`
---
-ALTER TABLE `usuario_administrador`
-  ADD PRIMARY KEY (`idUsuario`,`idAdm`),
-  ADD KEY `idAdm` (`idAdm`);
-
---
 -- Índices para tabela `usuario_chat`
 --
 ALTER TABLE `usuario_chat`
@@ -239,12 +190,6 @@ ALTER TABLE `usuario_livros`
 --
 -- AUTO_INCREMENT de tabelas despejadas
 --
-
---
--- AUTO_INCREMENT de tabela `administradores`
---
-ALTER TABLE `administradores`
-  MODIFY `idAdm` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `chat`
@@ -274,18 +219,11 @@ ALTER TABLE `livros_vest`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restrições para despejos de tabelas
 --
-
---
--- Limitadores para a tabela `administradores_chat`
---
-ALTER TABLE `administradores_chat`
-  ADD CONSTRAINT `administradores_chat_ibfk_1` FOREIGN KEY (`idAdm`) REFERENCES `administradores` (`idAdm`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `administradores_chat_ibfk_2` FOREIGN KEY (`idChat`) REFERENCES `chat` (`idChat`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `comentarios`
@@ -298,13 +236,6 @@ ALTER TABLE `comentarios`
 --
 ALTER TABLE `livros_vest`
   ADD CONSTRAINT `livros_vest_ibfk_1` FOREIGN KEY (`id_livro`) REFERENCES `livros` (`idLivro`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Limitadores para a tabela `usuario_administrador`
---
-ALTER TABLE `usuario_administrador`
-  ADD CONSTRAINT `usuario_administrador_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `usuario_administrador_ibfk_2` FOREIGN KEY (`idAdm`) REFERENCES `administradores` (`idAdm`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `usuario_chat`

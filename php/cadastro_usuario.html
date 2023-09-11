@@ -12,10 +12,11 @@
     <div class="container">
         <h1>Cadastro - Malega Libros</h1>
         
-            <form  action="cadastro_usuario.php" method="post" enctype="multipart/form-data"> <!-- enctype especifica
-
-            como os dados do usuario devem ser codificados-->
-            <div class="form-row"> <!--offset: pula colunas da linha-->         
+            <form  action="cadastro_usuario.php" method="post" enctype="multipart/form-data"> 
+                <input type="hidden" name="acao"
+                               value="<?php echo empty($id) ? 'insert' : 'update' ?>">
+                        <input type="hidden" name="id"
+                               value="<?php echo $entidade['idUsuario'] ?? '' ?>">
                 <div class="form-group  col-12 col-md-6">
                     <label for="nome"><strong>Nome</strong></label>
                     <input type="text" class="form-control" name="nomeUsuario" id="nome">
