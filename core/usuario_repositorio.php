@@ -112,7 +112,7 @@ switch($acao){
             $criterio
         );
 
-        header('Location: ../usuarios.php');
+        //header('Location: ../usuarios.php');
         exit;
         break;
 

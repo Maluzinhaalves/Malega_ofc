@@ -96,7 +96,7 @@
                         <a href="#" id="open-register-mobile">Registre-se</a>
                     </p>
                 </form>
-                <form action="php/cadastro_usuario.php" method="post" class="form form-register">
+                <form action="core/usuario_repositorio.php" method="post" class="form form-register">
                     <h2 class="form-title">Criar Conta</h2>
                     <div class="form-social">
                         <a href="#" class="social-icon">
