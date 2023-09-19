@@ -97,6 +97,7 @@
                     </p>
                 </form>
                 <form action="core/usuario_repositorio.php" method="post" class="form form-register">
+                <input type="hidden" name="acao" value="insert">
                     <h2 class="form-title">Criar Conta</h2>
                     <div class="form-social">
                         <a href="#" class="social-icon">
