@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Tempo de geração: 11-Set-2023 às 14:08
+-- Tempo de geração: 19-Set-2023 às 17:12
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.0.13
 
@@ -97,7 +97,7 @@ CREATE TABLE `usuarios` (
   `nomeUsuario` varchar(255) NOT NULL,
   `emailUsuario` varchar(255) NOT NULL,
   `senhaUsuario` varchar(255) NOT NULL,
-  `imagemUsuario` varchar(255) DEFAULT NULL,
+  `imagemUsuario` varchar(255) DEFAULT 'default_profile.png',
   `ativo` tinyint(4) NOT NULL DEFAULT 0,
   `adm` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -113,7 +113,10 @@ INSERT INTO `usuarios` (`idUsuario`, `nomeUsuario`, `emailUsuario`, `senhaUsuari
 (4, 'guilherme', 'gui@gmailaa.com', '123', 'imagemDoUsuario/default_profile.jpg', 0, 0),
 (5, 'Guilherme', 'leo@gmail.com', '123', 'imagemDoUsuario/default_profile.jpg', 0, 0),
 (6, 'Leozin', 'leover@gmail.com', '333', 'imagemDoUsuario/default_profile.jpg', 0, 0),
-(7, 'Kayc', 'kaycaaa@gmail.com', '333', 'imagemDoUsuario/default_profile.jpg', 0, 0);
+(7, 'Kayc', 'kaycaaa@gmail.com', '333', 'imagemDoUsuario/default_profile.jpg', 0, 0),
+(8, 'aaaa', 'aa@gmail.com', 'if13Dpsyoylmc', NULL, 0, 0),
+(9, 'aaaa', 'aa@gmail.com', 'if13Dpsyoylmc', NULL, 0, 0),
+(10, 'Renanzi', 'renanzi@gmail.com', 'if13Dpsyoylmc', 'default_profile.png', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -219,7 +222,7 @@ ALTER TABLE `livros_vest`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restrições para despejos de tabelas
