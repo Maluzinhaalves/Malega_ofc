@@ -4,7 +4,7 @@ require_once '../includes/funcoes.php';
 require_once 'conexao_mysql.php';
 require_once 'sql.php';
 require_once 'mysql.php';
-$salt = '$ifsp';
+$salt = 'ifsp';
 
 foreach($_POST as $indice => $dado){
     $$indice = limparDados($dado);
@@ -16,9 +16,9 @@ foreach($_GET as $indice => $dado){
 switch($acao){
     case 'insert':
         $dados =[
-            'nomeUsuario' => $nome,
-            'emailUsuario' => $email,
-            'senhaUsuario' => crypt($senha,$salt)
+            'nomeUsuario' => $nomeUsuario,
+            'emailUsuario' => $emailUsuario,
+            'senhaUsuario' => crypt($senhaUsuario,$salt)
             ];
 
             insere(
@@ -30,12 +30,12 @@ switch($acao){
     case 'update':
         $id = (int)$id;
         $dados = [
-            'nomeUsuario' => $nome,
-            'emailUsuario' => $email
+            'nomeUsuario' => $nomeUsuario,
+            'emailUsuario' => $emailUsuario
         ];
 
         $criterio = [
-            ['idUsuario', '=', $id]
+            ['idUsuario', '=', $idUsuario]
         ];
 
         atualiza(
@@ -47,18 +47,18 @@ switch($acao){
         break;
         case 'login':
             $criterio = [
-                ['emailUsuario', '=', $email],
+                ['emailUsuario', '=', $emailUsuario],
                 ['AND', 'ativo', '=', 1]
                 ];
 
         $retorno = buscar(
             'usuarios',
-            ['idUsuario','nomeUsuario','emailUsuario','senhaUsuario','adm'],
+            ['idUsuario','nomeUsuario','emailUsuario','senhaUsuario','adm','imagemUsuario'],
             $criterio
         );
 
         if(count($retorno) > 0){
-            if(crypt($senha,$salt) == $retorno[0]['senhaUsuario']){
+            if(crypt($senhaUsuario,$salt) == $retorno[0]['senhaUsuario']){
                 $_SESSION['login']['usuarios'] = $retorno[0];
                 if(!empty($_SESSION['url_retorno'])){
                     header('Location:' . $_SESSION['url_retorno']);
@@ -74,7 +74,7 @@ switch($acao){
     break;
 
         case 'status':
-            $id = (int)$id;
+            $idUsuario = (int)$idUsuario;
             $valor = (int)$valor;
 
         $dados = [
@@ -82,7 +82,7 @@ switch($acao){
             ];
 
         $criterio = [
-            ['idUsuario','=', $id]
+            ['idUsuario','=', $idUsuario]
             ];
 
         atualiza(
@@ -95,7 +95,7 @@ switch($acao){
         exit;
         break;
     case 'adm':
-        $id = (int)$id;
+        $idUsuario = (int)$idUsuario;
         $valor = (int)$valor;
         
         $dados = [
@@ -117,5 +117,6 @@ switch($acao){
 
 
 }
+header('Location: ../index.php');
 
 ?>
