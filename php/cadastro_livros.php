@@ -5,7 +5,6 @@ include("conexao.php");
 $pasta_destino = 'capaDoLivro/';
 $nome_foto = $pasta_destino."default_profile.jpg";
 if(file_exists($_FILES['capa']['tmp_name'])){ //Checa se a pessoa escolheu foto ou não
-
 $extensao = strtolower(substr($_FILES['capa']['name'],-4)); // Vai pegar apenas os ultimos 4 digitos do nome
 $nome_foto = $pasta_destino.date("Ymd-His") . $extensao; // não deixa duas fotos no mesmo nome
 move_uploaded_file($_FILES['capa']['tmp_name'],$nome_foto); //tmp_name é o nome temporario que é dado à foto

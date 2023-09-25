@@ -18,7 +18,9 @@
 </head>
 
 <body>
-
+    <?php 
+     session_start();
+    ?>
     <!-- cabeçalho (header section)-->
 
     <header class="header">
@@ -26,7 +28,13 @@
         <section class="header-1">
 
             <a href="#" class="logo"> <i class="fas fa-book"></i> Malega </a>
-
+            <?php if (isset($_SESSION['login'])): ?>
+    <div class="card-body text-right">
+        <h3>Olá <?php echo $_SESSION['login']['usuarios']['nomeUsuario']?></h3>
+        <a href="core/usuario_repositorio.php?acao=logout"
+        class="btn btn-link btn-sm" role="button">Sair</a>
+    </div>
+    <?php endif ?>
             <form action="php\busca.php" class="search-form">
                 <input type="search" name="titulo" placeholder="Pesquise seu livro" id="search-box">
                 <button for="search-box" class="fas fa-search" type="submit"></button> 
@@ -73,7 +81,8 @@
     <main>
         <div class="login-container" id="login-container">
             <div class="form-container">
-                <form action="php/login_usuario.php" method="post" class="form form-login">
+                <form action="core/usuario_repositorio.php" method="post" class="form form-login">
+                    <input type="hidden" name="acao" value="login">
                     <h2 class="form-title">Entrar com</h2>
                     <div class="form-social">
                         <a href="#" class="social-icon">
@@ -90,7 +99,7 @@
                         <input type="password" name="senhaUsuario" class="form-input" placeholder="Senha">
                     </div>
                     <a href="#" class="form-link">Esqueceu a senha?</a>
-                    <button type="button" class="form-button">Logar</button>
+                    <button type="submit" class="form-button">Logar</button>
                     <p class="mobile-text">
                         Não tem conta?
                         <a href="#" id="open-register-mobile">Registre-se</a>
