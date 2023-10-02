@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Tempo de geração: 19-Set-2023 às 17:12
+-- Tempo de geração: 02-Out-2023 às 14:32
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.0.13
 
@@ -66,7 +66,6 @@ CREATE TABLE `livros` (
 --
 
 INSERT INTO `livros` (`idLivro`, `titulo`, `autor`, `capa`, `capa2`) VALUES
-(1, 'Revolução dos bixos', 'George Owell', 'imagemDoUsuario/20230821-132514.jpg', ''),
 (2, 'asdasdasd', 'George Owell', 'capaDoLivro/20230821-142001.jpg', 'capaDoLivro/20230821-142001.jpg');
 
 -- --------------------------------------------------------
@@ -97,8 +96,8 @@ CREATE TABLE `usuarios` (
   `nomeUsuario` varchar(255) NOT NULL,
   `emailUsuario` varchar(255) NOT NULL,
   `senhaUsuario` varchar(255) NOT NULL,
-  `imagemUsuario` varchar(255) DEFAULT 'default_profile.png',
-  `ativo` tinyint(4) NOT NULL DEFAULT 0,
+  `imagemUsuario` varchar(255) DEFAULT 'default_profile.jpg',
+  `ativo` tinyint(4) NOT NULL DEFAULT 1,
   `adm` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -107,16 +106,14 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`idUsuario`, `nomeUsuario`, `emailUsuario`, `senhaUsuario`, `imagemUsuario`, `ativo`, `adm`) VALUES
-(1, 'Maluzinha', 'malu@gmail.com', '321', '', 0, 0),
-(2, 'Guilherme', 'gui@gmail.com', '222', 'imagens/20230801-164225.jpg', 0, 0),
-(3, '', '', '', '', 0, 0),
 (4, 'guilherme', 'gui@gmailaa.com', '123', 'imagemDoUsuario/default_profile.jpg', 0, 0),
 (5, 'Guilherme', 'leo@gmail.com', '123', 'imagemDoUsuario/default_profile.jpg', 0, 0),
 (6, 'Leozin', 'leover@gmail.com', '333', 'imagemDoUsuario/default_profile.jpg', 0, 0),
 (7, 'Kayc', 'kaycaaa@gmail.com', '333', 'imagemDoUsuario/default_profile.jpg', 0, 0),
-(8, 'aaaa', 'aa@gmail.com', 'if13Dpsyoylmc', NULL, 0, 0),
-(9, 'aaaa', 'aa@gmail.com', 'if13Dpsyoylmc', NULL, 0, 0),
-(10, 'Renanzi', 'renanzi@gmail.com', 'if13Dpsyoylmc', 'default_profile.png', 0, 0);
+(11, 'Gui', 'guieeee@gmail.com', '123', 'imagemDoUsuario/default_profile.jpg', 0, 0),
+(15, 'Gui', 'Guilhermecintra@gmail.com', 'if13Dpsyoylmc', 'default_profile.jpg', 0, 0),
+(16, 'Gui', 'gui@gmails.com', 'if13Dpsyoylmc', 'default_profile.jpg', 0, 0),
+(17, 'Gui', 'bibi@gmail.com', 'if13Dpsyoylmc', 'default_profile.jpg', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -222,7 +219,7 @@ ALTER TABLE `livros_vest`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Restrições para despejos de tabelas
