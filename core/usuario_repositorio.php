@@ -28,7 +28,7 @@ switch($acao){
 
             break;
     case 'update':
-        $id = (int)$id;
+        $idUsuario = (int)$idUsuario;
         $dados = [
             'nomeUsuario' => $nomeUsuario,
             'emailUsuario' => $emailUsuario

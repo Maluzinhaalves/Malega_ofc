@@ -11,7 +11,7 @@
 <body>
     <?php 
         include('conexao.php');
-        $sql = "SELECT * FROM usuarios";
+        $sql = "SELECT * FROM livros";
         // mysqli_query => executa um comando no banco de dados
         $result = mysqli_query($con, $sql);
         // mysqli_fetch_array => retorna apenas uma linha dos registros retornados
@@ -19,17 +19,15 @@
     ?>
     
     <div class="container">
-    <h1>Consulta de usuários</h1>
+    <h1>Consulta de livros</h1>
     <table align="center" border="1" width="500" bgcolor="pink">
         <div class="row">
         <tr> Cabeçalho
             <th class="col">Código</th>
-            <th class="col">Foto</th>
-            <th class="col">Nome</th>
-            <th class="col">E-mail</th>
-            <th class="col">Senha</th>
-            <th class="col">Ativo</th>
-            <th class="col">Adm</th>
+            <th class="col">Capa</th>
+            <th class="col">Capa2</th>
+            <th class="col">Titulo</th>
+            <th class="col">Autor</th>
             <th class="col">Alterar</th>
             <th class="col">Excluir</th>
         </tr>
@@ -37,17 +35,15 @@
         <?php
             do{
             echo "<tr>";
-            echo "<td>".$row['idUsuario']."</td>";
-            echo "<td><img src='".$row['imagemUsuario']."' width='80' height='100'/></td>";
-            echo "<td>".$row['nomeUsuario']."</td>";
-            echo "<td>".$row['emailUsuario']."</td>";
-            echo "<td>".$row['senhaUsuario']."</td>";
-            echo "<td>".$row['ativo']."</td>";
-            echo "<td>".$row['adm']."</td>";
-            echo "<td><a href='alterar_usuario.php?idUsuario="
-            .$row['idUsuario']."'> Alterar </a> </td>"; //vai pegar o valor do id exibido 
+            echo "<td>".$row['idLivro']."</td>";
+            echo "<td><img src='".$row['capa']."' width='80' height='100'/></td>";
+            echo "<td><img src='".$row['capa2']."' width='80' height='100'/></td>";
+            echo "<td>".$row['titulo']."</td>";
+            echo "<td>".$row['autor']."</td>";
+            echo "<td><a href='alterar_livro.php?idLivro="
+            .$row['idLivro']."'> Alterar </a> </td>"; //vai pegar o valor do id exibido 
             echo "<td><a 
-            href='excluir_usuario.php?idUsuario=".$row['idUsuario']."'>Excluir</a>
+            href='excluir_livro.php?idLivro=".$row['idLivro']."'>Excluir</a>
             </td>";
 
             
@@ -64,24 +60,8 @@
     </table>
     </div>
     <div>
-    <a href="cadastro_usuario.html">Voltar</a>
+    <a href="cadastro_livro.html">Voltar</a>
     </div>
 
-    <script>
-function funcao1()
-{
-var x;
-var r=confirm("Tem certeza que deseja excluir o usuario?!");
-if (r==true)
-  {
-  <?php echo "<a href='excluir_usuario.php?idUsuario=".$row['idUsuario']."'>";?>!
-  }
-else
-  {
-  x="Você pressionou Cancelar!"
-  }
-document.getElementById('demo').innerHTML=x;
-}
-    </script>
 </body>
 </html>

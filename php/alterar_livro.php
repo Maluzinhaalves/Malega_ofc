@@ -14,7 +14,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Altere seu usuario!</h1>
+    <h1>Altere o Livro!</h1>
     <form action="alterar_livro_exe.php" method="post" enctype="multipart/form-data">
         <input name="idLivro" type="hidden" 
         value="<?php echo $row['idLivro']?>">

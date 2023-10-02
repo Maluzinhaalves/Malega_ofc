@@ -28,7 +28,7 @@
         <section class="header-1">
 
             <a href="#" class="logo"> <i class="fas fa-book"></i> Malega </a>
-            <?php if (isset($_SESSION['login'])): ?>
+            <?php if((isset($_SESSION['login']))): ?>
     <div class="card-body text-right">
         <h3>Olá <?php echo $_SESSION['login']['usuarios']['nomeUsuario']?></h3>
         <a href="core/usuario_repositorio.php?acao=logout"
@@ -91,7 +91,6 @@
                         <a href="#" class="social-icon">
                             <i class="fab fa-google"></i>
                         </a>
-                        
                     </div>
                     <p class="form-text">ou utilize sua conta</p>
                     <div class="form-input-container">
