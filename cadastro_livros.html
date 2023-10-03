@@ -12,10 +12,11 @@
     <div class="container">
         <h1>Cadastro de livros - Malega Libros</h1>
         
-            <form  action="cadastro_livros.php" method="post" enctype="multipart/form-data"> <!-- enctype especifica
+            <form  action="core/livro_repositorio.php" method="get" enctype="multipart/form-data"> <!-- enctype especifica
 
             como os dados do usuario devem ser codificados-->
-            <div class="form-row"> <!--offset: pula colunas da linha-->         
+            <div class="form-row"> <!--offset: pula colunas da linha-->  
+                <input type="hidden" name="acao" value="insert">       
                 <div class="form-group  col-12 col-md-6">
                     <label for="titulo"><strong>Titulo</strong></label>
                     <input type="text" class="form-control" name="titulo" id="titulo" required>

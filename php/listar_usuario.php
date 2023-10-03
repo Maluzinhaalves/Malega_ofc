@@ -10,78 +10,80 @@
 </head>
 <body>
     <?php 
-        include('conexao.php');
-        $sql = "SELECT * FROM usuarios";
-        // mysqli_query => executa um comando no banco de dados
-        $result = mysqli_query($con, $sql);
-        // mysqli_fetch_array => retorna apenas uma linha dos registros retornados
-        $row = mysqli_fetch_array($result);
+    
+        session_start();
+        require_once '../includes/funcoes.php';
+        require_once '../core/conexao_mysql.php';
+        require_once '../core/sql.php';
+        require_once '../core/mysql.php';
+
+        foreach($_GET as $indice => $dado){ //como funciona esse comando
+            $$indice = limparDados($dado);
+        }
+
+        $criterio = [];
+
+        if(!empty($busca)){
+            $criterio[] = ['nomeUsuario', 'like', "%{$busca}%"];
+        }
+
+        $result = buscar(
+            'usuarios',
+            [
+                'idUsuario',
+                'imagemUsuario',
+                'nomeUsuario',
+                'emailUsuario',
+                'senhaUsuario',
+                'ativo',
+                'adm'
+            ],
+            $criterio,
+            'idUsuario DESC'
+        );
     ?>
     
     <div class="container">
     <h1>Consulta de usuários</h1>
+    <form class="form-inline my-2 my-lg-0" method='get' action=' '> <!-- action vazio busca a propia pagina-->
+    <input class="form-control mr-sm-2" type="search" name='busca'
+        placeholder="Busca" arial-label="Busca">
+    <button class="btn btn-outline-sucess my-2 my-sm-0"
+        type="submit">Buscar</button>
+    </form>
     <table align="center" border="1" width="500" bgcolor="pink">
-        <div class="row">
-        <tr> Cabeçalho
+        <thead>
+            <?php
+            foreach($result as $entidade):
+        ?>
+        <tr>
             <th class="col">Código</th>
             <th class="col">Foto</th>
             <th class="col">Nome</th>
             <th class="col">E-mail</th>
             <th class="col">Senha</th>
             <th class="col">Ativo</th>
+            <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['adm'] === 2)):?>
             <th class="col">Adm</th>
-            <th class="col">Alterar</th>
-            <th class="col">Excluir</th>
-        </tr>
-        </div>
-        <?php
-            do{
-            echo "<tr>";
-            echo "<td>".$row['idUsuario']."</td>";
-            echo "<td><img src='".$row['imagemUsuario']."' width='80' height='100'/></td>";
-            echo "<td>".$row['nomeUsuario']."</td>";
-            echo "<td>".$row['emailUsuario']."</td>";
-            echo "<td>".$row['senhaUsuario']."</td>";
-            echo "<td>".$row['ativo']."</td>";
-            echo "<td>".$row['adm']."</td>";
-            echo "<td><a href='alterar_usuario.php?idUsuario="
-            .$row['idUsuario']."'> Alterar </a> </td>"; //vai pegar o valor do id exibido 
-            echo "<td><a 
-            href='excluir_usuario.php?idUsuario=".$row['idUsuario']."'>Excluir</a>
-            </td>";
-
-            
-            // do while na linha atual (Como se eu pegasse o valor do contador) e usar ele
-            // como condição do WHERE do banco
-
-            echo "</tr>";
-        } while($row = mysqli_fetch_array($result));
-        // sempre que estiver algum registro ele vai mostrar, ou seja
-        // quando acabar os dados ele para de monstrar(uma repetição).
-        // href='excluir_usuario.php?idUsuario=".$row['idUsuario']."'
-        //onclick='funcao1()'>Excluir</a>      
-        ?>
+            <?php endif ?>
+            </tr>
+        </thead>
+        <tbody>
+                <td><?php echo $entidade['idUsuario'] ?></td>
+                <td><?php echo $entidade['imagemUsuario'] ?></td>
+                <td><?php echo $entidade['nomeUsuario'] ?></td>
+                <td><?php echo $entidade['emailUsuario'] ?></td>
+                <td><?php echo $entidade['senhaUsuario'] ?></td>
+                <td><a href='../core/usuario_repositorio.php?acao=status&idUsuario=<?php echo $entidade['idUsuario']?> &valor=<?php echo !$entidade['ativo']?>'><?php echo ($entidade['ativo']==1)  ? 'Desativar' : 'Ativar'; ?> </a></td>
+                <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['adm'] === 2)):?>
+                <td><a href='../core/usuario_repositorio.php?acao=adm&idUsuario=<?php echo $entidade['idUsuario']?> &valor=<?php echo !$entidade['adm']?>'><?php echo ($entidade['adm']==1)  ?  'Rebaixar' : 'Promover'; ?> </a></td>
+                <?php endif ?>
+            <?php endforeach ?>
+        </tbody>
     </table>
     </div>
     <div>
     <a href="cadastro_usuario.html">Voltar</a>
     </div>
-
-    <script>
-function funcao1()
-{
-var x;
-var r=confirm("Tem certeza que deseja excluir o usuario?!");
-if (r==true)
-  {
-  <?php echo "<a href='excluir_usuario.php?idUsuario=".$row['idUsuario']."'>";?>!
-  }
-else
-  {
-  x="Você pressionou Cancelar!"
-  }
-document.getElementById('demo').innerHTML=x;
-}
-    </script>
 </body>
 </html>

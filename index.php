@@ -55,6 +55,9 @@
                 <a href="#livros">livros</a>
                 <a href="#reviews">reviews</a>
                 <a href="#vestibular">vestibular</a>
+                <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['adm']>= 1)):?>
+                <a href="adm.php">administração</a>
+                <?php endif?>
             </nav>
         </div>
 

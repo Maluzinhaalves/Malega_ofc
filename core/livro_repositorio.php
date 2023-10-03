@@ -1,6 +1,5 @@
 <?php
 session_start();
-require_once '../includes/valida_login.php';
 require_once '../includes/funcoes.php';
 require_once 'conexao_mysql.php';
 require_once 'sql.php';
@@ -14,27 +13,20 @@ foreach($_GET as $indice => $dado) {
     $$indice = limparDados($dado);
 }
 
-$idLivro = (int)$idLivro;
-
 
 switch($acao){
     case 'insert':
-        $trimmed = trim($texto);
-
-        if(empty($trimmed)){
-
-        } else{ 
         $dados =[
             'titulo' => $titulo,
             'autor' => $autor,
             'capa' => $capa,
             'capa2' => $capa2
         ];
+
         insere(
             'livros',
             $dados
         );
-        }
         
         break;
 
@@ -71,4 +63,4 @@ switch($acao){
             break;
 }
 
-header('Location: ../index.php');
+//header('Location: ../php/listar_livro.php');

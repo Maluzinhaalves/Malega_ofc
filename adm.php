@@ -9,10 +9,10 @@
 <body>
     <div>
         <h3>Ações com livros</h3><br>
-        <a href="php/cadastro_livros.php">Cadastro de Livros</a><br>
-        <a href="php/listar_livro.php">Listar Usuario</a><br>
+        <a href="cadastro_livros.html">Cadastro de Livros</a><br>
+        <a href="php/listar_livro.php">Listar Livros</a><br>
         <h3>Ações usuarios livros</h3><br>
-        <a href="php/cadastro_usuario.php">Cadastro de Usuario</a><br>
+        <a href="php/cadastro_usuario.html">Cadastro de Usuario</a><br>
         <a href="php/listar_usuario.php">Listar usuarios</a><br>
     </div>
 </body>
