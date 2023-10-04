@@ -43,7 +43,7 @@ switch($acao){
             ];
 
             atualiza(
-                'post',
+                'livros',
                 $dados,
                 $criterio
             );

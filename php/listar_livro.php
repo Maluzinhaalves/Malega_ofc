@@ -10,58 +10,71 @@
 </head>
 <body>
     <?php 
-        include('conexao.php');
-        $sql = "SELECT * FROM livros";
-        // mysqli_query => executa um comando no banco de dados
-        $result = mysqli_query($con, $sql);
-        // mysqli_fetch_array => retorna apenas uma linha dos registros retornados
-        $row = mysqli_fetch_array($result);
+    
+        session_start();
+        require_once '../includes/funcoes.php';
+        require_once '../core/conexao_mysql.php';
+        require_once '../core/sql.php';
+        require_once '../core/mysql.php';
+
+        foreach($_GET as $indice => $dado){ //como funciona esse comando
+            $$indice = limparDados($dado);
+        }
+
+        $criterio = [];
+
+        if(!empty($busca)){
+            $criterio[] = ['titulo', 'like', "%{$busca}%"];
+        }
+
+        $result = buscar(
+            'livros',
+            [
+                'idLivro',
+                'titulo',
+                'autor',
+                'capa',
+                'capa2',
+            ],
+            $criterio,
+            'idLivro DESC'
+        );
     ?>
     
     <div class="container">
-    <h1>Consulta de livros</h1>
-    <table align="center" border="1" width="500" bgcolor="pink">
-        <div class="row">
-        <tr> Cabeçalho
-            <th class="col">Código</th>
-            <th class="col">Capa</th>
-            <th class="col">Capa2</th>
-            <th class="col">Titulo</th>
-            <th class="col">Autor</th>
-            <th class="col">Alterar</th>
-            <th class="col">Excluir</th>
-        </tr>
-        </div>
-        <?php
-            do{
-            echo "<tr>";
-            echo "<td>".$row['idLivro']."</td>";
-            echo "<td><img src='".$row['capa']."' width='80' height='100'/></td>";
-            echo "<td><img src='".$row['capa2']."' width='80' height='100'/></td>";
-            echo "<td>".$row['titulo']."</td>";
-            echo "<td>".$row['autor']."</td>";
-            echo "<td><a href='alterar_livro.php?idLivro="
-            .$row['idLivro']."'> Alterar </a> </td>"; //vai pegar o valor do id exibido 
-            echo "<td><a 
-            href='excluir_livro.php?idLivro=".$row['idLivro']."'>Excluir</a>
-            </td>";
-
-            
-            // do while na linha atual (Como se eu pegasse o valor do contador) e usar ele
-            // como condição do WHERE do banco
-
-            echo "</tr>";
-        } while($row = mysqli_fetch_array($result));
-        // sempre que estiver algum registro ele vai mostrar, ou seja
-        // quando acabar os dados ele para de monstrar(uma repetição).
-        // href='excluir_usuario.php?idUsuario=".$row['idUsuario']."'
-        //onclick='funcao1()'>Excluir</a>      
+    <h1>Consulta de Livros</h1>
+    <form class="form-inline my-2 my-lg-0" method='get' action=' '> <!-- action vazio busca a propia pagina-->
+    <input class="form-control mr-sm-2" type="search" name='busca'
+        placeholder="Busca" arial-label="Busca">
+    <button class="btn btn-outline-sucess my-2 my-sm-0"
+        type="submit">Buscar</button>
+    </form>
+    <table align="center" border="1" width="500" bgcolor="grey">
+        <thead>
+            <?php
+            foreach($result as $entidade):
         ?>
+        <tr>
+            <th class="col">Código</th>
+            <th class="col">Título</th>
+            <th class="col">Autor</th>
+            <th class="col">Capa</th>
+            <th class="col">Segunda Capa</th>
+            </tr>
+        </thead>
+        <tbody>
+                <td><?php echo $entidade['idLivro'] ?></td>
+                <td><?php echo $entidade['titulo'] ?></td>
+                <td><?php echo $entidade['autor'] ?></td>
+                <td><?php echo $entidade['capa'] ?></td>
+                <td><?php echo $entidade['capa2'] ?></td>
+                <td><a href="../core/livro_repositorio.php?acao=delete&idLivro=<?php echo $entidade['idLivro'] ?>">Deletar</a></td>
+            <?php endforeach ?>
+        </tbody>
     </table>
     </div>
     <div>
-    <a href="cadastro_livro.html">Voltar</a>
+    <a href="../cadastro_livro.html">Voltar</a>
     </div>
-
 </body>
 </html>

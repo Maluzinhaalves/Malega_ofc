@@ -14,7 +14,7 @@
         
             <form  action="cadastro_usuario.php" method="post" enctype="multipart/form-data"> 
                 <input type="hidden" name="acao"
-                               value="<?php echo empty($id) ? 'insert' : 'update' ?>">
+                              value="<?php echo empty($id) ? 'insert' : 'update' ?>">
                         <input type="hidden" name="id"
                                value="<?php echo $entidade['idUsuario'] ?? '' ?>">
                 <div class="form-group  col-12 col-md-6">
