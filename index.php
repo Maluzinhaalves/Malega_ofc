@@ -259,7 +259,7 @@
                 ?>
                 <div class="swiper-slide box">
                     <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
+                        <a href="pag_livro.php" class="fas fa-search"></a>
                         <a href="#" class="fas fa-heart"></a>
                         <a href="#" class="fas fa-eye"></a>
                     </div>
@@ -404,7 +404,7 @@
                 <?php 
                 foreach($livrosv as $livrov):
                     ?>
-                <a href="#" class="swiper-slide box">
+                <a href="pag_livro.php" class="swiper-slide box">
                     <div class="image">
                         <img src="image/book-1.png" alt="">
                     </div>
@@ -496,7 +496,7 @@
             <?php 
                 foreach($livrosv as $livrov):
                     ?>
-                <a href="#" class="swiper-slide box">
+                <a href="pag_livro.php" class="swiper-slide box">
                     <div class="image">
                         <img src="image/book-6.png" alt="">
                     </div>
