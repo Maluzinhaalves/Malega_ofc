@@ -111,6 +111,8 @@ switch($acao){
             $dados,
             $criterio
         );
+        
+        header('Location: ../php/listar_usuario.php');
 
         exit;
         break;

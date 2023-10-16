@@ -20,6 +20,10 @@
 <body>
     <?php 
      session_start();
+     require_once 'includes/funcoes.php';
+     require_once 'core/conexao_mysql.php';
+     require_once 'core/sql.php';
+     require_once 'core/mysql.php';
     ?>
     <!-- cabeçalho (header section)-->
 
@@ -151,6 +155,20 @@
 
     <!-- começo da home section  -->
 
+        <?php 
+        foreach($_GET as $indice => $dado) {
+            $$indice = limparDados($dado);
+        }
+        
+        $livros = buscar(
+            'livros',
+            [
+             'titulo',
+             'capa',
+              'idLivro'
+            ]      
+        );
+    ?>
     <div class="home-container">
 
         <section class="home" id="home">
@@ -166,7 +184,10 @@
 
                 <div class="swiper books-slider">
                     <div class="swiper-wrapper">
-                        <a href="#" class="swiper-slide"><img src="image/book-1.png" alt=""></a>
+                        <?php   
+                        //foreach($livros as $livro):
+                        ?>
+                        <a href="#" class="swiper-slide"><img src="<?php //echo $livro['capa']?>image/book-1.png"></a>
                         <a href="#" class="swiper-slide"><img src="image/book-2.png" alt=""></a>
                         <a href="#" class="swiper-slide"><img src="image/book-3.png" alt=""></a>
                         <a href="#" class="swiper-slide"><img src="image/book-4.png" alt=""></a>
@@ -175,7 +196,7 @@
                     </div>
                     <img src="image/stand.png" class="stand" alt="">
                 </div>
-
+                <?php //endforeach ?>
             </div>
 
         </section>
@@ -233,7 +254,9 @@
         <div class="swiper featured-slider">
 
             <div class="swiper-wrapper">
-
+            <?php   
+                foreach($livros as $livro):
+                ?>
                 <div class="swiper-slide box">
                     <div class="icons">
                         <a href="#" class="fas fa-search"></a>
@@ -241,14 +264,15 @@
                         <a href="#" class="fas fa-eye"></a>
                     </div>
                     <div class="image">
-                        <img src="image/book-1.png" alt="">
+                        <img src="image/book-2.png" alt="">
                     </div>
                     <div class="content">
-                        <h3>livros</h3>
+                        <h3><?php echo $livro['titulo'] ?></h3>
                         <a href="#" class="btn">adicione aos favoritos</a>
                     </div>
                 </div>
-
+                <?php endforeach ?>
+                <!--
                 <div class="swiper-slide box">
                     <div class="icons">
                         <a href="#" class="fas fa-search"></a>
@@ -338,7 +362,7 @@
                         <a href="#" class="btn">adicione aos favoritos</a>
                     </div>
                 </div>
-
+                -->
 
             </div>
 
@@ -352,7 +376,20 @@
 
 
     <!-- começo da arrivals section  -->
-
+    <?php 
+        /*foreach($_GET as $indice => $dado) {
+            $$indice = limparDados($dado);
+        }
+        
+        $livrosv = buscar(
+            'livros_vest',
+            [
+            'titulo',
+            'capa',
+            'idLivro'
+            ]      
+        ); */
+    ?>
     <section class="arrivals" id="vestibular">
 
         <h1 class="heading"> <span>Leituras obrigatórias</span> </h1>
@@ -360,7 +397,9 @@
         <div class="swiper arrivals-slider">
 
             <div class="swiper-wrapper">
-
+                <?php 
+                //foreach($livrosv as $livrov):
+                    ?>
                 <a href="#" class="swiper-slide box">
                     <div class="image">
                         <img src="image/book-1.png" alt="">
@@ -376,6 +415,7 @@
                         </div>
                     </div>
                 </a>
+                <?php  //endforeach ?>
 
                 <a href="#" class="swiper-slide box">
                     <div class="image">

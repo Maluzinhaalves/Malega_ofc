@@ -12,11 +12,8 @@
     <div class="container">
         <h1>Cadastro - Malega Libros</h1>
         
-            <form  action="cadastro_usuario.php" method="post" enctype="multipart/form-data"> 
-                <input type="hidden" name="acao"
-                              value="<?php echo empty($id) ? 'insert' : 'update' ?>">
-                        <input type="hidden" name="id"
-                               value="<?php echo $entidade['idUsuario'] ?? '' ?>">
+            <form  action="core/usuario_repositorio.php" method="post" enctype="multipart/form-data"> 
+                <input type="hidden" name="acao" value="insert">
                 <div class="form-group  col-12 col-md-6">
                     <label for="nome"><strong>Nome</strong></label>
                     <input type="text" class="form-control" name="nomeUsuario" id="nome">

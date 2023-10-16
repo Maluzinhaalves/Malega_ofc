@@ -20,11 +20,13 @@ switch($acao){
             'titulo' => $titulo,
             'autor' => $autor,
             'capa' => $capa,
-            'capa2' => $capa2
+            'capa2' => $capa2,
+            'pdf' => $pdf,
+            'banca' => $banca
         ];
 
         insere(
-            'livros',
+            'livros_vest',
             $dados
         );
         
@@ -35,15 +37,17 @@ switch($acao){
                 'titulo' => $titulo,
                 'autor' => $autor,
                 'capa' => $capa,
-                'capa2' => $capa2
+                'capa2' => $capa2,
+                'pdf' => $pdf,
+                'banca' => $banca
             ];
 
             $criterio = [
-                ['idLivro', '=', $idLivro]
+                ['idVest', '=', $idVest]
             ];
 
             atualiza(
-                'livros',
+                'livros_vest',
                 $dados,
                 $criterio
             );
@@ -52,11 +56,11 @@ switch($acao){
 
     case 'delete':
                 $criterio = [
-                    ['idLivro', '=', $idLivro]
+                    ['idVest', '=', $idVest]
                 ];
 
                 deleta(
-                    'livros',
+                    'livros_vest',
                     $criterio
                 );
 
