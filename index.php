@@ -377,18 +377,22 @@
 
     <!-- começo da arrivals section  -->
     <?php 
-        /*foreach($_GET as $indice => $dado) {
+        foreach($_GET as $indice => $dado) {
             $$indice = limparDados($dado);
         }
         
+        $criterio[] = ['banca', 'not like', '%ausente%'];
+
         $livrosv = buscar(
-            'livros_vest',
+            'livros',
             [
             'titulo',
             'capa',
-            'idLivro'
-            ]      
-        ); */
+            'idLivro',
+            'banca'
+            ],
+            $criterio     
+        ); 
     ?>
     <section class="arrivals" id="vestibular">
 
@@ -398,14 +402,14 @@
 
             <div class="swiper-wrapper">
                 <?php 
-                //foreach($livrosv as $livrov):
+                foreach($livrosv as $livrov):
                     ?>
                 <a href="#" class="swiper-slide box">
                     <div class="image">
                         <img src="image/book-1.png" alt="">
                     </div>
                     <div class="content">
-                        <h3>livros</h3>
+                        <h3><?php echo $livrov['titulo']?></h3>
                         <div class="stars">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -415,9 +419,9 @@
                         </div>
                     </div>
                 </a>
-                <?php  //endforeach ?>
+                <?php  endforeach ?>
 
-                <a href="#" class="swiper-slide box">
+                <!--<a href="#" class="swiper-slide box">
                     <div class="image">
                         <img src="image/book-2.png" alt="">
                     </div>
@@ -479,7 +483,7 @@
                             <i class="fas fa-star-half-alt"></i>
                         </div>
                     </div>
-                </a>
+                </a>-->
 
             </div>
 
@@ -489,12 +493,15 @@
 
             <div class="swiper-wrapper">
 
+            <?php 
+                foreach($livrosv as $livrov):
+                    ?>
                 <a href="#" class="swiper-slide box">
                     <div class="image">
                         <img src="image/book-6.png" alt="">
                     </div>
                     <div class="content">
-                        <h3>livros</h3>
+                        <h3><?php echo $livrov['titulo']?></h3>
                         <div class="stars">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -504,8 +511,11 @@
                         </div>
                     </div>
                 </a>
+                <?php 
+                endforeach;
+                    ?>
 
-                <a href="#" class="swiper-slide box">
+                <!--<a href="#" class="swiper-slide box">
                     <div class="image">
                         <img src="image/book-7.png" alt="">
                     </div>
@@ -535,7 +545,7 @@
                             <i class="fas fa-star-half-alt"></i>
                         </div>
                     </div>
-                </a>
+                </a>-->
 
 
 

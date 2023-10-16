@@ -35,6 +35,8 @@
                 'autor',
                 'capa',
                 'capa2',
+                'pdf',
+                'banca',
             ],
             $criterio,
             'idLivro DESC'
@@ -58,6 +60,8 @@
             <th class="col">Código</th>
             <th class="col">Título</th>
             <th class="col">Autor</th>
+            <th class="col">Banca</th>
+            <th class="col">PDF</th>
             <th class="col">Capa</th>
             <th class="col">Segunda Capa</th>
             </tr>
@@ -66,6 +70,8 @@
                 <td><?php echo $entidade['idLivro'] ?></td>
                 <td><?php echo $entidade['titulo'] ?></td>
                 <td><?php echo $entidade['autor'] ?></td>
+                <td><?php echo $entidade['banca'] ?></td>
+                <td><?php echo $entidade['pdf'] ?></td>
                 <td><?php echo $entidade['capa'] ?></td>
                 <td><?php echo $entidade['capa2'] ?></td>
                 <td><a href="../core/livro_repositorio.php?acao=delete&idLivro=<?php echo $entidade['idLivro'] ?>">Deletar</a></td>

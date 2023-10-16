@@ -20,7 +20,9 @@ switch($acao){
             'titulo' => $titulo,
             'autor' => $autor,
             'capa' => $capa,
-            'capa2' => $capa2
+            'capa2' => $capa2,
+            'pdf' => $pdf,
+            'banca' => $banca
         ];
 
         insere(
@@ -35,7 +37,9 @@ switch($acao){
                 'titulo' => $titulo,
                 'autor' => $autor,
                 'capa' => $capa,
-                'capa2' => $capa2
+                'capa2' => $capa2,
+                'pdf' => $pdf,
+                'banca' => $banca
             ];
 
             $criterio = [
@@ -63,4 +67,4 @@ switch($acao){
             break;
 }
 
-header('Location: ../adm');
+header('Location: ../adm.php');

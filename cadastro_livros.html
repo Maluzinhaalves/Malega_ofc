@@ -38,13 +38,30 @@
                     <input type="file" class="form-control-file" name="capa2" id="capa2" accept="image/*" required>
                 </div>
             </div>
+            <div class="form-row">
+                <div class="form-group col-12 col-md-6">
+                    <label for="pdf"><strong>PDF</strong></label>
+                    <input type="text" class="form-control" name="pdf" id="pdf" placeholder="Opcional" required>
+                </div>
+                <div class="form-group col-12 col-md-6">
+                    <label for="banca"><strong>Banca</strong></label><br>
+                    <select name="banca" id="banca">
+                        <option value="enem">ENEM</option>
+                        <option value="comvest">COMVEST</option>
+                        <option value="fuvest">FUVEST</option>
+                        <option value="vunesp">VUNESP</option>
+                        <option value="ausente">Ausente</option>
+                      </select>
+                </div>
+            </div>       
+            
             <div class="form-row">          
                 <input type="submit" class="btn btn-primary col-2" value="Salvar">
             </div>
             </form>
         
-        <a href="../index.php">Voltar</a><br>
-        <a href="listar_usuario.php">Lista de usuarios</a>
+        <a href="adm.php">Voltar</a><br>
+        <a href="php/listar_livro.php">Lista de livros</a>
     </div>
 </body>
 </html>

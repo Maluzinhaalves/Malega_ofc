@@ -103,7 +103,7 @@ switch($acao){
             ];
 
         $criterio = [
-           ['idUsuario','=',$id] 
+           ['idUsuario','=',$idUsuario] 
             ];
 
         atualiza(
