@@ -255,7 +255,9 @@
 
             <div class="swiper-wrapper">
             <?php   
+                $pasta = "imagensLivro/";
                 foreach($livros as $livro):
+                    
                 ?>
                 <div class="swiper-slide box">
                     <div class="icons">
@@ -264,7 +266,7 @@
                         <a href="#" class="fas fa-eye"></a>
                     </div>
                     <div class="image">
-                        <img src="image/book-2.png" alt="">
+                        <img src="<?php echo $pasta.$livro['capa'] ?>" alt="">
                     </div>
                     <div class="content">
                         <h3><?php echo $livro['titulo'] ?></h3>
@@ -406,7 +408,7 @@
                     ?>
                 <a href="pag_livro.php" class="swiper-slide box">
                     <div class="image">
-                        <img src="image/book-1.png" alt="">
+                        <img src="<?php echo $pasta.$livrov['capa'] ?>" alt="">
                     </div>
                     <div class="content">
                         <h3><?php echo $livrov['titulo']?></h3>
@@ -498,7 +500,7 @@
                     ?>
                 <a href="pag_livro.php" class="swiper-slide box">
                     <div class="image">
-                        <img src="image/book-6.png" alt="">
+                        <img src="<?php echo $pasta.$livrov['capa'] ?>" alt="">
                     </div>
                     <div class="content">
                         <h3><?php echo $livrov['titulo']?></h3>

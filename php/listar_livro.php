@@ -54,6 +54,8 @@
     <table align="center" border="1" width="500" bgcolor="grey">
         <thead>
             <?php
+            $pasta = "../imagensLivro/";
+            $pasta_pdf = "../pdf/";
             foreach($result as $entidade):
         ?>
         <tr>
@@ -71,9 +73,9 @@
                 <td><?php echo $entidade['titulo'] ?></td>
                 <td><?php echo $entidade['autor'] ?></td>
                 <td><?php echo $entidade['banca'] ?></td>
-                <td><?php echo $entidade['pdf'] ?></td>
-                <td><?php echo $entidade['capa'] ?></td>
-                <td><?php echo $entidade['capa2'] ?></td>
+                <td><a href="<?php echo $pasta_pdf.$entidade['pdf'] ?>">PDF</a></td>
+                <td><img src="<?php echo $pasta.$entidade['capa']?>" width="200px" height="400px"> </td>
+                <td><img src="<?php echo $pasta.$entidade['capa2']?>" width="200px" height="400px"></td>
                 <td><a href="../core/livro_repositorio.php?acao=delete&idLivro=<?php echo $entidade['idLivro'] ?>">Deletar</a></td>
             <?php endforeach ?>
         </tbody>
