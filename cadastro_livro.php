@@ -11,7 +11,29 @@
 <body>
     <div class="container">
         <h1>Cadastro de livros - Malega Libros</h1>
+
+        <?php 
+
+        if(!empty($idLivro)){
+            $idLivro = (int)$idLivro;
+
+            $criterio = [
+                ['idLivro', '=', $idLivro]
+            ];
+
+            $retorno = buscar(
+                'livros',
+                ['*'],
+                $criterio
+            );
+
+            $entidade = $retorno[0];
+        }
+        echo $idLivro;
+    ?>
         
+        
+           
             <form  action="core/livro_repositorio.php" method="POST" enctype="multipart/form-data"> <!-- enctype especifica
 
             como os dados do usuario devem ser codificados-->
@@ -50,6 +72,12 @@
                         <option value="vunesp">VUNESP</option>
                         <option value="ausente">Ausente</option>
                       </select>
+                </div>
+            </div>
+            <div class="form-group col-12 col-md-6">
+                <div class="mb-3">
+                    <label for="texto" class="form-label"><strong>Resumo</strong></label><br>
+                    <textarea type="text" name="texto" class="form-control"id="texto" rows="4" required></textarea>
                 </div>
             </div>       
             

@@ -52,7 +52,8 @@ switch($acao){
             'capa' => $nome_foto,
             'capa2' => $nome_foto2,
             'pdf' => $pdf,
-            'banca' => $banca
+            'banca' => $banca,
+            'texto' => $texto
         ];
 
         insere(
@@ -69,7 +70,8 @@ switch($acao){
                 'capa' => $capa,
                 'capa2' => $capa2,
                 'pdf' => $pdf,
-                'banca' => $banca
+                'banca' => $banca,
+                'texto' => $texto
             ];
 
             $criterio = [
