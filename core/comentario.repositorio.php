@@ -4,17 +4,6 @@ require_once '../includes/funcoes.php';
 require_once 'conexao_mysql.php';
 require_once 'sql.php';
 require_once 'mysql.php';
-$salt = 'ifsp';
-
-$pasta_destino = '../imagensUsuario/';
-$nome_foto = "";
-if(file_exists($_FILES['imagemUsuario']['tmp_name'])){ //Checa se a pessoa escolheu foto ou não
-    $extensao = strtolower(substr($_FILES['imagemUsuario']['name'],-4)); // Vai pegar apenas os ultimos 4 digitos do nome
-    $nome_foto = 'ImgUser-'.date("Ymd-His") . $extensao; // não deixa duas fotos no mesmo nome
-    $nome_foto_completo = $pasta_destino.'ImgUser-'.date("Ymd-His") . $extensao; // não deixa duas fotos no mesmo nome
-    move_uploaded_file($_FILES['ImagemUsuario']['tmp_name'],$nome_foto_completo); //tmp_name é o nome temporario que é dado à foto
-// isso esta removendo esse nomeo ".jpg"
-}
 
 foreach($_POST as $indice => $dado){
     $$indice = limparDados($dado);

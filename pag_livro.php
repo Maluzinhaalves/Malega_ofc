@@ -594,7 +594,7 @@ $pasta = "imagensLivro/";
                 </lt-div>
               </lt-div>
             </lt-highlighter>
-            <a href="https://website5604599.nicepage.io/?version=9306a033-5677-4d09-8f1c-758d5536aa61" class="u-btn u-btn-round u-button-style u-color-scheme-summer-time u-custom-color-1 u-radius-50 u-btn-2">
+            <a href="chat.php?idLivro=<?php echo $idLivro?>" class="u-btn u-btn-round u-button-style u-color-scheme-summer-time u-custom-color-1 u-radius-50 u-btn-2">
               <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">Bate papo</font>
               </font>

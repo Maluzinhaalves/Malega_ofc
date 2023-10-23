@@ -28,9 +28,7 @@
     <!-- cabeçalho (header section)-->
 
     <header class="header">
-
         <section class="header-1">
-
             <a href="#" class="logo"> <i class="fas fa-book"></i> Malega </a>
             <?php if((isset($_SESSION['login']))): ?>
     <div class="card-body text-right">
