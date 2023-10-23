@@ -66,11 +66,13 @@
             <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['adm'] === 2)):?>
             <th class="col">Adm</th>
             <?php endif ?>
+            <th class="col">Deletar</th>
             </tr>
         </thead>
         <tbody>
+            <?php $pasta="../imagensUsuario/"?>
                 <td><?php echo $entidade['idUsuario'] ?></td>
-                <td><?php echo $entidade['imagemUsuario'] ?></td>
+                <td><img src="<?php echo $pasta.$entidade['imagemUsuario']?>"></td>
                 <td><?php echo $entidade['nomeUsuario'] ?></td>
                 <td><?php echo $entidade['emailUsuario'] ?></td>
                 <td><?php echo $entidade['senhaUsuario'] ?></td>
@@ -78,12 +80,13 @@
                 <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['adm'] === 2)):?>
                 <td><a href='../core/usuario_repositorio.php?acao=adm&idUsuario=<?php echo $entidade['idUsuario']?> &valor=<?php echo !$entidade['adm']?>'><?php echo ($entidade['adm']==1)  ?  'Rebaixar' : 'Promover'; ?> </a></td>
                 <?php endif ?>
+                <td><a href="excluir_usuario.php?idUsuario=<?php echo $entidade['idUsuario']?>">Deletar</a></td>
             <?php endforeach ?>
         </tbody>
     </table>
     </div>
     <div>
-    <a href="cadastro_usuario.html">Voltar</a>
+    <a href="../cadastro_usuario.php">Voltar</a>
     </div>
 </body>
 </html>

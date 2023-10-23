@@ -81,14 +81,14 @@
                 <td><img src="<?php echo $pasta.$entidade['capa']?>" width="200px" height="400px"> </td>
                 <td><img src="<?php echo $pasta.$entidade['capa2']?>" width="200px" height="400px"></td>
                 <!--<td><a href="../core/livro_repositorio.php?acao=delete&idLivro=<?php //echo $entidade['idLivro']?>">Deletar</a></td>-->
-                <td><a href="excluir_livro?idLivro=<?php echo $entidade['idLivro']?>">Deletar</a></td>
+                <td><a href="excluir_livro.php?idLivro=<?php echo $entidade['idLivro']?>">Deletar</a></td>
                 <td><a href="../cadastro_livro.html?idLivro=<?php echo $entidade['idLivro']?>">Atualizar</a></td>
             <?php endforeach ?>
         </tbody>
     </table>
     </div>
     <div>
-    <a href="../cadastro_livro.html">Voltar</a>
+    <a href="../cadastro_livro.php">Voltar</a>
     </div>
 </body>
 </html>

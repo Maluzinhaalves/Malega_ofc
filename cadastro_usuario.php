@@ -39,7 +39,7 @@
             </div>
             </form>
         
-        <a href="../index.php">Voltar</a><br>
+        <a href="adm.php">Voltar</a><br>
         <a href="php/listar_usuario.php">Lista de usuarios</a>
     </div>
 </body>

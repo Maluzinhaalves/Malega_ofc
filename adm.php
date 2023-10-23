@@ -12,10 +12,10 @@
         <a href="cadastro_livro.php">Cadastro de Livros</a><br>
         <a href="php/listar_livro.php">Lista Livros</a><br>
         <h3>Ações usuarios livros</h3><br>
-        <a href="cadastro_usuario.html">Cadastro de Usuario</a><br>
+        <a href="cadastro_usuario.php">Cadastro de Usuario</a><br>
         <a href="php/listar_usuario.php">Listar usuarios</a><br>
         <br>
-        <a href="index.php">Voltar</a>
+        <a href="index.php">Pagina Inicial</a>
     </div>
 </body>
 </html>

@@ -99,4 +99,4 @@ switch($acao){
             break;
 }
 
-//header('Location: ../adm.php');
+header('Location: ../adm.php');
