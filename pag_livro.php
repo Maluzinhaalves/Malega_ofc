@@ -6,9 +6,450 @@
     <meta name="keywords" content="writing courses">
     <meta name="description" content="">
     <title>writing courses 1</title>
+    <?php 
+    
+     session_start();
+     require_once 'includes/funcoes.php';
+     require_once 'core/conexao_mysql.php';
+     require_once 'core/sql.php';
+     require_once 'core/mysql.php';
+
+     foreach($_POST as $indice => $dado) {
+      $$indice = limparDados($dado);
+  }
+  
+  foreach($_GET as $indice => $dado) {
+      $$indice = limparDados($dado);
+  }
+    
+  $livros = buscar(
+      'livros',
+          [
+              'idLivro',
+              'titulo',
+              'autor',
+              'capa',
+              'capa2',
+              'pdf',
+              'banca',
+              'texto'
+           ],
+    [
+      ['idLivro', '=', $idLivro]
+    ]
+);
+$livro = $livros[0];
+$pasta = "imagensLivro/";
+    ?>
     <link rel="stylesheet" href="./paglibrocc 1_files/nicepage.css" media="screen">
 <link rel="stylesheet" href="./paglibrocc 1_files/nicepage-site.css" media="screen">
-<link rel="stylesheet" href="./paglibrocc 1_files/writing-courses-1.css" media="screen">
+<style>
+.u-section-1 {
+  background-image: none;
+}
+
+.u-section-1 .u-sheet-1 {
+  min-height: 704px;
+}
+
+.u-section-1 .u-layout-wrap-1 {
+  pointer-events: auto;
+  width: 1214px;
+  margin: 19px auto 0 -34px;
+}
+
+.u-section-1 .u-layout-cell-1 {
+  min-height: 700px;
+  pointer-events: auto;
+  background-image: none;
+}
+
+.u-section-1 .u-container-layout-1 {
+  padding: 60px;
+}
+
+.u-section-1 .u-icon-1 {
+  height: 64px;
+  width: 64px;
+  margin: 8px auto 0;
+}
+
+.u-section-1 .u-text-1 {
+  font-size: 5rem;
+  text-transform: uppercase;
+  font-weight: 200;
+  margin: 6px 0 0;
+}
+
+.u-section-1 .u-image-1 {
+  min-height: 700px;
+  pointer-events: auto;
+  background-image: url("<?php echo $pasta.$livro['capa']?>");
+  background-position: 50% 32.89%;
+}
+
+.u-section-1 .u-container-layout-2 {
+  padding: 30px 60px;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 566px;
+  }
+
+  .u-section-1 .u-layout-wrap-1 {
+    width: 940px;
+    margin-left: 0;
+  }
+
+  .u-section-1 .u-layout-cell-1 {
+    min-height: 550px;
+  }
+
+  .u-section-1 .u-icon-1 {
+    margin-top: 47px;
+  }
+
+  .u-section-1 .u-text-1 {
+    font-size: 4.5rem;
+    width: auto;
+    margin-top: 19px;
+  }
+
+  .u-section-1 .u-image-1 {
+    min-height: 542px;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 539px;
+  }
+
+  .u-section-1 .u-layout-wrap-1 {
+    margin-right: initial;
+    margin-left: initial;
+    width: auto;
+  }
+
+  .u-section-1 .u-layout-cell-1 {
+    min-height: 496px;
+  }
+
+  .u-section-1 .u-container-layout-1 {
+    padding: 40px 30px;
+  }
+
+  .u-section-1 .u-text-1 {
+    font-size: 3.75rem;
+  }
+
+  .u-section-1 .u-image-1 {
+    min-height: 496px;
+  }
+
+  .u-section-1 .u-container-layout-2 {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 990px;
+  }
+
+  .u-section-1 .u-layout-wrap-1 {
+    width: 425px;
+    margin: 13px auto 39px;
+  }
+
+  .u-section-1 .u-layout-cell-1 {
+    min-height: 309px;
+  }
+
+  .u-section-1 .u-container-layout-1 {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .u-section-1 .u-icon-1 {
+    margin-top: 0;
+  }
+
+  .u-section-1 .u-text-1 {
+    margin-top: 1px;
+  }
+
+  .u-section-1 .u-image-1 {
+    min-height: 615px;
+  }
+
+  .u-section-1 .u-container-layout-2 {
+    padding-top: 29px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 672px;
+  }
+
+  .u-section-1 .u-layout-wrap-1 {
+    margin-top: 37px;
+    width: 340px;
+  }
+
+  .u-section-1 .u-layout-cell-1 {
+    min-height: 100px;
+  }
+
+  .u-section-1 .u-container-layout-1 {
+    padding-top: 0;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .u-section-1 .u-text-1 {
+    font-size: 3rem;
+  }
+
+  .u-section-1 .u-image-1 {
+    min-height: 492px;
+  }
+}.u-section-2 .u-sheet-1 {
+  min-height: 107px;
+} .u-section-3 {
+  background-image: linear-gradient(0deg, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("https://miro.medium.com/v2/resize:fit:1200/1*6Jp3vJWe7VFlFHZ9WhSJng.jpeg");
+  background-position: 50% 50%;
+}
+
+.u-section-3 .u-sheet-1 {
+  min-height: 712px;
+}
+
+.u-section-3 .u-text-1 {
+  margin: 23px auto 0 0;
+}
+
+.u-section-3 .u-group-1 {
+  width: 1047px;
+  min-height: 565px;
+  height: auto;
+  margin: 23px auto;
+}
+
+.u-section-3 .u-container-layout-1 {
+  padding: 30px 50px 0;
+}
+
+.u-section-3 .u-text-2 {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin: 54px 44px 0 0;
+}
+
+.u-section-3 .u-text-3 {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin: 64px 43px 0 0;
+}
+
+.u-section-3 .u-btn-1 {
+  background-image: none;
+  text-transform: uppercase;
+  font-size: 1.125rem;
+  letter-spacing: 2px;
+  margin: 43px auto 0 390px;
+  padding: 11px 24px 11px 23px;
+}
+
+.u-section-3 .u-btn-2 {
+  background-image: none;
+  text-transform: uppercase;
+  font-size: 1.125rem;
+  letter-spacing: 2px;
+  margin: -53px auto 0 36px;
+  padding: 11px 24px 11px 23px;
+}
+
+.u-section-3 .u-btn-3 {
+  background-image: none;
+  text-transform: uppercase;
+  font-size: 1.125rem;
+  letter-spacing: 2px;
+  margin: -53px 64px 0 auto;
+  padding: 11px 24px 11px 23px;
+}
+
+@media (max-width: 1199px) {
+  .u-section-3 .u-sheet-1 {
+    min-height: 713px;
+  }
+
+  .u-section-3 .u-group-1 {
+    margin-right: initial;
+    margin-left: initial;
+    width: auto;
+    height: auto;
+  }
+
+  .u-section-3 .u-text-2 {
+    margin-right: 0;
+  }
+
+  .u-section-3 .u-text-3 {
+    margin-right: 0;
+  }
+
+  .u-section-3 .u-btn-1 {
+    margin-top: 49px;
+    margin-right: 349px;
+    margin-left: auto;
+  }
+
+  .u-section-3 .u-btn-2 {
+    height: 50px;
+    margin-left: 0;
+  }
+
+  .u-section-3 .u-btn-3 {
+    margin-right: 15px;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-3 .u-sheet-1 {
+    min-height: 812px;
+  }
+
+  .u-section-3 .u-group-1 {
+    min-height: 625px;
+    margin-bottom: 60px;
+    width: auto;
+    margin-right: initial;
+    margin-left: initial;
+  }
+
+  .u-section-3 .u-container-layout-1 {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .u-section-3 .u-btn-1 {
+    margin-top: 46px;
+    margin-right: auto;
+    margin-left: 30px;
+  }
+
+  .u-section-3 .u-btn-2 {
+    margin-left: auto;
+  }
+
+  .u-section-3 .u-btn-3 {
+    margin-right: 45px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-3 .u-sheet-1 {
+    min-height: 799px;
+  }
+
+  .u-section-3 .u-group-1 {
+    margin-top: 4px;
+    margin-bottom: 18px;
+    min-height: 688px;
+    width: auto;
+    margin-right: initial;
+    margin-left: initial;
+  }
+
+  .u-section-3 .u-container-layout-1 {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .u-section-3 .u-btn-1 {
+    margin-top: 63px;
+    margin-right: 12px;
+    margin-left: auto;
+    padding: 4px 11px 6px 10px;
+  }
+
+  .u-section-3 .u-btn-2 {
+    margin-top: -41px;
+    margin-left: 18px;
+    padding: 4px 10px 6px 9px;
+  }
+
+  .u-section-3 .u-btn-3 {
+    margin-top: -41px;
+    margin-right: 200px;
+    padding-top: 4px;
+    padding-bottom: 5px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-3 .u-sheet-1 {
+    min-height: 636px;
+  }
+
+  .u-section-3 .u-text-1 {
+    margin-top: 26px;
+  }
+
+  .u-section-3 .u-group-1 {
+    margin-top: 0;
+    margin-bottom: 43px;
+    min-height: 515px;
+    width: auto;
+    margin-right: initial;
+    margin-left: initial;
+  }
+
+  .u-section-3 .u-text-2 {
+    font-size: 0.875rem;
+    width: auto;
+    margin-top: 0;
+  }
+
+  .u-section-3 .u-text-3 {
+    font-size: 0.875rem;
+    width: auto;
+    margin-top: 33px;
+  }
+
+  .u-section-3 .u-btn-1 {
+    font-size: 0.875rem;
+    margin-top: 67px;
+    margin-right: auto;
+    margin-left: 0;
+    padding-top: 3px;
+    padding-bottom: 4px;
+  }
+
+  .u-section-3 .u-btn-2 {
+    font-size: 0.875rem;
+    margin-top: -81px;
+    margin-left: 0;
+    padding: 3px 0 5px;
+  }
+
+  .u-section-3 .u-btn-3 {
+    font-size: 0.875rem;
+    margin-top: 65px;
+    margin-right: auto;
+    margin-left: 0;
+    padding-top: 2px;
+    padding-bottom: 3px;
+  }
+}
+
+</style>
     <script class="u-script" type="text/javascript" src="./paglibrocc 1_files/jquery-3.5.1.min.js.download" defer=""></script>
     <script class="u-script" type="text/javascript" src="./paglibrocc 1_files/nicepage.js.download" defer=""></script>
     <meta name="generator" content="Nicepage 5.18.2, nicepage.com">
@@ -33,6 +474,7 @@
     <link rel="canonical" href="https://website5604599.nicepage.io/">
   </head>
   <body data-home-page="https://website5604599.nicepage.io/writing-courses-1.html?version=0b982a28-c8a9-4154-9508-d28ffd607f15" data-home-page-title="writing courses 1" data-path-to-root="/" class="u-body u-xl-mode" data-lang="pt"><header class="u-clearfix u-header u-header" id="sec-147c"><div class="u-clearfix u-sheet u-sheet-1">
+
         <a href="https://nicepage.com/" class="u-image u-logo u-image-1">
           <img src="./paglibrocc 1_files/default-logo.png" class="u-logo-image u-logo-image-1">
         </a>
@@ -76,7 +518,7 @@
                   </lt-highlighter>
                   <h1 class="u-align-center u-custom-font u-font-oswald u-text u-text-1">
                     <font style="vertical-align: inherit;">
-                      <font style="vertical-align: inherit;"> Alice no País das Maravilhas</font>
+                      <font style="vertical-align: inherit;"> <?php echo $livro['titulo']?></font>
                     </font>
                   </h1>
                 </div>
@@ -115,28 +557,22 @@
             </lt-highlighter>
             <p class="u-align-center-lg u-align-center-md u-align-center-sm u-align-center-xl u-align-left-xs u-text u-text-2">
               <font style="vertical-align: inherit;">
-                <font style="vertical-align: inherit;"> Ainda garotinha, Alice Kingsleigh visitou um lugar mágico pela primeira vez e não tinha mais lembranças sobre o local a não ser em seus sonhos. </font>
-                <font style="vertical-align: inherit;">Em uma festa da nobreza, a jovem vê um coelho branco. </font>
-                <font style="vertical-align: inherit;">Alice o segue e cai em um buraco, indo parar em um mundo estranho: o País das Maravilhas. </font>
-                <font style="vertical-align: inherit;">Lá, ela reencontra personagens que estavam guardados em sua memória através dos sonhos.</font>
+                <font style="vertical-align: inherit;"><?php echo $livro['texto']?></font>
               </font>
             </p>
             <p class="u-align-left u-text u-text-3">
-              <font style="vertical-align: inherit;">
-                <font style="vertical-align: inherit;"> Data de Publicação: </font>
-              </font>
+              <br>
               <br>
               <font style="vertical-align: inherit;">
-                <font style="vertical-align: inherit;">Vestibular: </font>
+                <font style="vertical-align: inherit;">Vestibular: <?php echo $livro['banca']?> </font>
               </font>
               <br>
-              <font style="vertical-align: inherit;">
-                <font style="vertical-align: inherit;">Autor: </font>
-              </font>
               <br>
               <font style="vertical-align: inherit;">
-                <font style="vertical-align: inherit;">Gênero(s):</font>
+                <font style="vertical-align: inherit;">Autor: <?php echo $livro['autor']?></font>
               </font>
+              <br>
+              <br>
               <br>
             </p>
             <lt-highlighter style="display: none; z-index: 1 !important;">
@@ -168,7 +604,7 @@
                 <lt-div class="lt-highlighter__scroll-element" style="top: 0px; left: 0px; width: 78px; height: 29px;"></lt-div>
               </lt-div>
             </lt-highlighter>
-            <a href="https://website5604599.nicepage.io/?version=9306a033-5677-4d09-8f1c-758d5536aa61" class="u-btn u-btn-round u-button-style u-color-scheme-summer-time u-custom-color-1 u-radius-50 u-btn-3">
+            <a href="<?php echo $livro['pdf']?>" class="u-btn u-btn-round u-button-style u-color-scheme-summer-time u-custom-color-1 u-radius-50 u-btn-3">
               <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">PDF</font>
               </font>

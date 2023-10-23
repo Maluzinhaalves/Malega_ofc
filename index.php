@@ -406,7 +406,7 @@
                 <?php 
                 foreach($livrosv as $livrov):
                     ?>
-                <a href="pag_livro.php" class="swiper-slide box">
+                <a href="pag_livro.php?idLivro=<?php echo $livrov['idLivro']?>" class="swiper-slide box">
                     <div class="image">
                         <img src="<?php echo $pasta.$livrov['capa'] ?>" alt="">
                     </div>
@@ -498,7 +498,7 @@
             <?php 
                 foreach($livrosv as $livrov):
                     ?>
-                <a href="pag_livro.php" class="swiper-slide box">
+                <a href="pag_livro.php?livros=<?php echo $livrov['idLivro']?>" class="swiper-slide box">
                     <div class="image">
                         <img src="<?php echo $pasta.$livrov['capa'] ?>" alt="">
                     </div>

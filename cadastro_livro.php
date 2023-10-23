@@ -29,7 +29,6 @@
 
             $entidade = $retorno[0];
         }
-        echo $idLivro;
     ?>
         
         

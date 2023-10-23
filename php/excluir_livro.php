@@ -1,7 +1,7 @@
 <?php 
 include('conexao.php');
-$id_livro = $_GET['idLivro']; //Aqui é get, já que passa pela URL
-$sql = "DELETE from livros WHERE idLivro=$id_livro";
+$idLivro = $_GET['idLivro']; //Aqui é get, já que passa pela URL
+$sql = "DELETE from livros WHERE idLivro=$idLivro";
 
 
 

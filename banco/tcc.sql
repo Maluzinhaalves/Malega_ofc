@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Tempo de geração: 02-Out-2023 às 14:32
+-- Tempo de geração: 23-Out-2023 às 12:52
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.0.13
 
@@ -58,32 +58,24 @@ CREATE TABLE `livros` (
   `titulo` varchar(255) DEFAULT NULL,
   `autor` varchar(255) DEFAULT NULL,
   `capa` varchar(255) NOT NULL,
-  `capa2` varchar(255) NOT NULL
+  `capa2` varchar(255) NOT NULL,
+  `banca` varchar(20) NOT NULL,
+  `pdf` varchar(255) NOT NULL DEFAULT 'ausente',
+  `texto` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `livros`
 --
 
-INSERT INTO `livros` (`idLivro`, `titulo`, `autor`, `capa`, `capa2`) VALUES
-(2, 'asdasdasd', 'George Owell', 'capaDoLivro/20230821-142001.jpg', 'capaDoLivro/20230821-142001.jpg');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `livros_vest`
---
-
-CREATE TABLE `livros_vest` (
-  `idVest` int(11) NOT NULL,
-  `id_livro` int(11) NOT NULL,
-  `pdf` varchar(255) NOT NULL,
-  `titulo` varchar(255) NOT NULL,
-  `autor` char(255) NOT NULL,
-  `banca` char(20) NOT NULL,
-  `capa` varchar(255) DEFAULT NULL,
-  `capa2` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `livros` (`idLivro`, `titulo`, `autor`, `capa`, `capa2`, `banca`, `pdf`, `texto`) VALUES
+(2, 'asdasdasd', 'George Owell', 'capaDoLivro/20230821-142001.jpg', 'capaDoLivro/20230821-142001.jpg', '', '0', ''),
+(3, 'Alexander', 'Alexander', 'Chrysanthemum.jpg', 'Chrysanthemum.jpg', 'enem', 'aaaaa', ''),
+(4, 'Nao', 'na', 'Chrysanthemum.jpg', 'Desert.jpg', '0', 'aaaaa', ''),
+(5, 'tambemn', 'tambemn', 'Chrysanthemum.jpg', 'Desert.jpg', '0', 'aaaaa', ''),
+(6, 'Sim', 'Sim', 'Hydrangeas.jpg', 'Jellyfish.jpg', 'vunesp', 'tem', ''),
+(7, 'Malega', 'Malega', 'Chrysanthemum.jpg', 'Koala.jpg', 'ausente', 'ggggg', ''),
+(8, 'aaa', 'aaaa', 'capa1-20231023-125121.jpg', 'capa2-20231023-125121.jpg', 'enem', 'pdf_livro-20231023-125121.pdf', 'aaa');
 
 -- --------------------------------------------------------
 
@@ -106,14 +98,14 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`idUsuario`, `nomeUsuario`, `emailUsuario`, `senhaUsuario`, `imagemUsuario`, `ativo`, `adm`) VALUES
-(4, 'guilherme', 'gui@gmailaa.com', '123', 'imagemDoUsuario/default_profile.jpg', 0, 0),
+(4, 'guilherme', 'gui@gmailaa.com', '123', 'imagemDoUsuario/default_profile.jpg', 1, 1),
 (5, 'Guilherme', 'leo@gmail.com', '123', 'imagemDoUsuario/default_profile.jpg', 0, 0),
 (6, 'Leozin', 'leover@gmail.com', '333', 'imagemDoUsuario/default_profile.jpg', 0, 0),
 (7, 'Kayc', 'kaycaaa@gmail.com', '333', 'imagemDoUsuario/default_profile.jpg', 0, 0),
 (11, 'Gui', 'guieeee@gmail.com', '123', 'imagemDoUsuario/default_profile.jpg', 0, 0),
 (15, 'Gui', 'Guilhermecintra@gmail.com', 'if13Dpsyoylmc', 'default_profile.jpg', 0, 0),
 (16, 'Gui', 'gui@gmails.com', 'if13Dpsyoylmc', 'default_profile.jpg', 0, 0),
-(17, 'Gui', 'bibi@gmail.com', 'if13Dpsyoylmc', 'default_profile.jpg', 1, 0);
+(17, 'Gui', 'bibi@gmail.com', 'if13Dpsyoylmc', 'default_profile.jpg', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -161,13 +153,6 @@ ALTER TABLE `livros`
   ADD PRIMARY KEY (`idLivro`);
 
 --
--- Índices para tabela `livros_vest`
---
-ALTER TABLE `livros_vest`
-  ADD PRIMARY KEY (`idVest`),
-  ADD KEY `id_livro` (`id_livro`);
-
---
 -- Índices para tabela `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -207,13 +192,7 @@ ALTER TABLE `comentarios`
 -- AUTO_INCREMENT de tabela `livros`
 --
 ALTER TABLE `livros`
-  MODIFY `idLivro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de tabela `livros_vest`
---
-ALTER TABLE `livros_vest`
-  MODIFY `idVest` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idLivro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
@@ -230,12 +209,6 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `comentarios`
   ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`idChat`) REFERENCES `chat` (`idChat`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Limitadores para a tabela `livros_vest`
---
-ALTER TABLE `livros_vest`
-  ADD CONSTRAINT `livros_vest_ibfk_1` FOREIGN KEY (`id_livro`) REFERENCES `livros` (`idLivro`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `usuario_chat`
