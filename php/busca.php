@@ -4,6 +4,7 @@ if (!isset($_GET['titulo'])){
     header("Location:index.php");
 }
 $titulo = "%".trim($_GET['titulo'])."%";
+
 $sql = "SELECT * from livros WHERE titulo LIKE '$titulo'";
 
 $result = mysqli_query($con, $sql);

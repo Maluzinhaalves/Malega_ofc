@@ -1,6 +1,4 @@
 <?php
-
-include 'core/conexao_mysql.php';
 session_start();
 require_once 'includes/funcoes.php';
 require_once 'core/conexao_mysql.php';
@@ -44,7 +42,7 @@ $pasta = "imagensLivro/";
    <title>view post</title>
 
    <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/style2.css">
 
 </head>
 <body>
@@ -60,10 +58,7 @@ $pasta = "imagensLivro/";
    <div class="heading"><h1>Converse sobre o livro!</h1> <a href="cadastro_livro?idLivro=<?php $idLivro?>" class="inline-option-btn" style="margin-top: 0;">Voltar</a></div>
 
    <?php
-/*       $select_post = $conn->prepare("SELECT * FROM `posts` WHERE id = ? LIMIT 1");
-      $select_post->execute([$get_id]);
-      if($select_post->rowCount() > 0){
-         while($fetch_post = $select_post->fetch(PDO::FETCH_ASSOC)){
+
 
         $total_ratings = 0;
         $rating_1 = 0;
@@ -71,35 +66,9 @@ $pasta = "imagensLivro/";
         $rating_3 = 0;
         $rating_4 = 0;
         $rating_5 = 0;
-
-        $select_ratings = $conn->prepare("SELECT * FROM `reviews` WHERE post_id = ?");
-        $select_ratings->execute([$fetch_post['id']]);
-        $total_reivews = $select_ratings->rowCount();
-        while($fetch_rating = $select_ratings->fetch(PDO::FETCH_ASSOC)){
-            $total_ratings += $fetch_rating['rating'];
-            if($fetch_rating['rating'] == 1){
-               $rating_1 += $fetch_rating['rating'];
-            }
-            if($fetch_rating['rating'] == 2){
-               $rating_2 += $fetch_rating['rating'];
-            }
-            if($fetch_rating['rating'] == 3){
-               $rating_3 += $fetch_rating['rating'];
-            }
-            if($fetch_rating['rating'] == 4){
-               $rating_4 += $fetch_rating['rating'];
-            }
-            if($fetch_rating['rating'] == 5){
-               $rating_5 += $fetch_rating['rating'];
-            }
-        }
-
-        if($total_reivews != 0){
-            $average = round($total_ratings / $total_reivews, 1);
-        }else{
-            $average = 0;
-        }
-         */
+         $average = 0;
+        
+         
    ?>
    <div class="row">
       <div class="col">
@@ -148,10 +117,10 @@ $pasta = "imagensLivro/";
       </div>
    </div>
    <?php
-         /* }
-      }else{
-         echo '<p class="empty">post is missing!</p>';
-      } */
+          
+   /* else{
+      echo '<p class="empty">post is missing!</p>';
+   }  */
    ?>
 
 </section>
@@ -174,32 +143,32 @@ $pasta = "imagensLivro/";
          <?php ; ?>   
          <div>
             <p><? echo $_SESSION['login']['usuarios']['nomeUsuario']; ?></p>
-            <span><?= $comentario['date']; ?></span>
+            <span><? echo $comentario['data_criacao']; ?></span>
          </div>
       </div>
       <?php ; ?>
       <div class="ratings">
-         <?php if($fetch_review['rating'] == 1){ ?>
-            <p style="background:var(--red);"><i class="fas fa-star"></i> <span><?= $fetch_review['rating']; ?></span></p>
-         <?php }; ?> 
-         <?php if($fetch_review['rating'] == 2){ ?>
-            <p style="background:var(--orange);"><i class="fas fa-star"></i> <span><?= $fetch_review['rating']; ?></span></p>
-         <?php }; ?>
-         <?php if($fetch_review['rating'] == 3){ ?>
-            <p style="background:var(--orange);"><i class="fas fa-star"></i> <span><?= $fetch_review['rating']; ?></span></p>
-         <?php }; ?>   
-         <?php if($fetch_review['rating'] == 4){ ?>
-            <p style="background:var(--main-color);"><i class="fas fa-star"></i> <span><?= $fetch_review['rating']; ?></span></p>
-         <?php }; ?>
-         <?php if($fetch_review['rating'] == 5){ ?>
-            <p style="background:var(--main-color);"><i class="fas fa-star"></i> <span><?= $fetch_review['rating']; ?></span></p>
-         <?php }; ?>
+         <?php /* if($fetch_review['rating'] == 1){ */ ?>
+            <p style="background:var(--red);"><i class="fas fa-star"></i> <span><? echo $rating_1 ?></span></p>
+         <?php /* }; */ ?> 
+      <!-- <?php /* if($fetch_review['rating'] == 2){ ?>
+         <p style="background:var(--orange);"><i class="fas fa-star"></i> <span><?= $fetch_review['rating']; ?></span></p>
+      <?php }; ?>
+      <?php if($fetch_review['rating'] == 3){ ?>
+         <p style="background:var(--orange);"><i class="fas fa-star"></i> <span><?= $fetch_review['rating']; ?></span></p>
+      <?php }; ?>   
+      <?php if($fetch_review['rating'] == 4){ ?>
+         <p style="background:var(--main-color);"><i class="fas fa-star"></i> <span><?= $fetch_review['rating']; ?></span></p>
+      <?php }; ?>
+      <?php if($fetch_review['rating'] == 5){ ?>
+         <p style="background:var(--main-color);"><i class="fas fa-star"></i> <span><?= $fetch_review['rating']; ?></span></p>
+      <?php };  */?> -->
       </div>
-      <h3 class="title"><?= $fetch_review['title']; ?></h3>
-      <?php if($fetch_review['description'] != ''){ ?>
-         <p class="description"><?= $fetch_review['description']; ?></p>
+      <h3 class="title"><? echo $comentario['tituloComen']; ?></h3>
+      <?php if($comentario['textoComen'] != ''){ ?>
+         <p class="description"><? echo $comentario['textoComen']; ?></p>
       <?php }; ?>  
-      <?php if($fetch_review['user_id'] == $user_id){ ?>
+      <?php if($_SESSION['login']['usuarios']['adm'] > 0){ ?>
          <form action="" method="post" class="flex-btn">
             <input type="hidden" name="delete_id" value="<?= $fetch_review['id']; ?>">
             <a href="update_review.php?get_id=<?= $fetch_review['id']; ?>" class="inline-option-btn">edit review</a>

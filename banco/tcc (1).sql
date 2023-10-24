@@ -41,7 +41,8 @@ CREATE TABLE `chat` (
 
 CREATE TABLE `comentarios` (
   `idComen` int(11) NOT NULL,
-  `idChat` int(11) NOT NULL,
+  `idLivro` int(11) NOT NULL,
+  `idUsuario` int(11) NOT NULL,
   `textoComen` text DEFAULT NULL,
   `autorComen` varchar(255) DEFAULT NULL,
   `data_criacao` datetime NOT NULL DEFAULT current_timestamp()
@@ -138,7 +139,8 @@ ALTER TABLE `chat`
 --
 ALTER TABLE `comentarios`
   ADD PRIMARY KEY (`idComen`),
-  ADD KEY `idChat` (`idChat`);
+  ADD KEY `idLivro` (`idLivro`),
+  ADD KEY `idUsuario` (`idUsuario`);
 
 --
 -- Índices para tabela `livros`
@@ -202,7 +204,8 @@ ALTER TABLE `usuarios`
 -- Limitadores para a tabela `comentarios`
 --
 ALTER TABLE `comentarios`
-  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`idChat`) REFERENCES `chat` (`idChat`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`idLivro`) REFERENCES `livros` (`idLivro`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `usuario_chat`

@@ -29,7 +29,7 @@ $pdf = "";
 if(file_exists($_FILES['pdf']['tmp_name'])){ //Checa se a pessoa escolheu foto ou não
     $extensao = strtolower(substr($_FILES['pdf']['name'],-4)); // Vai pegar apenas os ultimos 4 digitos do nome
     $pdf = 'pdf_livro-'.date("Ymd-His") . $extensao; // não deixa duas fotos no mesmo nome
-    $pdf_completo = $pasta_destinop.'pdf_livro'.date("Ymd-His") . $extensao; // não deixa duas fotos no mesmo nome
+    $pdf_completo = $pasta_destinop.'pdf_livro-'.date("Ymd-His") . $extensao; // não deixa duas fotos no mesmo nome
     move_uploaded_file($_FILES['pdf']['tmp_name'],$pdf_completo); //tmp_name é o nome temporario que é dado à foto
     // isso esta removendo esse nomeo ".jpg"
 }

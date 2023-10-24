@@ -37,7 +37,7 @@
         class="btn btn-link btn-sm" role="button">Sair</a>
     </div>
     <?php endif ?>
-            <form action="php\busca.php" class="search-form">
+            <form action="pesquisa_livro.php" class="search-form">
                 <input type="search" name="titulo" placeholder="Pesquise seu livro" id="search-box">
                 <button for="search-box" class="fas fa-search" type="submit"></button> 
             </form>
@@ -259,7 +259,7 @@
                 ?>
                 <div class="swiper-slide box">
                     <div class="icons">
-                        <a href="pag_livro.php" class="fas fa-search"></a>
+                        <a href="pag_livro.php?idLivro=<?php echo $livrov['idLivro']?>&idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="fas fa-search"></a>
                         <a href="#" class="fas fa-heart"></a>
                         <a href="#" class="fas fa-eye"></a>
                     </div>
@@ -404,7 +404,7 @@
                 <?php 
                 foreach($livrosv as $livrov):
                     ?>
-                <a href="pag_livro.php?idLivro=<?php echo $livrov['idLivro']?>" class="swiper-slide box">
+                <a href="pag_livro.php?idLivro=<?php echo $livrov['idLivro']?>&idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="swiper-slide box">
                     <div class="image">
                         <img src="<?php echo $pasta.$livrov['capa'] ?>" alt="">
                     </div>
@@ -496,7 +496,7 @@
             <?php 
                 foreach($livrosv as $livrov):
                     ?>
-                <a href="pag_livro.php?livros=<?php echo $livrov['idLivro']?>" class="swiper-slide box">
+                <a href="pag_livro.php?idLivro=<?php echo $livrov['idLivro']?>&idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="swiper-slide box">
                     <div class="image">
                         <img src="<?php echo $pasta.$livrov['capa'] ?>" alt="">
                     </div>

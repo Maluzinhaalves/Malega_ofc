@@ -1,7 +1,10 @@
 <?php
-
-include 'components/connect.php';
-
+     session_start();
+     require_once 'includes/funcoes.php';
+     require_once 'core/conexao_mysql.php';
+     require_once 'core/sql.php';
+     require_once 'core/mysql.php';
+    
 ?>
 
 <!DOCTYPE html>
@@ -31,28 +34,51 @@ include 'components/connect.php';
    <div class="box-container">
 
    <?php
-      /*$select_posts = $conn->prepare("SELECT * FROM `posts`");
-      $select_posts->execute();
-      if($select_posts->rowCount() > 0){
-         while($fetch_post = $select_posts->fetch(PDO::FETCH_ASSOC)){
 
-         $post_id = $fetch_post['id'];
+   echo $titulo;
 
-         $count_reviews = $conn->prepare("SELECT * FROM `reviews` WHERE post_id = ?");
-         $count_reviews->execute([$post_id]);
-         $total_reviews = $count_reviews->rowCount();*/
-   ?>
-   <div class="box">
-      <img src="uploaded_files/<?= $fetch_post['image']; ?>" alt="" class="image">
-      <h3 class="title"><?= $fetch_post['title']; ?></h3>
-      <p class="total-reviews"><i class="fas fa-star"></i> <span><?= $total_reviews; ?></span></p>
-      <a href="view_post.php?get_id=<?= $post_id; ?>" class="inline-btn">Ver livro</a>
+      if (!isset($_GET['titulo'])){
+         header("Location:../index.php");
+      }
+      foreach($_POST as $indice => $dado){
+         $$indice = limparDados($dado);
+     }
+     
+     foreach($_GET as $indice => $dado){
+         $$indice = limparDados($dado);
+     }
+      $titulo = "%".trim($titulo)."%";
+   
+      $livros = buscar(
+         'livros',
+             [
+                 'idLivro',
+                 'titulo',
+                 'autor',
+                 'capa'
+              ],
+       [
+         ['titulo', '=', $titulo]
+       ]);
+      if($livros != ''){
+            
+         
+         foreach($livros as $livro):
+            ?>
+            <div class="box">
+      <img src="imagensLivro/<?php echo $livro['capa']?>" alt="" class="image">
+      <h3 class="title"><?php echo $livro['titulo'] ?></h3>
+      <p class="total-reviews"><i class="fas fa-star"></i> <span>5</span></p>
+      <a href="pag_livro.php?idLivro=<? echo $livro['idLivro'];?>" class="inline-btn">Ver livro</a>
    </div>
+
    <?php
-      /*}
-   }else{
-      echo '<p class="empty">nenhuma postagem adicionada ainda!</p>';
-   }*/
+   endforeach;}
+      else{
+         echo '<p class="empty">nenhuma postagem adicionada ainda!</p>';
+      }
+      
+
    ?>
 
    </div>
@@ -64,24 +90,11 @@ include 'components/connect.php';
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 <!-- sweetalert cdn link  -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
 <!-- custom js file link  -->
-<script src="js/script.js"></script>
-
-<?php include 'components/alers.php'; ?>
+<script src="js/script2.js"></script>
 
 </body>
 </html>
