@@ -13,24 +13,20 @@ require_once 'core/mysql.php';
       $$indice = limparDados($dado);
   }
     
-  $livros = buscar(
-      'livros',
+  $comentarios = buscar(
+      'comentarios',
           [
+              'idComen',
               'idLivro',
-              'titulo',
-              'autor',
-              'capa',
-              'capa2',
-              'pdf',
-              'banca',
-              'texto'
+              'idUsuario',
+              'textoComen',
+              'tituloComen',
+              'data_criacao'
            ],
     [
       ['idLivro', '=', $idLivro]
     ]
 );
-$livro = $livros[0];
-$pasta = "imagensLivro/";
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +68,7 @@ $pasta = "imagensLivro/";
    ?>
    <div class="row">
       <div class="col">
-         <img src="<?echo $pasta.$livro['capa'] ?>" alt="" class="image">
+         <img src="imagensLivro/<?echo $livro['capa'] ?>" alt="" class="image">
          <h3 class="title"><?echo $livro['titulo'] ?></h3>
       </div>
       <div class="col">
@@ -131,10 +127,10 @@ $pasta = "imagensLivro/";
 
 <section class="reviews-container">
 
-   <div class="heading"><h1>Comentários</h1> <a href="add_comentario.php?idComen=<? ?>" class="inline-btn" style="margin-top: 0;">add review</a></div>
+   <div class="heading"><h1>Comentários</h1> <a href="fazer_comentario.php?idLivro=<?php echo $idLivro?>" class="inline-btn" style="margin-top: 0;">add review</a></div>
 
    <div class="box-container">
-
+   <?php  foreach($comentarios as $comentario):  ?>
    <div class="box">
       <div class="user">
             <img src="imagensUsuario/<?echo $_SESSION['login']['usuarios']['imagemUsuario'] ?>" alt="">
@@ -176,6 +172,7 @@ $pasta = "imagensLivro/";
          </form>
       <?php }; ?>   
    </div>
+   <?php endforeach; ?>  
 
 
    </div>

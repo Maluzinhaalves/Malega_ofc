@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Tempo de geração: 23-Out-2023 às 12:52
+-- Tempo de geração: 24-Out-2023 às 15:53
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.0.13
 
@@ -41,11 +41,22 @@ CREATE TABLE `chat` (
 
 CREATE TABLE `comentarios` (
   `idComen` int(11) NOT NULL,
-  `idChat` int(11) NOT NULL,
+  `idLivro` int(11) NOT NULL,
+  `idUsuario` int(11) NOT NULL,
   `textoComen` text DEFAULT NULL,
-  `autorComen` varchar(255) DEFAULT NULL,
-  `data_criacao` datetime NOT NULL DEFAULT current_timestamp()
+  `tituloComen` varchar(255) DEFAULT NULL,
+  `data_criacao` datetime NOT NULL DEFAULT current_timestamp(),
+  `nota` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `comentarios`
+--
+
+INSERT INTO `comentarios` (`idComen`, `idLivro`, `idUsuario`, `textoComen`, `tituloComen`, `data_criacao`, `nota`) VALUES
+(5, 8, 18, 'aaa', 'Adorei', '2023-10-24 10:43:52', 1),
+(6, 8, 18, 'gostei', 'gostei', '2023-10-24 10:46:31', 5),
+(7, 8, 18, 'aaa', 'Adoreia', '2023-10-24 10:51:32', 2);
 
 -- --------------------------------------------------------
 
@@ -74,7 +85,6 @@ INSERT INTO `livros` (`idLivro`, `titulo`, `autor`, `capa`, `capa2`, `banca`, `p
 (4, 'Nao', 'na', 'Chrysanthemum.jpg', 'Desert.jpg', '0', 'aaaaa', ''),
 (5, 'tambemn', 'tambemn', 'Chrysanthemum.jpg', 'Desert.jpg', '0', 'aaaaa', ''),
 (6, 'Sim', 'Sim', 'Hydrangeas.jpg', 'Jellyfish.jpg', 'vunesp', 'tem', ''),
-(7, 'Malega', 'Malega', 'Chrysanthemum.jpg', 'Koala.jpg', 'ausente', 'ggggg', ''),
 (8, 'aaa', 'aaaa', 'capa1-20231023-125121.jpg', 'capa2-20231023-125121.jpg', 'enem', 'pdf_livro-20231023-125121.pdf', 'aaa');
 
 -- --------------------------------------------------------
@@ -98,14 +108,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`idUsuario`, `nomeUsuario`, `emailUsuario`, `senhaUsuario`, `imagemUsuario`, `ativo`, `adm`) VALUES
-(4, 'guilherme', 'gui@gmailaa.com', '123', 'imagemDoUsuario/default_profile.jpg', 1, 1),
-(5, 'Guilherme', 'leo@gmail.com', '123', 'imagemDoUsuario/default_profile.jpg', 0, 0),
-(6, 'Leozin', 'leover@gmail.com', '333', 'imagemDoUsuario/default_profile.jpg', 0, 0),
-(7, 'Kayc', 'kaycaaa@gmail.com', '333', 'imagemDoUsuario/default_profile.jpg', 0, 0),
-(11, 'Gui', 'guieeee@gmail.com', '123', 'imagemDoUsuario/default_profile.jpg', 0, 0),
 (15, 'Gui', 'Guilhermecintra@gmail.com', 'if13Dpsyoylmc', 'default_profile.jpg', 0, 0),
 (16, 'Gui', 'gui@gmails.com', 'if13Dpsyoylmc', 'default_profile.jpg', 0, 0),
-(17, 'Gui', 'bibi@gmail.com', 'if13Dpsyoylmc', 'default_profile.jpg', 1, 2);
+(18, 'Guilherme Cintra', 'guilhermecintras@gmail.com', 'if13Dpsyoylmc', 'default_profile.jpg', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -144,7 +149,8 @@ ALTER TABLE `chat`
 --
 ALTER TABLE `comentarios`
   ADD PRIMARY KEY (`idComen`),
-  ADD KEY `idChat` (`idChat`);
+  ADD KEY `idLivro` (`idLivro`),
+  ADD KEY `idUsuario` (`idUsuario`);
 
 --
 -- Índices para tabela `livros`
@@ -186,19 +192,19 @@ ALTER TABLE `chat`
 -- AUTO_INCREMENT de tabela `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `idComen` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idComen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `livros`
 --
 ALTER TABLE `livros`
-  MODIFY `idLivro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idLivro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Restrições para despejos de tabelas
@@ -208,7 +214,8 @@ ALTER TABLE `usuarios`
 -- Limitadores para a tabela `comentarios`
 --
 ALTER TABLE `comentarios`
-  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`idChat`) REFERENCES `chat` (`idChat`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`idLivro`) REFERENCES `livros` (`idLivro`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `usuario_chat`

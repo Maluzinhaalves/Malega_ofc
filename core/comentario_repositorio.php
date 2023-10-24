@@ -17,13 +17,13 @@ switch($acao){
         $dados =[
             'tituloComen' => $tituloComen,
             'textoComen' => $textoComen,
-            'data_criacao' => $data_criacao,
             'idLivro' => $idLivro,
-            'idUsuario' => $idUsuario
+            'idUsuario' => $idUsuario,
+            'nota' => $nota
             ];
 
             insere(
-                'comentario',
+                'comentarios',
                 $dados
             );
 
@@ -41,7 +41,7 @@ switch($acao){
         ];
 
         atualiza(
-            'comentario',
+            'comentarios',
             $dados,
             $criterio
         );
@@ -53,7 +53,7 @@ switch($acao){
             ];
 
             deleta(
-                'comentario',
+                'comentarios',
                 $criterio
             );
 
