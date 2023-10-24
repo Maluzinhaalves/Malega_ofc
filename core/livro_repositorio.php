@@ -16,14 +16,6 @@ if(file_exists($_FILES['capa']['tmp_name'])){ //Checa se a pessoa escolheu foto 
 // isso esta removendo esse nomeo ".jpg"
 }
 
-$nome_foto2 = "";
-if(file_exists($_FILES['capa2']['tmp_name'])){ //Checa se a pessoa escolheu foto ou não
-    $extensao = strtolower(substr($_FILES['capa2']['name'],-4)); // Vai pegar apenas os ultimos 4 digitos do nome
-    $nome_foto2 = 'capa2-'.date("Ymd-His") . $extensao; // não deixa duas fotos no mesmo nome
-    $nome_foto2_completo = $pasta_destino.'capa2-'.date("Ymd-His") . $extensao; // não deixa duas fotos no mesmo nome    
-    move_uploaded_file($_FILES['capa2']['tmp_name'],$nome_foto2_completo); //tmp_name é o nome temporario que é dado à foto
-    // isso esta removendo esse nomeo ".jpg"
-}
 $pasta_destinop = '../pdf/';
 $pdf = "";
 if(file_exists($_FILES['pdf']['tmp_name'])){ //Checa se a pessoa escolheu foto ou não
@@ -50,7 +42,7 @@ switch($acao){
             'titulo' => $titulo,
             'autor' => $autor,
             'capa' => $nome_foto,
-            'capa2' => $nome_foto2,
+            'artigo' => $artigo,
             'pdf' => $pdf,
             'banca' => $banca,
             'texto' => $texto
@@ -64,11 +56,12 @@ switch($acao){
         break;
 
     case 'update':
+        $idLivro = (int)$idLivro;
             $dados = [
                 'titulo' => $titulo,
                 'autor' => $autor,
                 'capa' => $capa,
-                'capa2' => $capa2,
+                'artigo' => $artigo,
                 'pdf' => $pdf,
                 'banca' => $banca,
                 'texto' => $texto

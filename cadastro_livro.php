@@ -14,20 +14,39 @@
 
         <?php 
 
-        if(!empty($idLivro)){
-            $idLivro = (int)$idLivro;
+            session_start();
+            require_once 'includes/funcoes.php';
+            require_once 'core/conexao_mysql.php';
+            require_once 'core/sql.php';
+            require_once 'core/mysql.php';
 
-            $criterio = [
-                ['idLivro', '=', $idLivro]
-            ];
+            foreach($_POST as $indice => $dado){
+                $$indice = limparDados($dado);
+            }
+            
+            foreach($_GET as $indice => $dado){
+                $$indice = limparDados($dado);
+            }
 
-            $retorno = buscar(
+            if(!empty($idLivro)){
+                $idLivro = (int)$idLivro;
+
+            $livros = buscar(
                 'livros',
-                ['*'],
-                $criterio
-            );
-
-            $entidade = $retorno[0];
+                    [
+                        'idLivro',
+                        'titulo',
+                        'autor',
+                        'capa',
+                        'banca',
+                        'pdf',
+                        'texto',
+                        'artigo'
+                     ],
+              [
+                ['idLivro', '=', $idLivro]
+              ]);
+              $livro = $livros[0];
         }
     ?>
         
@@ -37,39 +56,39 @@
 
             como os dados do usuario devem ser codificados-->
             <div class="form-row"> <!--offset: pula colunas da linha-->  
-                <input type="hidden" name="acao" value="insert">       
+            <input type="hidden" name="acao" value="<?php echo empty($idLivro) ? 'insert' : 'update' ?>">   
                 <div class="form-group  col-12 col-md-6">
                     <label for="titulo"><strong>Titulo</strong></label>
-                    <input type="text" class="form-control" name="titulo" id="titulo" required>
+                    <input type="text" class="form-control" value="<?php echo $livro['titulo'] ?? '' ?>" name="titulo" id="titulo" required>
                 </div>
                 <div class="form-group col-12 col-md-6">
                     <label for="autor"><strong>Autor</strong></label>
-                    <input type="text" class="form-control" name="autor" id="autor" required>
+                    <input type="text" class="form-control" value="<?php echo $livro['autor'] ?? '' ?>" name="autor" id="autor" required>
                 </div>
             </div>               
             <div class="form-row">          
                 <div class="form-group col-4 col-md-6">
-                    <label for="capa"><strong>Primeira capa do livro</strong></label>
-                    <input type="file" class="form-control-file" name="capa" id="capa" accept="image/*" required>
+                    <label for="capa"><strong>Capa do livro</strong></label>
+                    <input type="file" class="form-control-file" value="<?php echo $livro['capa'] ?? '' ?>" name="capa" id="capa" accept="image/*" required>
                 </div>        
-                <div class="form-group col-4 col-md-6">
-                    <label for="capa2"><strong>Segunda capa do livro</strong></label>
-                    <input type="file" class="form-control-file" name="capa2" id="capa2" accept="image/*" required>
+                <div class="form-group col-12 col-md-6">
+                    <label for="pdf"><strong>PDF (opcional) </strong></label>
+                    <input type="file" class="form-control-file" value="<?php echo $livro['pdf'] ?? '' ?>" name="pdf" id="pdf" accept="pdf/*" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-12 col-md-6">
-                    <label for="pdf"><strong>PDF (opcional)</strong></label>
-                    <input type="file" class="form-control-file" name="pdf" id="pdf" accept="pdf/*"required>
+                    <label for="artigo"><strong>Artigo (copie e cole) </strong></label>
+                    <input type="text" class="form-control" value="<?php echo $livro['artigo'] ?? '' ?>" name="artigo" id="artigo">
                 </div>
                 <div class="form-group col-12 col-md-6">
                     <label for="banca"><strong>Banca (opcional)</strong></label><br>
                     <select name="banca" id="banca">
-                        <option value="enem">ENEM</option>
-                        <option value="comvest">COMVEST</option>
-                        <option value="fuvest">FUVEST</option>
-                        <option value="vunesp">VUNESP</option>
-                        <option value="ausente">Ausente</option>
+                        <option value="enem" <?php if(!empty($idLivro)){if($livro['banca'] == 'enem'){echo "selected";}}?>>ENEM</option>
+                        <option value="comvest" <?php if(!empty($idLivro)){if($livro['banca'] == 'comvest'){echo "selected";}}?>>COMVEST</option>
+                        <option value="fuvest" <?php if(!empty($idLivro)){if($livro['banca'] == 'fuvest'){echo "selected";}}?>>FUVEST</option>
+                        <option value="vunesp" <?php if(!empty($idLivro)){if($livro['banca'] == 'vunesp'){echo "selected";}}?>>VUNESP</option>
+                        <option value="ausente" <?php if(!empty($idLivro)){if($livro['banca'] == 'ausente'){echo "selected";}}?>>Ausente</option>
                       </select>
                 </div>
             </div>

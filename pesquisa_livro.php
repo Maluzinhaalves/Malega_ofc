@@ -35,11 +35,6 @@
 
    <?php
 
-   echo $titulo;
-
-      if (!isset($_GET['titulo'])){
-         header("Location:../index.php");
-      }
       foreach($_POST as $indice => $dado){
          $$indice = limparDados($dado);
      }
@@ -47,8 +42,10 @@
      foreach($_GET as $indice => $dado){
          $$indice = limparDados($dado);
      }
+     if (!isset($titulo)){
+      header("Location:../index.php");
+   }
       $titulo = "%".trim($titulo)."%";
-   
       $livros = buscar(
          'livros',
              [
@@ -58,18 +55,18 @@
                  'capa'
               ],
        [
-         ['titulo', '=', $titulo]
+         ['titulo', 'like', $titulo]
        ]);
       if($livros != ''){
             
          
          foreach($livros as $livro):
             ?>
-            <div class="box">
+   <div class="box">
       <img src="imagensLivro/<?php echo $livro['capa']?>" alt="" class="image">
       <h3 class="title"><?php echo $livro['titulo'] ?></h3>
       <p class="total-reviews"><i class="fas fa-star"></i> <span>5</span></p>
-      <a href="pag_livro.php?idLivro=<? echo $livro['idLivro'];?>" class="inline-btn">Ver livro</a>
+      <a href="pag_livro.php?idLivro=<?php echo $livro['idLivro'];?>" class="inline-btn">Ver livro</a>
    </div>
 
    <?php
@@ -86,12 +83,6 @@
 </section>
 
 <!-- view all posts section ends -->
-
-
-
-
-<!-- sweetalert cdn link  -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
 <!-- custom js file link  -->
 <script src="js/script2.js"></script>

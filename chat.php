@@ -26,7 +26,19 @@ require_once 'core/mysql.php';
     [
       ['idLivro', '=', $idLivro]
     ]
-);
+   );
+      $livros = buscar(
+      'livros',
+          [
+              'idLivro',
+              'titulo',
+              'capa'
+          ],
+      [
+         ['idLivro', '=', $idLivro]
+      ]
+   );
+$livro = $livros[0];
 ?>
 
 <!DOCTYPE html>
@@ -44,17 +56,16 @@ require_once 'core/mysql.php';
 <body>
    
 <!-- header section starts  -->
-<?php include 'includes/header.php'; ?>
+<?php include 'includes/header.php';?>
 <!-- header section ends -->
 
 <!-- view posts section starts  -->
 
 <section class="view-post">
 
-   <div class="heading"><h1>Converse sobre o livro!</h1> <a href="cadastro_livro?idLivro=<?php $idLivro?>" class="inline-option-btn" style="margin-top: 0;">Voltar</a></div>
+   <div class="heading"><h1>Converse sobre o livro!</h1> <a href="pag_livro.php?idLivro=<?php echo $idLivro ?>" class="inline-option-btn" style="margin-top: 0;">Voltar</a></div>
 
    <?php
-
 
         $total_ratings = 0;
         $rating_1 = 0;
@@ -68,8 +79,8 @@ require_once 'core/mysql.php';
    ?>
    <div class="row">
       <div class="col">
-         <img src="imagensLivro/<?echo $livro['capa'] ?>" alt="" class="image">
-         <h3 class="title"><?echo $livro['titulo'] ?></h3>
+         <img src="imagensLivro/<?php echo $livro['capa'] ?>" alt="" class="image">
+         <h3 class="title"><?php echo $livro['titulo'] ?></h3>
       </div>
       <div class="col">
           <div class="flex">
@@ -84,29 +95,29 @@ require_once 'core/mysql.php';
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
-                  <span><? ?></span>
+                  <span><?php ?></span>
                </p>
                <p>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
-                  <span><? ?></span>
+                  <span><?php ?></span>
                </p>
                <p>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
-                  <span><? ?></span>
+                  <span><?php ?></span>
                </p>
                <p>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
-                  <span><? ?></span>
+                  <span><?php ?></span>
                </p>
                <p>
                   <i class="fas fa-star"></i>
-                  <span><? ?></span>
+                  <span><?php ?></span>
                </p>
             </div>
          </div> 
@@ -133,19 +144,19 @@ require_once 'core/mysql.php';
    <?php  foreach($comentarios as $comentario):  ?>
    <div class="box">
       <div class="user">
-            <img src="imagensUsuario/<?echo $_SESSION['login']['usuarios']['imagemUsuario'] ?>" alt="">
+            <img src="imagensUsuario/<?php echo $_SESSION['login']['usuarios']['imagemUsuario'] ?>" alt="">
          <?php  ?>   
-            <h3><? echo substr($_SESSION['login']['usuarios']['nomeUsuario'], 0, 1); ?></h3>
+            <h3><?php echo substr($_SESSION['login']['usuarios']['nomeUsuario'], 0, 1); ?></h3>
          <?php ; ?>   
          <div>
-            <p><? echo $_SESSION['login']['usuarios']['nomeUsuario']; ?></p>
-            <span><? echo $comentario['data_criacao']; ?></span>
+            <p><?php echo $_SESSION['login']['usuarios']['nomeUsuario']; ?></p>
+            <span><?php echo $comentario['data_criacao']; ?></span>
          </div>
       </div>
       <?php ; ?>
       <div class="ratings">
          <?php /* if($fetch_review['rating'] == 1){ */ ?>
-            <p style="background:var(--red);"><i class="fas fa-star"></i> <span><? echo $rating_1 ?></span></p>
+            <p style="background:var(--red);"><i class="fas fa-star"></i> <span><?php echo $rating_1 ?></span></p>
          <?php /* }; */ ?> 
       <!-- <?php /* if($fetch_review['rating'] == 2){ ?>
          <p style="background:var(--orange);"><i class="fas fa-star"></i> <span><?= $fetch_review['rating']; ?></span></p>
@@ -160,14 +171,13 @@ require_once 'core/mysql.php';
          <p style="background:var(--main-color);"><i class="fas fa-star"></i> <span><?= $fetch_review['rating']; ?></span></p>
       <?php };  */?> -->
       </div>
-      <h3 class="title"><? echo $comentario['tituloComen']; ?></h3>
+      <h3 class="title"><?php echo $comentario['tituloComen']; ?></h3>
       <?php if($comentario['textoComen'] != ''){ ?>
-         <p class="description"><? echo $comentario['textoComen']; ?></p>
+         <p class="description"><?php echo $comentario['textoComen']; ?></p>
       <?php }; ?>  
       <?php if($_SESSION['login']['usuarios']['adm'] > 0){ ?>
          <form action="" method="post" class="flex-btn">
-            <input type="hidden" name="delete_id" value="<?= $fetch_review['id']; ?>">
-            <a href="update_review.php?get_id=<?= $fetch_review['id']; ?>" class="inline-option-btn">edit review</a>
+            <a href="fazer_comentario.php?idComen=<?php echo $comentario['idComen']; ?>" class="inline-option-btn">edit review</a>
             <input type="submit" value="delete review" class="inline-delete-btn" name="delete_review" onclick="return confirm('delete this review?');">
          </form>
       <?php }; ?>   
@@ -193,13 +203,9 @@ require_once 'core/mysql.php';
 
 
 
-<!-- sweetalert cdn link  -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
 <!-- custom js file link  -->
-<script src="js/script.js"></script>
-
-<?php include 'components/alers.php'; ?>
+<script src="js/script2.js"></script>
 
 </body>
 </html>

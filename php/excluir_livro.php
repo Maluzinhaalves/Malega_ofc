@@ -14,7 +14,6 @@ $result = buscar(
     'livros',
     [   
         'capa',
-        'capa2',
         'pdf'
     ],
     $criterio
@@ -22,15 +21,11 @@ $result = buscar(
 
 $pasta = "../imagensLivro/";
 $pdfD = "../pdf/";
-unlink($pasta.$capa);
-unlink($pasta.$capa2);
-unlink($pdfD.$pdf);
-
 
 
 $result = mysqli_query($con,$sql); //a variavel result vai ter o resultado, se deu certo ou n
     if($result){
-        echo "Dados Alterados com sucesso!<br>";}
+        header('Location: listar_livro.php');}
     else{
         echo "Erro ao alterar dados: ".mysqli_error($con)."<br>";}
 ?>

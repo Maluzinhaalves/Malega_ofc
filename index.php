@@ -259,7 +259,7 @@
                 ?>
                 <div class="swiper-slide box">
                     <div class="icons">
-                        <a href="pag_livro.php?idLivro=<?php echo $livrov['idLivro']?>&idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="fas fa-search"></a>
+                        <a href="pag_livro.php?idLivro=<?php echo $livro['idLivro']?>&idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="fas fa-search"></a>
                         <a href="#" class="fas fa-heart"></a>
                         <a href="#" class="fas fa-eye"></a>
                     </div>

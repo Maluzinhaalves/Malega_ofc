@@ -29,7 +29,7 @@
               'titulo',
               'autor',
               'capa',
-              'capa2',
+              'artigo',
               'pdf',
               'banca',
               'texto'
@@ -582,9 +582,9 @@ $pasta = "imagensLivro/";
                 </lt-div>
               </lt-div>
             </lt-highlighter>
-            <a href="https://website5604599.nicepage.io/?version=9306a033-5677-4d09-8f1c-758d5536aa61" class="u-btn u-btn-round u-button-style u-color-scheme-summer-time u-custom-color-1 u-radius-50 u-btn-1">
+            <a href="<?php echo $livro['artigo']?>" class="u-btn u-btn-round u-button-style u-color-scheme-summer-time u-custom-color-1 u-radius-50 u-btn-1">
               <font style="vertical-align: inherit;">
-                <font style="vertical-align: inherit;">ArTigo</font>
+                <font style="vertical-align: inherit;">Artigo</font>
               </font>
             </a>
             <lt-highlighter style="display: none; z-index: 1 !important;">

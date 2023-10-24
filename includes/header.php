@@ -22,7 +22,7 @@
       <div class="profile">
 
          <?php if($_SESSION['login']['usuarios']['imagemUsuario'] != ''){ ?>
-            <img src="../imagensUsuario<? echo $_SESSION['login']['usuarios']['imagemUsuario']; ?>" alt="" class="image">
+            <img src="imagensUsuario<? echo $_SESSION['login']['usuarios']['imagemUsuario']; ?>" alt="" class="image">
          <?php }; ?>   
          <p><? echo $_SESSION['login']['usuarios']['nomeUsuario']; ?></p>
          <a href="index.php" class="btn">update profile</a>

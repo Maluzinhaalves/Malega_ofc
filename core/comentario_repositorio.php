@@ -33,7 +33,8 @@ switch($acao){
         $idComen = (int)$idComen;
         $dados = [
             'tituloComen' => $tituloComen,
-            'textoComen' => $textoComen
+            'textoComen' => $textoComen,
+            'nota' => $nota
         ];
 
         $criterio = [
@@ -45,6 +46,7 @@ switch($acao){
             $dados,
             $criterio
         );
+        header('Location: ../chat.php');
 
         break;
         case 'delete':
