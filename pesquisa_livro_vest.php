@@ -42,6 +42,9 @@
      foreach($_GET as $indice => $dado){
          $$indice = limparDados($dado);
      }
+     if(empty($_SESSION['login'])){
+        header('Location: index.php');
+     }
       $banca = "%".trim($banca)."%";
       $livros = buscar(
          'livros',

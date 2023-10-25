@@ -47,8 +47,8 @@
      foreach($_GET as $indice => $dado){
          $$indice = limparDados($dado);
      }
-     if (!isset($titulo)){
-      header("Location:../index.php");
+     if(empty($_SESSION['login'])){
+      header('Location: index.php');
    }
 
       $favoritos = buscar(

@@ -263,8 +263,26 @@
             <div class="swiper-wrapper">
             <?php   
                 $pasta = "imagensLivro/";
+                $seulivro = 0;
                 foreach($livros as $livro):
-                    
+                    $idLivroF = $livro['idLivro'];
+
+                    $favoritos = buscar(
+                        'usuario_livros',
+                            [
+                                'idLivro',
+                                'idUsuario'
+                             ],
+                      [
+                        ['idLivro', '=', $idLivroF]
+                      ]);
+                      if(isset($favoritos)){
+                        foreach ($favoritos as $favorito):
+                            if($favorito['idUsuario'] = $_SESSION['login']['usuarios']['idUsuario']){
+                                $seulivro = 1;
+                            }
+                        endforeach;
+                    }
                 ?>
                 <div class="swiper-slide box">
                     <div class="icons">    
@@ -279,7 +297,9 @@
                     </div>
                     <div class="content">
                         <h3><?php echo $livro['titulo'] ?></h3>
-                        <a href="core/livro_repositorio.php?acao=favoritar&idLivro=<?php echo $livro['idLivro']?>&idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="btn">adicione aos favoritos</a>
+                        <?php if($seulivro == 0){?>
+                        <a href="core/livro_repositorio.php?acao=favoritar&idLivro=<?php echo $livro['idLivro']?>&idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="btn">Adicione aos favoritos</a>
+                        <?php}else{?><a href="core/livro_repositorio.php?acao=desfavoritar&idLivro=<?php echo $livro['idLivro']?>&idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="btn">Desfavoritar</a><?php }?>
                     </div>
                 </div>
                 <?php endforeach ?>

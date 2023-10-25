@@ -77,7 +77,8 @@ $livro = $livros[0];
         $rating_3 = 0;
         $rating_4 = 0;
         $rating_5 = 0;
-         $average = 0;
+         $nota_media=0;
+         
          $i=0;
         foreach($comentarios as $comentario):
          $i++;
@@ -97,7 +98,8 @@ $livro = $livros[0];
             $rating_5++;
          }
         endforeach;
-        $nota_media = number_format((($rating_1*1+$rating_2*2+$rating_3*3+$rating_4*4+$rating_5*5)/$i),1);
+        if($i!=0){
+        $nota_media = number_format((($rating_1*1+$rating_2*2+$rating_3*3+$rating_4*4+$rating_5*5)/$i),1);}
          
    ?>
    <div class="row">
