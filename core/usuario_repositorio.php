@@ -56,6 +56,24 @@ switch($acao){
         );
 
         break;
+        case 'foto':
+            $idUsuario = (int)$idUsuario;
+            $dados = [
+                'imagemUsuario' => $imagemUsuario
+            ];
+    
+            $criterio = [
+                ['idUsuario', '=', $idUsuario]
+            ];
+    
+            atualiza(
+                'usuarios',
+                $dados,
+                $criterio
+            );
+    
+            break;
+        
         case 'login':
             $criterio = [
                 ['emailUsuario', '=', $emailUsuario],
@@ -64,7 +82,7 @@ switch($acao){
 
         $retorno = buscar(
             'usuarios',
-            ['idUsuario','nomeUsuario','emailUsuario','senhaUsuario','adm','imagemUsuario'],
+            ['idUsuario','nomeUsuario','emailUsuario','senhaUsuario','adm','imagemUsuario','ativo'],
             $criterio
         );
 
@@ -102,7 +120,7 @@ switch($acao){
             $criterio
         );
 
-        header('Location: ../usuarios.php');
+        header('Location: ../php/listar_usuario.php');
         exit;
         break;
     case 'adm':

@@ -4,12 +4,7 @@
      require_once 'core/conexao_mysql.php';
      require_once 'core/sql.php';
      require_once 'core/mysql.php';
-     ?>
-     <?php
-   if(empty($_SESSION['login'])){
-      header('Location: index.php');
-   }
-      
+    
 ?>
 
 <!DOCTYPE html>
@@ -47,23 +42,22 @@
      foreach($_GET as $indice => $dado){
          $$indice = limparDados($dado);
      }
-     if (!isset($titulo)){
-      header("Location:../index.php");
-   }
-      $titulo = "%".trim($titulo)."%";
+      $banca = "%".trim($banca)."%";
       $livros = buscar(
          'livros',
              [
                  'idLivro',
                  'titulo',
                  'autor',
-                 'capa'
+                 'capa',
+                 'banca'
               ],
        [
-         ['titulo', 'like', $titulo]
+         ['banca', 'like', $banca]
        ]);
       if($livros != ''){
             
+         
          foreach($livros as $livro):
             ?>
    <div class="box">

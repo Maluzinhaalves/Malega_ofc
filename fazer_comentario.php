@@ -14,12 +14,13 @@ foreach($_POST as $indice => $dado){
 foreach($_GET as $indice => $dado){
    $$indice = limparDados($dado);
 }
-
+$idLivro = (int)$idLivro;
 if(!empty($idComen)){
    $comentarios = buscar(
       'comentarios',
           [
               'idComen',
+              'idUsuario',
               'textoComen',
               'tituloComen',
               'nota'
@@ -38,13 +39,11 @@ if(!empty($idComen)){
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Comentario</title>
-
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style2.css">
 
 </head>
 <body>
-   
    
 <!-- header section starts  -->
 <?php include 'includes/header.php'; ?>
@@ -59,7 +58,7 @@ if(!empty($idComen)){
    <input type="hidden" name="acao" value="<?php echo empty($idComen) ? 'insert' : 'update' ?>">
    <input type="hidden" name="idComen" value="<?php echo $comentario['idComen'] ?? '' ?>">
    <input type="hidden" name="idLivro" value="<?php echo $idLivro ?? '' ?>">
-   <input type="hidden" name="idUsuario" value="<?php echo $_SESSION['login']['usuarios']['idUsuario']?>">
+   <input type="hidden" name="idUsuario" value="<?php echo $comentario['idUsuario'] ?? $_SESSION['login']['usuarios']['idUsuario']?>">
       <h3>poste sua avaliação</h3>
       <p class="placeholder">Titulo <span>*</span></p>
       <input type="text" name="tituloComen" value="<?php echo $comentario['tituloComen'] ?? '' ?>" required maxlength="50" placeholder="título da avaliação" class="box">

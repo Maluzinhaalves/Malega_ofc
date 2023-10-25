@@ -21,11 +21,11 @@ switch($acao){
             'idUsuario' => $idUsuario,
             'nota' => $nota
             ];
-
             insere(
                 'comentarios',
                 $dados
             );
+            header('Location: ../chat.php');
 
             break;
             
@@ -58,6 +58,7 @@ switch($acao){
                 'comentarios',
                 $criterio
             );
+            header('Location: ../chat.php');
 
         break;
 }

@@ -29,7 +29,6 @@
             }
 
             if(!empty($idLivro)){
-                $idLivro = (int)$idLivro;
 
             $livros = buscar(
                 'livros',
@@ -57,6 +56,7 @@
             como os dados do usuario devem ser codificados-->
             <div class="form-row"> <!--offset: pula colunas da linha-->  
             <input type="hidden" name="acao" value="<?php echo empty($idLivro) ? 'insert' : 'update' ?>">   
+            <input type="hidden" name="idLivro" value="<?php echo $livro['idLivro'] ?? '' ?>">   
                 <div class="form-group  col-12 col-md-6">
                     <label for="titulo"><strong>Titulo</strong></label>
                     <input type="text" class="form-control" value="<?php echo $livro['titulo'] ?? '' ?>" name="titulo" id="titulo" required>

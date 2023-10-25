@@ -99,8 +99,8 @@
                     </div>
                     <p class="form-text">ou utilize sua conta</p>
                     <div class="form-input-container">
-                        <input type="email" name="emailUsuario" class="form-input" placeholder="Email">
-                        <input type="password" name="senhaUsuario" class="form-input" placeholder="Senha">
+                        <input type="email" name="emailUsuario" class="form-input" placeholder="Email" required>
+                        <input type="password" name="senhaUsuario" class="form-input" placeholder="Senha" required>
                     </div>
                     <a href="#" class="form-link">Esqueceu a senha?</a>
                     <button type="submit" class="form-button">Logar</button>
@@ -123,9 +123,9 @@
                     </div>
                     <p class="form-text">ou cadastre seu email</p>
                     <div class="form-input-container">
-                        <input type="text" name="nomeUsuario" class="form-input" placeholder="Nome">
-                        <input type="email" name="emailUsuario" class="form-input" placeholder="Email">
-                        <input type="password" name="senhaUsuario" class="form-input" placeholder="Senha">
+                        <input type="text" name="nomeUsuario" class="form-input" placeholder="Nome" required>
+                        <input type="email" name="emailUsuario" class="form-input" placeholder="Email" required>
+                        <input type="password" name="senhaUsuario" class="form-input" placeholder="Senha" required>
                     </div>
                     <button type="submit" class="form-button">Cadastrar</button>
                     <p class="mobile-text">
@@ -163,7 +163,8 @@
             [
              'titulo',
              'capa',
-              'idLivro'
+              'idLivro',
+              'banca'
             ]      
         );
     ?>
@@ -210,7 +211,9 @@
         <div class="icons">
             <i class="fas fa-book"></i>
             <div class="content">
-                <h3><a href="">FUVEST</a></h3>
+            <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['ativo'] == 1)){ ?>
+                <h3><a href="pesquisa_livro_vest.php?banca=fuvest">FUVEST</a></h3>
+                <?php }else{?><h3><a href="#">FUVEST</a></h3><?php }?>
                 <p>Leituras obrigatórias da Fuvest</p>
             </div>
         </div>
@@ -218,7 +221,9 @@
         <div class="icons">
             <i class="fas fa-book"></i>
             <div class="content">
-                <h3><a href="">COMVEST</a></h3>
+            <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['ativo'] == 1)){ ?>
+                <h3><a href="pesquisa_livro_vest.php?banca=comvest">COMVEST</a></h3>
+                <?php }else{?><h3><a href="#">FUVEST</a></h3><?php }?>
                 <p>Leituras obrigatóras da Unicamp</p>
             </div>
         </div>
@@ -226,7 +231,9 @@
         <div class="icons">
             <i class="fas fa-book"></i>
             <div class="content">
-                <h3><a href="">VUNESP</a></h3>
+                <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['ativo'] == 1)){ ?>
+                <h3><a href="pesquisa_livro_vest.php?banca=vunesp">VUNESP</a></h3>
+                <?php }else{?><h3><a href="#">FUVEST</a></h3><?php }?>
                 <p>Leitutas obrigatórias Unesp</p>
             </div>
         </div>
@@ -234,7 +241,9 @@
         <div class="icons">
             <i class="fas fa-book"></i>
             <div class="content">
-                <h3><a href="">ENEM</a></h3>
+            <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['ativo'] == 1)){ ?>
+                <h3><a href="pesquisa_livro_vest.php?banca=enem">ENEM</a></h3>
+                <?php }else{?><h3><a href="#">FUVEST</a></h3><?php }?>
                 <p>literatura no ENEM</p>
             </div>
         </div>
@@ -258,8 +267,10 @@
                     
                 ?>
                 <div class="swiper-slide box">
-                    <div class="icons">
+                    <div class="icons">    
+                        <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['ativo'] == 1)){ ?>         
                         <a href="pag_livro.php?idLivro=<?php echo $livro['idLivro']?>&idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="fas fa-search"></a>
+                        <?php } else{?> <a href="#" class="fas fa-search"> <?php }?>
                         <a href="#" class="fas fa-heart"></a>
                         <a href="#" class="fas fa-eye"></a>
                     </div>
@@ -268,7 +279,7 @@
                     </div>
                     <div class="content">
                         <h3><?php echo $livro['titulo'] ?></h3>
-                        <a href="#" class="btn">adicione aos favoritos</a>
+                        <a href="core/livro_repositorio.php?acao=favoritar&idLivro=<?php echo $livro['idLivro']?>&idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="btn">adicione aos favoritos</a>
                     </div>
                 </div>
                 <?php endforeach ?>
@@ -404,7 +415,9 @@
                 <?php 
                 foreach($livrosv as $livrov):
                     ?>
+                       <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['ativo'] == 1)){ ?>
                 <a href="pag_livro.php?idLivro=<?php echo $livrov['idLivro']?>&idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="swiper-slide box">
+                <?php } else{?> <a href="#" class="swiper-slide box"> <?php }?>
                     <div class="image">
                         <img src="<?php echo $pasta.$livrov['capa'] ?>" alt="">
                     </div>
@@ -496,7 +509,9 @@
             <?php 
                 foreach($livrosv as $livrov):
                     ?>
+                <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['ativo'] == 1)){ ?>
                 <a href="pag_livro.php?idLivro=<?php echo $livrov['idLivro']?>&idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="swiper-slide box">
+                <?php } else{?> <a href="#" class="swiper-slide box"> <?php }?>
                     <div class="image">
                         <img src="<?php echo $pasta.$livrov['capa'] ?>" alt="">
                     </div>

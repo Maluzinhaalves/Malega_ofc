@@ -12,7 +12,10 @@ require_once 'core/mysql.php';
   foreach($_GET as $indice => $dado) {
       $$indice = limparDados($dado);
   }
-    
+    if(empty($idLivro)){
+      $idLivro = $_SESSION['idLivro_retorno'];
+      $_SESSION['idLivro_retorno'] = '';
+    } 
   $comentarios = buscar(
       'comentarios',
           [
@@ -21,7 +24,8 @@ require_once 'core/mysql.php';
               'idUsuario',
               'textoComen',
               'tituloComen',
-              'data_criacao'
+              'data_criacao',
+              'nota'
            ],
     [
       ['idLivro', '=', $idLivro]
@@ -74,7 +78,26 @@ $livro = $livros[0];
         $rating_4 = 0;
         $rating_5 = 0;
          $average = 0;
-        
+         $i=0;
+        foreach($comentarios as $comentario):
+         $i++;
+         if($comentario['nota'] == 1){
+            $rating_1++;
+         }
+         if($comentario['nota'] == 2){
+            $rating_2++;
+         }
+         if($comentario['nota'] == 3){
+            $rating_3++;
+         }
+         if($comentario['nota'] == 4){
+            $rating_4++;
+         }
+         if($comentario['nota'] == 5){
+            $rating_5++;
+         }
+        endforeach;
+        $nota_media = number_format((($rating_1*1+$rating_2*2+$rating_3*3+$rating_4*4+$rating_5*5)/$i),1);
          
    ?>
    <div class="row">
@@ -85,8 +108,8 @@ $livro = $livros[0];
       <div class="col">
           <div class="flex">
             <div class="total-reviews">
-               <h3>5<i class="fas fa-star"></i></h3>
-               <p>10 reviews</p>
+               <h3><?php echo $nota_media; ?><i class="fas fa-star"></i></h3>
+               <p><?php echo $i ?> reviews</p>
             </div>
             <div class="total-ratings">
                <p>
@@ -95,29 +118,29 @@ $livro = $livros[0];
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
-                  <span><?php ?></span>
+                  <span><?php echo $rating_5 ?></span>
                </p>
                <p>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
-                  <span><?php ?></span>
+                  <span><?php echo $rating_4 ?></span>
                </p>
                <p>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
-                  <span><?php ?></span>
+                  <span><?php echo $rating_3 ?></span>
                </p>
                <p>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
-                  <span><?php ?></span>
+                  <span><?php echo $rating_2 ?></span>
                </p>
                <p>
                   <i class="fas fa-star"></i>
-                  <span><?php ?></span>
+                  <span><?php echo $rating_1 ?></span>
                </p>
             </div>
          </div> 
@@ -141,22 +164,38 @@ $livro = $livros[0];
    <div class="heading"><h1>Comentários</h1> <a href="fazer_comentario.php?idLivro=<?php echo $idLivro?>" class="inline-btn" style="margin-top: 0;">add review</a></div>
 
    <div class="box-container">
-   <?php  foreach($comentarios as $comentario):  ?>
+   <?php 
+   foreach($comentarios as $comentario): 
+      $usuarios = buscar(
+         'usuarios',
+             [
+                 'idUsuario',
+                 'imagemUsuario',
+                 'nomeUsuario'
+              ],
+       [
+         ['idUsuario', '=', $comentario['idUsuario']]
+       ]);
+       $usuario = $usuarios[0];
+
+      ?>
+      
+         
    <div class="box">
       <div class="user">
-            <img src="imagensUsuario/<?php echo $_SESSION['login']['usuarios']['imagemUsuario'] ?>" alt="">
+            <img src="imagensUsuario/<?php echo $usuario['imagemUsuario'] ?>" alt="">
          <?php  ?>   
-            <h3><?php echo substr($_SESSION['login']['usuarios']['nomeUsuario'], 0, 1); ?></h3>
+            <h3><?php echo substr($usuario['nomeUsuario'], 0, 1); ?></h3>
          <?php ; ?>   
          <div>
-            <p><?php echo $_SESSION['login']['usuarios']['nomeUsuario']; ?></p>
+            <p><?php echo $usuario['nomeUsuario']; ?></p>
             <span><?php echo $comentario['data_criacao']; ?></span>
          </div>
       </div>
       <?php ; ?>
       <div class="ratings">
          <?php /* if($fetch_review['rating'] == 1){ */ ?>
-            <p style="background:var(--red);"><i class="fas fa-star"></i> <span><?php echo $rating_1 ?></span></p>
+            <p style="background:var(--red);"><i class="fas fa-star"></i> <span><?php echo $comentario['nota'] ?></span></p>
          <?php /* }; */ ?> 
       <!-- <?php /* if($fetch_review['rating'] == 2){ ?>
          <p style="background:var(--orange);"><i class="fas fa-star"></i> <span><?= $fetch_review['rating']; ?></span></p>
@@ -175,12 +214,14 @@ $livro = $livros[0];
       <?php if($comentario['textoComen'] != ''){ ?>
          <p class="description"><?php echo $comentario['textoComen']; ?></p>
       <?php }; ?>  
-      <?php if($_SESSION['login']['usuarios']['adm'] > 0){ ?>
          <form action="" method="post" class="flex-btn">
-            <a href="fazer_comentario.php?idComen=<?php echo $comentario['idComen']; ?>" class="inline-option-btn">edit review</a>
-            <input type="submit" value="delete review" class="inline-delete-btn" name="delete_review" onclick="return confirm('delete this review?');">
+            <?php if($_SESSION['login']['usuarios']['idUsuario'] == $comentario['idUsuario']){?>
+            <a href="fazer_comentario.php?idComen=<?php echo $comentario['idComen'];?>&idLivro=<?php echo $idLivro?>" onclick="<?php $_SESSION['idLivro_retorno'] = $idLivro;?>" class="inline-option-btn">edit review</a>
+            <?php }if($_SESSION['login']['usuarios']['adm'] > 0){ ?>
+            <input type="submit" value="delete review" class="inline-delete-btn" name="acao" onclick="return confirm('delete this review?');">
+            <?php }?>
          </form>
-      <?php }; ?>   
+      <?php  ?>   
    </div>
    <?php endforeach; ?>  
 
