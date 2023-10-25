@@ -34,7 +34,7 @@
 
 <section class="all-posts">
 
-   <div class="heading"><h1>Livros</h1></div>
+   <div class="heading"><h1>Livros Favoritos</h1></div>
 
    <div class="box-container">
 
@@ -50,22 +50,37 @@
      if (!isset($titulo)){
       header("Location:../index.php");
    }
-      $titulo = "%".trim($titulo)."%";
-      $livros = buscar(
-         'livros',
+
+      $favoritos = buscar(
+         'usuario_livros',
              [
                  'idLivro',
-                 'titulo',
-                 'autor',
-                 'capa'
+                 'idUsuario'
               ],
        [
-         ['titulo', 'like', $titulo]
+         ['idUsuario', '=', $idUsuario]
        ]);
-      if($livros != ''){
+
+      if(!empty($favoritos)){
             
-         foreach($livros as $livro):
+         foreach($favoritos as $favorito):
+            $idLivro = $favorito['idLivro'];
+            $livros = buscar(
+               'livros',
+                   [
+                       'idLivro',
+                       'titulo',
+                       'autor',
+                       'capa',
+                       'banca'
+                    ],
+             [
+               ['idLivro', '=', $idLivro]
+             ]);
+             $livro = $livros[0];
+
             ?>
+
    <div class="box">
       <img src="imagensLivro/<?php echo $livro['capa']?>" alt="" class="image">
       <h3 class="title"><?php echo $livro['titulo'] ?></h3>

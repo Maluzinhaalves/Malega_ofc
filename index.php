@@ -45,7 +45,7 @@
             <div class="icons">
                 <div id="search-btn" class="fas fa-search"></div>
                 <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-star"></a>
+                <a href="pesquisa_livro_favoritos.php?idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="fas fa-star"></a>
                 <div id="login-btn" class="fas fa-address-card"></div>
             </div>
 
