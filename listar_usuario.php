@@ -12,10 +12,10 @@
     <?php 
     
         session_start();
-        require_once '../includes/funcoes.php';
-        require_once '../core/conexao_mysql.php';
-        require_once '../core/sql.php';
-        require_once '../core/mysql.php';
+        require_once 'includes/funcoes.php';
+        require_once 'core/conexao_mysql.php';
+        require_once 'core/sql.php';
+        require_once 'core/mysql.php';
 
         foreach($_GET as $indice => $dado){ //como funciona esse comando
             $$indice = limparDados($dado);
@@ -80,7 +80,7 @@
                 <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['adm'] === 2)):?>
                 <td><a href='core/usuario_repositorio.php?acao=adm&idUsuario=<?php echo $entidade['idUsuario']?> &valor=<?php echo !$entidade['adm']?>'><?php echo ($entidade['adm']==1)  ?  'Rebaixar' : 'Promover'; ?> </a></td>
                 <?php endif ?>
-                <td><a href="excluir_usuario.php?idUsuario=<?php echo $entidade['idUsuario']?>">Deletar</a></td>
+                <td><a href="core/usuario_repositorio.php?acao=delete&idUsuario=<?php echo $entidade['idUsuario']?>">Deletar</a></td>
             <?php endforeach ?>
         </tbody>
     </table>

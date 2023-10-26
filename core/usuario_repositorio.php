@@ -56,6 +56,17 @@ switch($acao){
         );
 
         break;
+        case 'delete':
+            $criterio = [
+                ['idUsuario', '=', $idUsuario]
+            ];
+
+            deleta(
+                'usuarios',
+                $criterio
+            );
+
+            header('Location: ../listar_usuario.php');
         case 'foto':
             $idUsuario = (int)$idUsuario;
             $dados = [
@@ -120,7 +131,7 @@ switch($acao){
             $criterio
         );
 
-        header('Location: ../php/listar_usuario.php');
+        header('Location: ../listar_usuario.php');
         exit;
         break;
     case 'adm':
@@ -141,7 +152,7 @@ switch($acao){
             $criterio
         );
         
-        header('Location: ../php/listar_usuario.php');
+        header('Location: ../listar_usuario.php');
 
         exit;
         break;
