@@ -45,7 +45,9 @@
             <div class="icons">
                 <div id="search-btn" class="fas fa-search"></div>
                 <a href="#" class="fas fa-heart"></a>
+                <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['ativo'] == 1)){ ?>
                 <a href="pesquisa_livro_favoritos.php?idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="fas fa-star"></a>
+                <?php} else{?><a href="#" class="fas fa-star"></a><?php }?>
                 <div id="login-btn" class="fas fa-address-card"></div>
             </div>
 
@@ -279,10 +281,11 @@
                       ]);
                       if(isset($favoritos)){
                         foreach ($favoritos as $favorito):
+                            if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['ativo'] == 1)){
                             if($favorito['idUsuario'] == $_SESSION['login']['usuarios']['idUsuario']){
                                 $seulivro = 1;
                                 $idFavorito = $favorito['idFavorito'];
-                            }
+                            }} else{};
                         endforeach;
                     }
                 ?>
@@ -299,9 +302,11 @@
                     </div>
                     <div class="content">
                         <h3><?php echo $livro['titulo'];?></h3>
+                        <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['ativo'] == 1)){ ?>
                         <?php if(($seulivro == 0)){ ?>
                         <a href="core/favorito_repositorio.php?acao=favoritar&idLivro=<?php echo $livro['idLivro']?>&idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="btn">Adicione aos favoritos</a>
                         <?php }else{ ?><a href="core/favorito_repositorio.php?acao=desfavoritar&idFavorito=<?php echo $idFavorito ?>" class="btn">Desfavoritar</a><?php }?>
+                        <?php } else{?><a href="#" class="btn">Adicione aos favoritos</a><?php } ?>
                     </div>
                 </div>
                 <?php endforeach ?>
