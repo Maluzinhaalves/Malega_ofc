@@ -107,7 +107,7 @@
             </form>
         
         <a href="adm.php">Voltar</a><br>
-        <a href="php/listar_livro.php">Lista de livros</a>
+        <a href="listar_livro.php">Lista de livros</a>
     </div>
 </body>
 </html>

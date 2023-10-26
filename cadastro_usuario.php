@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <h1>Cadastro - Malega Libros</h1>
-        
+
             <form  action="core/usuario_repositorio.php" method="post" enctype="multipart/form-data"> 
                 <input type="hidden" name="acao" value="insert">
                 <div class="form-group  col-12 col-md-6">
@@ -40,7 +40,7 @@
             </form>
         
         <a href="adm.php">Voltar</a><br>
-        <a href="php/listar_usuario.php">Lista de usuarios</a>
+        <a href="listar_usuario.php">Lista de usuarios</a>
     </div>
 </body>
 </html>
