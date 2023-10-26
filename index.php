@@ -47,7 +47,7 @@
                 <a href="#" class="fas fa-heart"></a>
                 <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['ativo'] == 1)){ ?>
                 <a href="pesquisa_livro_favoritos.php?idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="fas fa-star"></a>
-                <?php} else{?><a href="#" class="fas fa-star"></a><?php }?>
+                <?php }else{ ?> <a href="#" class="fas fa-star"></a> <?php } ?>
                 <div id="login-btn" class="fas fa-address-card"></div>
             </div>
 
@@ -354,7 +354,7 @@
                     ?>
                        <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['ativo'] == 1)){ ?>
                 <a href="pag_livro.php?idLivro=<?php echo $livrov['idLivro']?>&idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="swiper-slide box">
-                <?php } else{?> <a href="#" class="swiper-slide box"> <?php }?>
+                <?php } else{ ?> <a href="#" class="swiper-slide box"> <?php } ?>
                     <div class="image">
                         <img src="<?php echo $pasta.$livrov['capa'] ?>" alt="">
                     </div>
