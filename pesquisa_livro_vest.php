@@ -22,6 +22,7 @@
 <body>
    
 <!-- header section starts  -->
+<?php include 'includes/valida_login.php'; ?>
 <?php include 'includes/header.php'; ?>
 <!-- header section ends -->
 

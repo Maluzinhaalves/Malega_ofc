@@ -7,13 +7,15 @@
     <title>Document</title>
 </head>
 <body>
+<?php session_start();
+include 'includes/valida_adm.php'; ?>
     <div>
         <h3>Ações com livros</h3><br>
         <a href="cadastro_livro.php">Cadastro de Livros</a><br>
-        <a href="php/listar_livro.php">Lista Livros</a><br>
+        <a href="listar_livro.php">Lista Livros</a><br>
         <h3>Ações usuarios livros</h3><br>
         <a href="cadastro_usuario.php">Cadastro de Usuario</a><br>
-        <a href="php/listar_usuario.php">Listar usuarios</a><br>
+        <a href="listar_usuario.php">Listar usuarios</a><br>
         <br>
         <a href="index.php">Pagina Inicial</a>
     </div>

@@ -70,15 +70,15 @@
             </tr>
         </thead>
         <tbody>
-            <?php $pasta="../imagensUsuario/"?>
+            <?php $pasta="imagensUsuario/"?>
                 <td><?php echo $entidade['idUsuario'] ?></td>
                 <td><img src="<?php echo $pasta.$entidade['imagemUsuario']?>"></td>
                 <td><?php echo $entidade['nomeUsuario'] ?></td>
                 <td><?php echo $entidade['emailUsuario'] ?></td>
                 <td><?php echo $entidade['senhaUsuario'] ?></td>
-                <td><a href='../core/usuario_repositorio.php?acao=status&idUsuario=<?php echo $entidade['idUsuario']?> &valor=<?php echo !$entidade['ativo']?>'><?php echo ($entidade['ativo']==1)  ? 'Desativar' : 'Ativar'; ?> </a></td>
+                <td><a href='core/usuario_repositorio.php?acao=status&idUsuario=<?php echo $entidade['idUsuario']?> &valor=<?php echo !$entidade['ativo']?>'><?php echo ($entidade['ativo']==1)  ? 'Desativar' : 'Ativar'; ?> </a></td>
                 <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['adm'] === 2)):?>
-                <td><a href='../core/usuario_repositorio.php?acao=adm&idUsuario=<?php echo $entidade['idUsuario']?> &valor=<?php echo !$entidade['adm']?>'><?php echo ($entidade['adm']==1)  ?  'Rebaixar' : 'Promover'; ?> </a></td>
+                <td><a href='core/usuario_repositorio.php?acao=adm&idUsuario=<?php echo $entidade['idUsuario']?> &valor=<?php echo !$entidade['adm']?>'><?php echo ($entidade['adm']==1)  ?  'Rebaixar' : 'Promover'; ?> </a></td>
                 <?php endif ?>
                 <td><a href="excluir_usuario.php?idUsuario=<?php echo $entidade['idUsuario']?>">Deletar</a></td>
             <?php endforeach ?>
@@ -86,7 +86,7 @@
     </table>
     </div>
     <div>
-    <a href="../cadastro_usuario.php">Voltar</a>
+    <a href="cadastro_usuario.php">Voltar</a>
     </div>
 </body>
 </html>

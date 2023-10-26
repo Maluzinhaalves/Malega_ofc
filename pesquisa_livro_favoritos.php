@@ -27,11 +27,11 @@
 <body>
    
 <!-- header section starts  -->
+<?php include 'includes/valida_login.php'; ?>
 <?php include 'includes/header.php'; ?>
 <!-- header section ends -->
 
 <!-- view all posts section starts  -->
-
 <section class="all-posts">
 
    <div class="heading"><h1>Livros Favoritos</h1></div>

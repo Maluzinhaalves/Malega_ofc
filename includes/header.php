@@ -23,7 +23,7 @@
          <img src="imagensUsuario/<?php echo $_SESSION['login']['usuarios']['imagemUsuario']; ?>" alt="" class="image"> 
          <p><?php echo $_SESSION['login']['usuarios']['nomeUsuario']; ?></p>
         <input href="comentario_repositorio.php" class="btn" value="alterar a foto">
-         <a href="href=core/usuario_repositorio.php?acao=logout" class="delete-btn" onclick="return confirm('logout from this website?');">logout</a>
+         <a href="core/usuario_repositorio.php?acao=logout" class="delete-btn" onclick="return confirm('logout from this website?');">logout</a>
          <?php }else{ ?>
             <div class="flex-btn">
                <p>Desculpe, faça seu login.</p>
