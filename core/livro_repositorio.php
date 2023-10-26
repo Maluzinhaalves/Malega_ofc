@@ -53,6 +53,7 @@ switch($acao){
             'livros',
             $dados
         );
+        header('Location: ../cadastro_livro.php');
         
         break;
 
@@ -96,6 +97,7 @@ switch($acao){
                 $dados,
                 $criterio
             );
+            header('Location: ../php/listar_livro.php');
 
             break;
 
@@ -108,6 +110,8 @@ switch($acao){
                     'livros',
                     $criterio
                 );
+
+                header('Location: ../php/listar_livro.php');
 
             break;
      case 'favoritar':

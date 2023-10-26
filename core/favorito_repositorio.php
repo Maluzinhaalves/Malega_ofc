@@ -44,5 +44,3 @@ switch($acao){
             
             break;
 }
-
-//header('Location: ../adm.php');

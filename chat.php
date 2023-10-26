@@ -216,13 +216,13 @@ $livro = $livros[0];
       <?php if($comentario['textoComen'] != ''){ ?>
          <p class="description"><?php echo $comentario['textoComen']; ?></p>
       <?php }; ?>  
-         <form action="" method="post" class="flex-btn">
+         <div class="flex-btn">
             <?php if($_SESSION['login']['usuarios']['idUsuario'] == $comentario['idUsuario']){?>
             <a href="fazer_comentario.php?idComen=<?php echo $comentario['idComen'];?>&idLivro=<?php echo $idLivro?>" onclick="<?php $_SESSION['idLivro_retorno'] = $idLivro;?>" class="inline-option-btn">edit review</a>
             <?php }if($_SESSION['login']['usuarios']['adm'] > 0){ ?>
-            <input type="submit" value="delete review" class="inline-delete-btn" name="acao" onclick="return confirm('delete this review?');">
+            <a href="core/comentario_repositorio.php?acao=delete&idComen=<?php echo $comentario['idComen'] ?>" class="inline-delete-btn" onclick="return confirm('delete this review?');">delete review</a>
             <?php }?>
-         </form>
+            </div>
       <?php  ?>   
    </div>
    <?php endforeach; ?>  
