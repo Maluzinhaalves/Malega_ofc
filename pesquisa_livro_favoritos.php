@@ -72,7 +72,7 @@
                        'titulo',
                        'autor',
                        'capa',
-                       'banca'
+                       'nota'
                     ],
              [
                ['idLivro', '=', $idLivro]
@@ -84,7 +84,7 @@
    <div class="box">
       <img src="imagensLivro/<?php echo $livro['capa']?>" alt="" class="image">
       <h3 class="title"><?php echo $livro['titulo'] ?></h3>
-      <p class="total-reviews"><i class="fas fa-star"></i> <span>5</span></p>
+      <p class="total-reviews"><i class="fas fa-star"></i> <span><?php echo $livro['nota'] ?></span></p>
       <a href="pag_livro.php?idLivro=<?php echo $livro['idLivro'];?>" class="inline-btn">Ver livro</a>
    </div>
 

@@ -108,6 +108,7 @@ function deleta(string $entidade, array $criterio = []) : bool
         }
 
         $instrucao = delete('from '.$entidade, $coringa_criterio);
+        echo $instrucao;
         $conexao = conecta();
 
         $stmt = mysqli_prepare($conexao, $instrucao);

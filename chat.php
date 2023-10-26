@@ -100,6 +100,20 @@ $livro = $livros[0];
         endforeach;
         if($i!=0){
         $nota_media = number_format((($rating_1*1+$rating_2*2+$rating_3*3+$rating_4*4+$rating_5*5)/$i),1);}
+        
+   $dados =[
+      'nota' => $nota_media
+      ];
+
+      $criterio = [
+         ['idLivro', '=', $idLivro]
+     ];
+
+     atualiza(
+         'livros',
+         $dados,
+         $criterio
+     );
          
    ?>
    <div class="row">

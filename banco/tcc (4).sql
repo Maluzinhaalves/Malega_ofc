@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 25-Out-2023 às 19:19
+-- Tempo de geração: 27-Out-2023 às 00:28
 -- Versão do servidor: 10.4.28-MariaDB
 -- versão do PHP: 8.2.4
 
@@ -42,12 +42,10 @@ CREATE TABLE `comentarios` (
 --
 
 INSERT INTO `comentarios` (`idComen`, `idLivro`, `idUsuario`, `textoComen`, `tituloComen`, `data_criacao`, `nota`) VALUES
-(11, 14, 18, 'Li denovo e tem alguns defeitos', 'Nota 4', '2023-10-25 08:46:43', 4),
 (12, 13, 18, 'Vamobora', 'DEU CERTO AAAAAAAAAA', '2023-10-25 08:53:49', 2),
 (13, 13, 18, 'PORFAVOR FUNCIONA', 'N&atilde;o deu certo n&atilde;o :(', '2023-10-25 09:28:14', 2),
 (14, 13, 18, 'porfavor', 'N&atilde;o te odeio,funciona', '2023-10-25 09:45:11', 5),
 (15, 13, 18, 'aaaaaa', 'Odiei', '2023-10-25 09:47:23', 1),
-(16, 14, 18, 'olhei denovo, nao &eacute; bom nao', 'Meh', '2023-10-25 09:50:20', 2),
 (17, 13, 18, 'testando', 'Comentario da Bibi', '2023-10-25 10:05:34', 4),
 (18, 13, 18, 'vai', 'Comentario 2 da bibi', '2023-10-25 10:08:49', 3),
 (19, 13, 18, 'aaaa', 'da certo pfv', '2023-10-25 10:18:42', 2),
@@ -60,7 +58,8 @@ INSERT INTO `comentarios` (`idComen`, `idLivro`, `idUsuario`, `textoComen`, `tit
 (26, 14, 19, 'eu bibi, nao gostei :(', 'Ruim', '2023-10-25 11:51:38', 4),
 (27, 14, 19, 'aaaaaaaaa', 'aaaaa', '2023-10-25 11:52:09', 1),
 (28, 13, 19, 'tenho que ficar testando', 'nao aguento mais', '2023-10-25 11:52:41', 4),
-(29, 13, 19, 'aaaaa', 'GOSTEI MUITOOO AMOOO', '2023-10-25 12:14:45', 5);
+(29, 13, 19, 'aaaaa', 'GOSTEI MUITOOO AMOOO', '2023-10-25 12:14:45', 5),
+(30, 14, 18, 'a', 'a', '2023-10-25 19:30:33', 1);
 
 -- --------------------------------------------------------
 
@@ -76,18 +75,19 @@ CREATE TABLE `livros` (
   `banca` varchar(20) NOT NULL,
   `pdf` varchar(255) NOT NULL DEFAULT 'ausente',
   `texto` varchar(255) NOT NULL,
-  `artigo` varchar(255) NOT NULL
+  `artigo` varchar(255) NOT NULL,
+  `nota` double NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `livros`
 --
 
-INSERT INTO `livros` (`idLivro`, `titulo`, `autor`, `capa`, `banca`, `pdf`, `texto`, `artigo`) VALUES
-(13, 'Malu', 'Maluzinha', 'capa1-20231025-005806.png', 'comvest', 'pdf_livro-20231025-005806.pdf', 'Ol&aacute; eu sou a malu', 'https://bri.ifsp.edu.br/'),
-(14, 'Leonardo', 'Leo', 'capa1-20231025-005853jfif', 'vunesp', 'pdf_livro-20231025-005853.pdf', 'Ol&aacute; eu sou o Leo', 'https://bri.ifsp.edu.br/'),
-(15, 'Maria', 'Marinha', 'capa1-20231025-164633.png', 'enem', 'pdf_livro-20231025-164633.pdf', 'aaaaaaaaa', 'https://bri.ifsp.edu.br/'),
-(16, 'Alexander', 'Ale', 'capa1-20231025-010000.jpg', 'ausente', 'pdf_livro-20231025-010000.pdf', 'Ol&aacute; eu sou o ale', 'https://bri.ifsp.edu.br/');
+INSERT INTO `livros` (`idLivro`, `titulo`, `autor`, `capa`, `banca`, `pdf`, `texto`, `artigo`, `nota`) VALUES
+(13, 'Malu', 'Maluzinha', 'capa1-20231025-005806.png', 'comvest', 'pdf_livro-20231025-005806.pdf', 'Ol&aacute; eu sou a malu', 'https://bri.ifsp.edu.br/', 2.8),
+(14, 'Leonardo', 'Leo', 'capa1-20231025-005853jfif', 'vunesp', 'pdf_livro-20231025-005853.pdf', 'Ol&aacute; eu sou o Leo', 'https://bri.ifsp.edu.br/', 2),
+(15, 'Maria', 'Marinha', 'capa1-20231025-164633.png', 'enem', 'pdf_livro-20231025-164633.pdf', 'aaaaaaaaa', 'https://bri.ifsp.edu.br/', 0),
+(16, 'Alexander', 'Ale', 'capa1-20231025-010000.jpg', 'ausente', 'pdf_livro-20231025-010000.pdf', 'Ol&aacute; eu sou o ale', 'https://bri.ifsp.edu.br/', 3);
 
 -- --------------------------------------------------------
 
@@ -134,7 +134,9 @@ CREATE TABLE `usuario_livros` (
 INSERT INTO `usuario_livros` (`idFavorito`, `idUsuario`, `idLivro`) VALUES
 (1, 19, 16),
 (2, 19, 13),
-(3, 19, 13);
+(3, 19, 13),
+(7, 18, 14),
+(8, 18, 13);
 
 --
 -- Índices para tabelas despejadas
@@ -176,13 +178,13 @@ ALTER TABLE `usuario_livros`
 -- AUTO_INCREMENT de tabela `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `idComen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `idComen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de tabela `livros`
 --
 ALTER TABLE `livros`
-  MODIFY `idLivro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idLivro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
@@ -194,7 +196,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `usuario_livros`
 --
 ALTER TABLE `usuario_livros`
-  MODIFY `idFavorito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idFavorito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restrições para despejos de tabelas

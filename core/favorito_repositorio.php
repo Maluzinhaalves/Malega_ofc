@@ -19,13 +19,13 @@ foreach($_GET as $indice => $dado) {
 
 
 switch($acao){
-    case 'delete':
+    case 'desfavoritar':
                 $criterio = [
-                    ['idLivro', '=', $idLivro]
+                    ['idFavorito', '=', $idFavorito]
                 ];
 
                 deleta(
-                    'livros',
+                    'usuario_livros',
                     $criterio
                 );
 
@@ -43,4 +43,6 @@ switch($acao){
             );
             
             break;
+
 }
+header('Location: ../index.php');

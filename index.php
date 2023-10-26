@@ -164,7 +164,8 @@
              'titulo',
              'capa',
               'idLivro',
-              'banca'
+              'banca',
+              'nota'
             ]      
         );
     ?>
@@ -263,13 +264,13 @@
             <div class="swiper-wrapper">
             <?php   
                 $pasta = "imagensLivro/";
-                $seulivro = 0;
                 foreach($livros as $livro):
                     $idLivroF = $livro['idLivro'];
-
+                    $seulivro = 0;
                     $favoritos = buscar(
                         'usuario_livros',
                             [
+                                'idFavorito',
                                 'idLivro',
                                 'idUsuario'
                              ],
@@ -278,8 +279,9 @@
                       ]);
                       if(isset($favoritos)){
                         foreach ($favoritos as $favorito):
-                            if($favorito['idUsuario'] = $_SESSION['login']['usuarios']['idUsuario']){
+                            if($favorito['idUsuario'] == $_SESSION['login']['usuarios']['idUsuario']){
                                 $seulivro = 1;
+                                $idFavorito = $favorito['idFavorito'];
                             }
                         endforeach;
                     }
@@ -296,104 +298,13 @@
                         <img src="<?php echo $pasta.$livro['capa'] ?>" alt="">
                     </div>
                     <div class="content">
-                        <h3><?php echo $livro['titulo'] ?></h3>
-                        <?php if($seulivro == 0){?>
-                        <a href="core/livro_repositorio.php?acao=favoritar&idLivro=<?php echo $livro['idLivro']?>&idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="btn">Adicione aos favoritos</a>
-                        <?php}else{?><a href="core/livro_repositorio.php?acao=desfavoritar&idLivro=<?php echo $livro['idLivro']?>&idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="btn">Desfavoritar</a><?php }?>
+                        <h3><?php echo $livro['titulo'];?></h3>
+                        <?php if(($seulivro == 0)){ ?>
+                        <a href="core/favorito_repositorio.php?acao=favoritar&idLivro=<?php echo $livro['idLivro']?>&idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="btn">Adicione aos favoritos</a>
+                        <?php }else{ ?><a href="core/favorito_repositorio.php?acao=desfavoritar&idFavorito=<?php echo $idFavorito ?>" class="btn">Desfavoritar</a><?php }?>
                     </div>
                 </div>
                 <?php endforeach ?>
-                <!--
-                <div class="swiper-slide box">
-                    <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
-                    </div>
-                    <div class="image">
-                        <img src="image/book-2.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>livros</h3>
-                        <a href="#" class="btn">adicione aos favoritos</a>
-                    </div>
-                </div>
-
-                <div class="swiper-slide box">
-                    <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
-                    </div>
-                    <div class="image">
-                        <img src="image/book-3.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>livros</h3>
-                        <a href="#" class="btn">adicione aos favoritos</a>
-                    </div>
-                </div>
-
-                <div class="swiper-slide box">
-                    <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
-                    </div>
-                    <div class="image">
-                        <img src="image/book-4.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>livros</h3>
-                        <a href="#" class="btn">adicione aos favoritos</a>
-                    </div>
-                </div>
-
-                <div class="swiper-slide box">
-                    <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
-                    </div>
-                    <div class="image">
-                        <img src="image/book-5.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>livros</h3>
-                        <a href="#" class="btn">adicione aos favoritos</a>
-                    </div>
-                </div>
-
-                <div class="swiper-slide box">
-                    <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
-                    </div>
-                    <div class="image">
-                        <img src="image/book-6.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>livros</h3>
-                        <a href="#" class="btn">adicione aos favoritos</a>
-                    </div>
-                </div>
-
-                <div class="swiper-slide box">
-                    <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
-                    </div>
-                    <div class="image">
-                        <img src="image/book-7.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>livros</h3>
-                        <a href="#" class="btn">adicione aos favoritos</a>
-                    </div>
-                </div>
-                -->
 
             </div>
 
@@ -420,7 +331,8 @@
             'titulo',
             'capa',
             'idLivro',
-            'banca'
+            'banca',
+            'nota'
             ],
             $criterio     
         ); 
@@ -444,79 +356,16 @@
                     <div class="content">
                         <h3><?php echo $livrov['titulo']?></h3>
                         <div class="stars">
+                            <?php ?>
+                            <span><?php echo $livrov['nota']?></span><i class="fas fa-star"></i>
+<!--                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
+                            <i class="fas fa-star-half-alt"></i>  -->
                         </div>
                     </div>
                 </a>
                 <?php  endforeach ?>
-
-                <!--<a href="#" class="swiper-slide box">
-                    <div class="image">
-                        <img src="image/book-2.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>livros</h3>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="swiper-slide box">
-                    <div class="image">
-                        <img src="image/book-3.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>livros</h3>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="swiper-slide box">
-                    <div class="image">
-                        <img src="image/book-4.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>livros</h3>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="swiper-slide box">
-                    <div class="image">
-                        <img src="image/book-5.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>livros</h3>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                </a>-->
 
             </div>
 
@@ -538,51 +387,17 @@
                     <div class="content">
                         <h3><?php echo $livrov['titulo']?></h3>
                         <div class="stars">
+                        <span><?php echo $livrov['nota']?></span><i class="fas fa-star"></i>
+                            <!-- <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
+                            <i class="fas fa-star-half-alt"></i> -->
                         </div>
                     </div>
                 </a>
                 <?php 
                 endforeach;
                     ?>
-
-                <!--<a href="#" class="swiper-slide box">
-                    <div class="image">
-                        <img src="image/book-7.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>livros</h3>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="swiper-slide box">
-                    <div class="image">
-                        <img src="image/book-8.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>livros</h3>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                </a>-->
-
-
 
             </div>
 
