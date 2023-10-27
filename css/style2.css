@@ -59,7 +59,6 @@ section{
    color: var(--black);
    text-transform: capitalize;
 }
-
 .empty{
    background-color: var(--white);
    border-radius: .5rem;
@@ -482,7 +481,6 @@ section{
    color: var(--light-color);
    line-height: 1.5;
 }
-
 
 
 

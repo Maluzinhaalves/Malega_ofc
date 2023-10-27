@@ -1,5 +1,12 @@
 <header class="header">
-
+<style>
+input#imagemUsuario{
+   display: none;
+}
+input#atualizaImagem{
+   display: none;
+}
+</style>
    <section class="flex">
 
       <a href="index.php" class="logo">Malega</a>
@@ -19,10 +26,15 @@
       ?>
       <div class="profile">
 
-        
-         <img src="imagensUsuario/<?php echo $_SESSION['login']['usuarios']['imagemUsuario']; ?>" alt="" class="image"> 
+      <label for="imagemUsuario"><img src="imagensUsuario/<?php echo $_SESSION['login']['usuarios']['imagemUsuario']; ?>" alt="" class="image"></label>
          <p><?php echo $_SESSION['login']['usuarios']['nomeUsuario']; ?></p>
-        <input href="comentario_repositorio.php" class="btn" value="alterar a foto">
+         <a href="atualiza_perfil.php?idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario']; ?>" class="btn" >Alterar Perfil</a>
+         <form action="core/usuario_repositorio.php" method="post" enctype="multipart/form-data">
+         <input type="hidden" name="idUsuario" value="<?php echo $_SESSION['login']['usuarios']['idUsuario']; ?>">   
+         <input for="atualizaImagem" type="file" name="imagemUsuario" id="imagemUsuario" accept="image/*">
+         <input type="submit" id="atualizaImagem" class="btn">
+         </form>
+        <!-- <a href="usuario_repositorio.php?acao=foto&idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="btn" >Alterar Foto</a> -->
          <a href="core/usuario_repositorio.php?acao=logout" class="delete-btn" onclick="return confirm('logout from this website?');">logout</a>
          <?php }else{ ?>
             <div class="flex-btn">
