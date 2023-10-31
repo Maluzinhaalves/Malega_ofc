@@ -5,6 +5,7 @@ require_once 'conexao_mysql.php';
 require_once 'sql.php';
 require_once 'mysql.php';
 $salt = 'ifsp';
+print_r($_FILES);
 
 foreach($_POST as $indice => $dado){
     $$indice = limparDados($dado);
@@ -13,6 +14,7 @@ foreach($_POST as $indice => $dado){
 foreach($_GET as $indice => $dado){
     $$indice = limparDados($dado);
 }
+$pasta_destino = '../imagensUsuario/';
 switch($acao){
     case 'insert':
         $dados =[
@@ -71,7 +73,7 @@ if(file_exists($_FILES['imagemUsuario']['tmp_name'])){ //Checa se a pessoa escol
 
             header('Location: ../listar_usuario.php');
         case 'foto':
-            $pasta_destino = '../imagensUsuario/';
+            
 $nome_foto = "";
 if(file_exists($_FILES['imagemUsuario']['tmp_name'])){ //Checa se a pessoa escolheu foto ou não
     $extensao = strtolower(substr($_FILES['imagemUsuario']['name'],-4)); // Vai pegar apenas os ultimos 4 digitos do nome
