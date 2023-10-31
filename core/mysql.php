@@ -70,7 +70,7 @@ function atualiza(string $entidade, array $dados, array $criterio = []) : bool
         $comando .= ', $' . implode(', $', array_keys($dados));
         $comando .= ', $' . implode(', $', $campos_criterio);
         $comando .= ');';
-
+        echo $comando;
         eval($comando);
     }
 

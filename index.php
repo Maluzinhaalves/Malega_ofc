@@ -422,11 +422,41 @@
         <div class="swiper reviews-slider">
 
             <div class="swiper-wrapper">
+                <?php 
+                $comentarios = buscar(
+                    'comentarios',
+                        [
+                            'idComen',
+                            'idUsuario',
+                            'textoComen',
+                            'nota'
+                         ],
+                  [
+                    ['nota', '=', '5']
+                  ]
+                 );
+                 $pastaU = 'imagensUsuario/';
+                 foreach($comentarios as $comentario):
+                 $idUsuarioC = $comentario['idUsuario'];
+                    $usuarios = buscar(
+                    'usuarios',
+                        [
+                            'idUsuario',
+                            'nomeUsuario',
+                            'imagemUsuario'
+                        ],
+                    [
+                       ['idUsuario', '=', $idUsuarioC]
+                    ]
+                 );
+                 $usuario = $usuarios[0];
+                
+                ?>
 
                 <div class="swiper-slide box">
-                    <img src="image/pic-1.png" alt="">
-                    <h3>Mariano_Romântico</h3>
-                    <p>Acabei de ler 'O Amor Eterno' e estou completamente encantada! A história de amor entre os protagonistas me fez suspirar a cada página. Recomendo a todos os românticos de plantão!</p>
+                    <img src="<?php echo $pastaU.$usuario['imagemUsuario']?>" alt="">
+                    <h3><?php echo $usuario['nomeUsuario'] ?></h3>
+                    <p><?php echo $comentario['textoComen']?></p>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -435,7 +465,8 @@
                         <i class="fas fa-star-half-alt"></i>
                     </div>
                 </div>
-
+                <?php endforeach ?>
+<!-- 
                 <div class="swiper-slide box">
                     <img src="image/pic-2.png" alt="">
                     <h3>Aventureiro_Explorador</h3>
@@ -498,10 +529,8 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                     </div>
-                </div>
-
+                </div> -->
             </div>
-
         </div>
 
     </section>
