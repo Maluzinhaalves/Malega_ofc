@@ -56,8 +56,8 @@ $usuarios = buscar(
       <input type="email" name="emailUsuario" value="<?php echo $usuario['emailUsuario']?>" required maxlength="50" placeholder="Digite seu email" class="box">
       <p class="placeholder">Foto para o seu perfil</p><br><br>
       <label for="imagemUsuario" class="box">Insira a imagem</label><br><br>
-      <input id="imagemUsuario" type="file" name="imagemUsuario" class="box" accept="image/*">
-      <input type="submit" value="Atualizar" name="submit" class="btn">
+      <input type="file" name="imagemUsuario" id="imagemUsuario" class="box" accept="image/*">
+      <input type="submit" value="Atualizar" class="btn">
    </form>
 
 </section>

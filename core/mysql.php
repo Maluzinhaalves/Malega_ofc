@@ -70,7 +70,6 @@ function atualiza(string $entidade, array $dados, array $criterio = []) : bool
         $comando .= ', $' . implode(', $', array_keys($dados));
         $comando .= ', $' . implode(', $', $campos_criterio);
         $comando .= ');';
-        echo $comando;
         eval($comando);
     }
 
@@ -108,7 +107,6 @@ function deleta(string $entidade, array $criterio = []) : bool
         }
 
         $instrucao = delete('from '.$entidade, $coringa_criterio);
-        echo $instrucao;
         $conexao = conecta();
 
         $stmt = mysqli_prepare($conexao, $instrucao);

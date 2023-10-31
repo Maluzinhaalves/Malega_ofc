@@ -71,11 +71,11 @@
             <div class="form-row">          
                 <div class="form-group col-4 col-md-6">
                     <label for="capa"><strong>Capa do livro</strong></label>
-                    <input type="file" class="form-control-file" value="<?php echo $livro['capa'] ?? '' ?>" name="capa" id="capa" accept="image/*">
+                    <input type="file" class="form-control-file" name="capa" id="capa" accept="image/*">
                 </div>        
                 <div class="form-group col-12 col-md-6">
                     <label for="pdf"><strong>PDF (opcional) </strong></label>
-                    <input type="file" class="form-control-file" value="<?php echo $livro['pdf'] ?? '' ?>" name="pdf" id="pdf" accept="pdf/*">
+                    <input type="file" class="form-control-file" name="pdf" id="pdf" accept="pdf/*">
                 </div>
             </div>
             <div class="form-row">

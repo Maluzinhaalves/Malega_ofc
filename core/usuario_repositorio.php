@@ -34,9 +34,10 @@ if(file_exists($_FILES['imagemUsuario']['tmp_name'])){ //Checa se a pessoa escol
     $extensao = strtolower(substr($_FILES['imagemUsuario']['name'],-4)); // Vai pegar apenas os ultimos 4 digitos do nome
     $nome_foto = 'ImgUser-'.date("Ymd-His") . $extensao; // não deixa duas fotos no mesmo nome
     $nome_foto_completo = $pasta_destino.'ImgUser-'.date("Ymd-His") . $extensao; // não deixa duas fotos no mesmo nome
-    move_uploaded_file($_FILES['ImagemUsuario']['tmp_name'],$nome_foto_completo); //tmp_name é o nome temporario que é dado à foto
+    move_uploaded_file($_FILES['imagemUsuario']['tmp_name'],$nome_foto_completo); //tmp_name é o nome temporario que é dado à foto
 // isso esta removendo esse nomeo ".jpg"
 }
+        echo $nome_foto;
         $idUsuario = (int)$idUsuario;
         $dados = [
             'nomeUsuario' => $nomeUsuario,
@@ -47,7 +48,6 @@ if(file_exists($_FILES['imagemUsuario']['tmp_name'])){ //Checa se a pessoa escol
         $criterio = [
             ['idUsuario', '=', $idUsuario]
         ];
-        echo $nome_foto;
         atualiza(
             'usuarios',
             $dados,
@@ -77,25 +77,28 @@ if(file_exists($_FILES['imagemUsuario']['tmp_name'])){ //Checa se a pessoa escol
     $extensao = strtolower(substr($_FILES['imagemUsuario']['name'],-4)); // Vai pegar apenas os ultimos 4 digitos do nome
     $nome_foto = 'ImgUser-'.date("Ymd-His") . $extensao; // não deixa duas fotos no mesmo nome
     $nome_foto_completo = $pasta_destino.'ImgUser-'.date("Ymd-His") . $extensao; // não deixa duas fotos no mesmo nome
-    move_uploaded_file($_FILES['ImagemUsuario']['tmp_name'],$nome_foto_completo); //tmp_name é o nome temporario que é dado à foto
+    move_uploaded_file($_FILES['imagemUsuario']['tmp_name'],$nome_foto_completo); //tmp_name é o nome temporario que é dado à foto
 // isso esta removendo esse nomeo ".jpg"
 }
 
             $idUsuario = (int)$idUsuario;
-            $dados = [
-                'imagemUsuario' => $nome_foto
-            ];
-    
-            $criterio = [
-                ['idUsuario', '=', $idUsuario]
-            ];
-    
-            atualiza(
-                'usuarios',
-                $dados,
-                $criterio
-            );
-            $_SESSION['login']['usuarios']['ImagemUsuario'] = $nome_foto;
+            if($nome_foto != "")
+            {
+                $dados = [
+                    'imagemUsuario' => $nome_foto
+                ];
+        
+                $criterio = [
+                    ['idUsuario', '=', $idUsuario]
+                ];
+        
+                atualiza(
+                    'usuarios',
+                    $dados,
+                    $criterio
+                );
+                $_SESSION['login']['usuarios']['imagemUsuario'] = $nome_foto;
+            }
     
             break;
         
