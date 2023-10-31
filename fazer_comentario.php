@@ -64,7 +64,7 @@ if(!empty($idComen)){
       <p class="placeholder">Titulo <span>*</span></p>
       <input type="text" name="tituloComen" value="<?php echo $comentario['tituloComen'] ?? '' ?>" required maxlength="50" placeholder="título da avaliação" class="box">
       <p class="placeholder">Sua descrição</p>
-      <textarea name="textoComen" class="box" value="<?php echo $comentario['textoComen'] ?? '' ?>" placeholder="Descrição" maxlength="1000" cols="30" rows="10"></textarea>
+      <textarea name="textoComen" class="box"  placeholder="Descrição" maxlength="1000" cols="30" rows="10"><?php echo $comentario['textoComen'] ?? '' ?></textarea>
       <p class="placeholder">Sua avaliação <span>*</span></p>
       <select name="nota" class="box" required>
          <option value="1" <?php if(!empty($idComen)){if($comentario['nota'] == '1'){echo "selected";}}?>>1</option>
