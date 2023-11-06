@@ -438,6 +438,7 @@
                  $pastaU = 'imagensUsuario/';
                  foreach($comentarios as $comentario):
                  $idUsuarioC = $comentario['idUsuario'];
+                 
                     $usuarios = buscar(
                     'usuarios',
                         [

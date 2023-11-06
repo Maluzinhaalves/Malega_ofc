@@ -96,11 +96,12 @@ switch($acao){
             $dados['pdf'] = $pdf;
         }
 
-        print_r($dados);
+        
 
         $criterio = [
             ['idLivro', '=', $idLivro]
         ];
+        header('Location: ../cadastro_livro.php');
 
 
         atualiza(

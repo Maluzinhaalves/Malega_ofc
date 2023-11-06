@@ -39,7 +39,6 @@ if(file_exists($_FILES['imagemUsuario']['tmp_name'])){ //Checa se a pessoa escol
     move_uploaded_file($_FILES['imagemUsuario']['tmp_name'],$nome_foto_completo); //tmp_name é o nome temporario que é dado à foto
 // isso esta removendo esse nomeo ".jpg"
 }
-        echo $nome_foto;
         $idUsuario = (int)$idUsuario;
         $dados = [
             'nomeUsuario' => $nomeUsuario,
