@@ -423,7 +423,7 @@
 
             <div class="swiper-wrapper">
                 <?php 
-                // Colocar a em ordem decrescente da data
+                // fazer aparecer apenas um comentario por pessoa
                 $comentarios = buscar(
                     'comentarios',
                         [
@@ -433,7 +433,7 @@
                             'nota'
                          ],
                   [
-                    ['nota', '=', '5']
+                    ['nota', '=', '5 data_criacao DESC']
                   ]
                  );
                  $pastaU = 'imagensUsuario/';
