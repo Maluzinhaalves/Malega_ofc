@@ -101,7 +101,6 @@ switch($acao){
         $criterio = [
             ['idLivro', '=', $idLivro]
         ];
-        header('Location: ../cadastro_livro.php');
 
 
         atualiza(
@@ -109,7 +108,7 @@ switch($acao){
             $dados,
             $criterio
         );
-        header('Location: ../php/listar_livro.php');
+        header('Location: ../listar_livro.php');
 
         break;
 
@@ -126,9 +125,9 @@ switch($acao){
         );
         //echo $pasta_destino.$livro['capa'];
         unlink($pasta_destino.$livro['capa']);
-        header('Location: ../php/listar_livro.php');
+        header('Location: ../listar_livro.php');
     break;
-    case 'insert':
+    /* case 'insert':
             $pasta_destino = '../imagensLivro/';
             $nome_foto = "";
             if(file_exists($_FILES['capa']['tmp_name'])){ //Checa se a pessoa escolheu foto ou não
@@ -164,7 +163,5 @@ switch($acao){
         );
         header('Location: ../cadastro_livro.php');
         
-        break;
+        break; */
 }
-
-//header('Location: ../adm.php');

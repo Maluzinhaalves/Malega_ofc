@@ -423,6 +423,7 @@
 
             <div class="swiper-wrapper">
                 <?php 
+                // Colocar a em ordem decrescente da data
                 $comentarios = buscar(
                     'comentarios',
                         [
