@@ -39,7 +39,9 @@ html::-webkit-scrollbar-track{
 html::-webkit-scrollbar-thumb{
     background:var(--black);
 }
-
+body{
+    background-color: #fff;
+ }
 section{
     padding: 2rem;
     max-width: 1200px;

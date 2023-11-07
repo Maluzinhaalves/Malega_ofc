@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <!-- link do css -->
+    <link rel="stylesheet" href="css/style2.css">
     <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -29,14 +30,7 @@
 
     <header class="header">
         <section class="header-1">
-            <a href="#" class="logo"> <i class="fas fa-book"></i> Malega </a>
-            <?php if((isset($_SESSION['login']))): ?>
-    <div class="card-body text-right">
-        <h3>Olá <?php echo $_SESSION['login']['usuarios']['nomeUsuario']?></h3>
-        <a href="core/usuario_repositorio.php?acao=logout"
-        class="btn btn-link btn-sm" role="button">Sair</a>
-    </div>
-    <?php endif ?>
+                <a href="#" class="logo"> <i class="fas fa-book"></i> Malega </a>
             <form action="pesquisa_livro.php" class="search-form">
                 <input type="search" name="titulo" placeholder="Pesquise seu livro" id="search-box">
                 <button for="search-box" class="fas fa-search" type="submit"></button> 
@@ -44,11 +38,39 @@
 
             <div class="icons">
                 <div id="search-btn" class="fas fa-search"></div>
-                <a href="#" class="fas fa-heart"></a>
+                <section class="flex">
                 <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['ativo'] == 1)){ ?>
                 <a href="pesquisa_livro_favoritos.php?idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="fas fa-star"></a>
                 <?php }else{ ?> <a href="#" class="fas fa-star"></a> <?php } ?>
                 <div id="login-btn" class="fas fa-address-card"></div>
+                <?php if((isset($_SESSION['login']))): ?>
+                    <nav class="navbar2">    
+                    <?php
+                        if($_SESSION['login']['usuarios']['idUsuario'] != ''){
+                    ?>
+                    <a id="user-btn" class="far fa-user"></a>
+                    <?php }; ?>
+                    </nav>
+
+                    <?php
+                    if($_SESSION['login']['usuarios']['idUsuario'] != ''){
+                    ?>
+                    <div class="profile">
+
+                    <label for="imagemUsuario"><img src="imagensUsuario/<?php echo $_SESSION['login']['usuarios']['imagemUsuario']; ?>" alt="" class="image"></label>
+                    <p><?php echo $_SESSION['login']['usuarios']['nomeUsuario']; ?></p>
+                    <a href="atualiza_perfil.php?idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario']; ?>" class="btn" >Alterar Perfil</a>
+                    <a href="core/usuario_repositorio.php?acao=logout" class="delete-btn" onclick="return confirm('logout from this website?');">logout</a>
+                    <?php }else{ ?>
+                        <div class="flex-btn">
+                            <p>Desculpe, faça seu login.</p>
+                            <a href="index.php" class="inline-option-btn">login</a>
+                            <a href="index.php" class="inline-option-btn">registre-se</a>
+                        </div>
+                    <?php }; ?>
+                    </div>
+                </section>
+                <?php endif ?>
             </div>
 
         </section>

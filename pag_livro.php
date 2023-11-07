@@ -476,7 +476,7 @@ $pasta = "imagensLivro/";
   <body data-home-page="https://website5604599.nicepage.io/writing-courses-1.html?version=0b982a28-c8a9-4154-9508-d28ffd607f15" data-home-page-title="writing courses 1" data-path-to-root="/" class="u-body u-xl-mode" data-lang="pt"><header class="u-clearfix u-header u-header" id="sec-147c"><div class="u-clearfix u-sheet u-sheet-1">
 
         <a href="index.php" class="u-image u-logo u-image-1">
-          <img src="./paglibrocc 1_files/default-logo.png" class="u-logo-image u-logo-image-1">
+          <img src="./paglibrocc 1_files/logofalsa.png" class="u-logo-image u-logo-image-1">
         </a>
         <nav class="u-menu u-menu-hamburger u-offcanvas u-menu-1 u-enable-responsive" data-responsive-from="XL">
           <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
