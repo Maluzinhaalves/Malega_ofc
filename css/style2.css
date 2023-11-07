@@ -3,12 +3,12 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css');
 
 :root{
-   --main-color:#AEDFF7;
-   --red:#6E94FF;
-   --orange:#9CC2FF;
-   --black:#000;
-   --light-color:#666;
-   --light-bg:#D5E8FF;
+   --main-color:#b9e2d3;
+   --red:#b9e2d3;
+   --orange:#b9e2d3;
+   --black:rgb(0, 0, 0);
+   --light-color:#000;
+   --light-bg:#a8f1d6;
    --white:#fff;
    --border:.1rem solid rgba(0,0,0,.2);
    --box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
@@ -136,7 +136,7 @@ section{
 .header{
    position: sticky;
    top: 0; left: 0; right: 0;
-   background-color: var(--black);
+   background-color: #70e49c;
    z-index: 1000;
 }
 

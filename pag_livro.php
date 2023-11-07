@@ -604,7 +604,8 @@ $pasta = "imagensLivro/";
                 <lt-div class="lt-highlighter__scroll-element" style="top: 0px; left: 0px; width: 78px; height: 29px;"></lt-div>
               </lt-div>
             </lt-highlighter>
-            <a href="<?php echo $livro['pdf']?>" class="u-btn u-btn-round u-button-style u-color-scheme-summer-time u-custom-color-1 u-radius-50 u-btn-3">
+            <?php $pastaD = "pdf/"?>
+            <a href="<?php echo $pastaD.$livro['pdf']?>" class="u-btn u-btn-round u-button-style u-color-scheme-summer-time u-custom-color-1 u-radius-50 u-btn-3">
               <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">PDF</font>
               </font>
