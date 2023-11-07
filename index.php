@@ -351,6 +351,7 @@
             <div class="swiper-wrapper">
                 <?php 
                 foreach($livrosv as $livrov):
+                    $notav = $livrov['nota'];
                     ?>
                        <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['ativo'] == 1)){ ?>
                 <a href="pag_livro.php?idLivro=<?php echo $livrov['idLivro']?>&idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="swiper-slide box">
@@ -361,8 +362,73 @@
                     <div class="content">
                         <h3><?php echo $livrov['titulo']?></h3>
                         <div class="stars">
-                            <?php ?>
-                            <span><?php echo $livrov['nota']?></span><i class="fas fa-star"></i>
+                            <?php if(($notav<1)): ?>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <?php endif ?>
+                            <?php if(($notav>=1) && ($notav<1.5)): ?>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <?php endif ?>
+                            <?php if(($notav>=1.5) && ($notav<2)): ?>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <?php endif ?>
+                            <?php if(($notav>=2) && ($notav<2.5)): ?>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <?php endif ?>
+                            <?php if(($notav>=2.5) && ($notav<3)): ?>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <?php endif ?>
+                            <?php if(($notav>=3) && ($notav<3.5)): ?>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <?php endif ?>
+                            <?php if(($notav>=3.5) && ($notav<4)): ?>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                            <?php endif ?>
+                            <?php if(($notav>=4) && ($notav<4.5)): ?>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <?php endif ?>
+                            <?php if(($notav>=4.5) && ($notav<5)): ?>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <?php endif ?>
+                            
+
+
+                            <!-- <span><?php /* echo $livrov['nota'] */?></span><i class="fas fa-star"></i> -->
 <!--                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -382,6 +448,7 @@
 
             <?php 
                 foreach($livrosv as $livrov):
+                    $notav = $livrov['nota'];
                     ?>
                 <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['ativo'] == 1)){ ?>
                 <a href="pag_livro.php?idLivro=<?php echo $livrov['idLivro']?>&idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="swiper-slide box">
@@ -392,7 +459,69 @@
                     <div class="content">
                         <h3><?php echo $livrov['titulo']?></h3>
                         <div class="stars">
-                        <span><?php echo $livrov['nota']?></span><i class="fas fa-star"></i>
+                        <?php if(($notav<1)): ?>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <?php endif ?>
+                            <?php if(($notav>=1) && ($notav<1.5)): ?>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <?php endif ?>
+                            <?php if(($notav>=1.5) && ($notav<2)): ?>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <?php endif ?>
+                            <?php if(($notav>=2) && ($notav<2.5)): ?>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <?php endif ?>
+                            <?php if(($notav>=2.5) && ($notav<3)): ?>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <?php endif ?>
+                            <?php if(($notav>=3) && ($notav<3.5)): ?>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <?php endif ?>
+                            <?php if(($notav>=3.5) && ($notav<4)): ?>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                            <?php endif ?>
+                            <?php if(($notav>=4) && ($notav<4.5)): ?>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <?php endif ?>
+                            <?php if(($notav>=4.5) && ($notav<5)): ?>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <?php endif ?>
                             <!-- <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -431,42 +560,45 @@
                             'idUsuario',
                             'textoComen',
                             'nota'
-                         ],
-                  [
-                    ['nota', '=', '5 data_criacao DESC']
-                  ]
+                        ],
+                        [ ['nota', '=', '5'] ],
+                        'data_criacao DESC'
                  );
                  $pastaU = 'imagensUsuario/';
+                 $usu = array();
                  foreach($comentarios as $comentario):
-                 $idUsuarioC = $comentario['idUsuario'];
-                 
-                    $usuarios = buscar(
-                    'usuarios',
-                        [
-                            'idUsuario',
-                            'nomeUsuario',
-                            'imagemUsuario'
-                        ],
-                    [
-                       ['idUsuario', '=', $idUsuarioC]
-                    ]
-                 );
-                 $usuario = $usuarios[0];
-                
-                ?>
+                    $idUsuarioC = $comentario['idUsuario'];                    
+                    if(!in_array($idUsuarioC, $usu)):
+                        $usu[] = $idUsuarioC;
+                        $usuarios = buscar(
+                            'usuarios',
+                            [
+                                'idUsuario',
+                                'nomeUsuario',
+                                'imagemUsuario'
+                            ],
+                            [['idUsuario', '=', $idUsuarioC]]
+                        );
+                        $usuario = $usuarios[0];
+                        
+                        ?>
 
-                <div class="swiper-slide box">
-                    <img src="<?php echo $pastaU.$usuario['imagemUsuario']?>" alt="">
-                    <h3><?php echo $usuario['nomeUsuario'] ?></h3>
-                    <p><?php echo $comentario['textoComen']?></p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
+                        <div class="swiper-slide box">
+                            <img src="<?php echo $pastaU.$usuario['imagemUsuario']?>" alt="">
+                            <h3><?php echo $usuario['nomeUsuario'] ?></h3>
+                            <p><?php echo $comentario['textoComen']?></p>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+
+                            
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                    
                 <?php endforeach ?>
 <!-- 
                 <div class="swiper-slide box">
@@ -541,7 +673,7 @@
 
     <!-- começo da blogs section  -->
 
-    <section class="blogs" id="blogs">
+<!--     <section class="blogs" id="blogs">
 
         <h1 class="heading"> <span>Analise de leituras</span> </h1>
 
@@ -608,7 +740,7 @@
 
         </div>
 
-    </section>
+    </section> -->
 
     <!-- final da blogs section -->
 
