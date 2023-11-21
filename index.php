@@ -586,9 +586,12 @@
                         [ ['nota', '=', '5'] ],
                         'data_criacao DESC'
                  );
+                 $i=0;
                  $pastaU = 'imagensUsuario/';
                  $usu = array();
                  foreach($comentarios as $comentario):
+                    $i++;
+                    if($i<=10){
                     $idUsuarioC = $comentario['idUsuario'];                    
                     if(!in_array($idUsuarioC, $usu)):
                         $usu[] = $idUsuarioC;
@@ -619,7 +622,7 @@
                             
                             </div>
                         </div>
-                    <?php endif; ?>
+                    <?php endif; }?>
                     
                 <?php endforeach ?>
 <!-- 

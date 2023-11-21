@@ -125,7 +125,7 @@ if(file_exists($_FILES['imagemUsuario']['tmp_name'])){ //Checa se a pessoa escol
                 }
             }
         }
-
+        header('Location: ../index.php');
     break;
     case 'logout':
     session_destroy();

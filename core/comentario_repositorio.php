@@ -25,7 +25,7 @@ switch($acao){
                 'comentarios',
                 $dados
             );
-            header('Location: ../chat.php');
+            header('Location: ../chat.php?idLivro='.$idLivro);
 
             break;
             
