@@ -129,6 +129,7 @@ if(file_exists($_FILES['imagemUsuario']['tmp_name'])){ //Checa se a pessoa escol
     break;
     case 'logout':
     session_destroy();
+    header('Location: ../index.php');
     break;
 
         case 'status':
