@@ -211,12 +211,13 @@
                         <?php   
                         //foreach($livros as $livro):
                         ?>
-                        <a href="#" class="swiper-slide"><img src="<?php //echo $livro['capa']?>image/book-1.png"></a>
-                        <a href="#" class="swiper-slide"><img src="image/book-2.png" alt=""></a>
-                        <a href="#" class="swiper-slide"><img src="image/book-3.png" alt=""></a>
-                        <a href="#" class="swiper-slide"><img src="image/book-4.png" alt=""></a>
-                        <a href="#" class="swiper-slide"><img src="image/book-5.png" alt=""></a>
-                        <a href="#" class="swiper-slide"><img src="image/book-6.png" alt=""></a>
+                        <a href="#" class="swiper-slide"><img src="<?php //echo $livro['capa']?>image/img7.jpg"></a>
+                        <a href="#" class="swiper-slide"><img src="image/img1.jpg" alt=""></a>
+                        <a href="#" class="swiper-slide"><img src="image/img2.jpg" alt=""></a>
+                        <a href="#" class="swiper-slide"><img src="image/img3.jpg" alt=""></a>
+                        <a href="#" class="swiper-slide"><img src="image/img4.jpg" alt=""></a>
+                        <a href="#" class="swiper-slide"><img src="image/img6.jpg" alt=""></a>
+                        <a href="#" class="swiper-slide"><img src="image/img5.jpg" alt=""></a>
                     </div>
                     <img src="image/stand.png" class="stand" alt="">
                 </div>
