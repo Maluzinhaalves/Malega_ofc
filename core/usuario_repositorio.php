@@ -27,7 +27,7 @@ switch($acao){
                 'usuarios',
                 $dados
             );
-
+            header('Location: ../index.php');
             break;
             
     case 'update':
@@ -58,6 +58,7 @@ if(file_exists($_FILES['imagemUsuario']['tmp_name'])){ //Checa se a pessoa escol
         $_SESSION['login']['usuarios']['nomeUsuario'] = $nomeUsuario;
         $_SESSION['login']['usuarios']['emailUsuario'] = $emailUsuario;
         $_SESSION['login']['usuarios']['imagemUsuario'] = $nome_foto;
+        header('Location: ../index.php');
 
         break;
         case 'delete':

@@ -81,14 +81,16 @@
                 <td><a href="<?php echo $pasta_pdf.$entidade['pdf'] ?>">PDF</a></td>
                 <td><img src="<?php echo $pasta.$entidade['capa']?>" width="200px" height="400px"> </td>
                 <!--<td><a href="../core/livro_repositorio.php?acao=delete&idLivro=<?php //echo $entidade['idLivro']?>">Deletar</a></td>-->
-                <td><a href="core/livro_repositorio.php?acao=delete&idLivro=<?php echo $entidade['idLivro']?>" onclick="return confirm('Deseja excliur permanentemente o livro?');">Deletar</a></td>
+                <td><a href="core/livro_repositorio.php?acao=delete&idLivro=<?php echo $entidade['idLivro']?>">Deletar</a></td>
                 <td><a href="cadastro_livro.php?idLivro=<?php echo $entidade['idLivro']?>">Atualizar</a></td>
             <?php endforeach ?>
         </tbody>
     </table>
     </div>
+    
     <div>
     <a href="cadastro_livro.php">Voltar</a>
+    <!-- onclick="return confirm('Deseja excliur permanentemente o livro?');" -->
     </div>
 </body>
 </html>
