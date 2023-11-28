@@ -250,7 +250,7 @@
             <div class="content">
             <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['ativo'] == 1)){ ?>
                 <h3><a href="pesquisa_livro_vest.php?banca=comvest">COMVEST</a></h3>
-                <?php }else{?><h3><a href="#">FUVEST</a></h3><?php }?>
+                <?php }else{?><h3><a href="#">COMVEST</a></h3><?php }?>
                 <p>Leituras obrigatóras da Unicamp</p>
             </div>
         </div>
@@ -260,7 +260,7 @@
             <div class="content">
                 <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['ativo'] == 1)){ ?>
                 <h3><a href="pesquisa_livro_vest.php?banca=vunesp">VUNESP</a></h3>
-                <?php }else{?><h3><a href="#">FUVEST</a></h3><?php }?>
+                <?php }else{?><h3><a href="#">VUNESP</a></h3><?php }?>
                 <p>Leitutas obrigatórias Unesp</p>
             </div>
         </div>
@@ -270,7 +270,7 @@
             <div class="content">
             <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['ativo'] == 1)){ ?>
                 <h3><a href="pesquisa_livro_vest.php?banca=enem">ENEM</a></h3>
-                <?php }else{?><h3><a href="#">FUVEST</a></h3><?php }?>
+                <?php }else{?><h3><a href="#">ENEM</a></h3><?php }?>
                 <p>literatura no ENEM</p>
             </div>
         </div>
