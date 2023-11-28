@@ -181,7 +181,7 @@
         foreach($_GET as $indice => $dado) {
             $$indice = limparDados($dado);
         }
-        
+        $criterioo[] = ['banca', 'like', '%%'];
         $livros = buscar(
             'livros',
             [
@@ -189,8 +189,9 @@
              'capa',
               'idLivro',
               'banca',
-              'nota'
-            ]      
+              'nota',
+              'artigo'
+            ],$criterioo,'titulo ASC'
         );
     ?>
     <div class="home-container">
@@ -314,11 +315,11 @@
                 ?>
                 <div class="swiper-slide box">
                     <div class="icons">    
-                        <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['ativo'] == 1)){ ?>         
-                        <a href="pag_livro.php?idLivro=<?php echo $livro['idLivro']?>&idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="fas fa-search"></a>
-                        <?php } else{?> <a href="#" class="fas fa-search"> <?php }?>
+                        <a href="<?php echo $livro['artigo']?>" class="fas fa-search"></a>
                         <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
+                        <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['ativo'] == 1)){ ?>         
+                        <a href="pag_livro.php?idLivro=<?php echo $livro['idLivro']?>&idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="fas fa-eye"></a>
+                        <?php } else{?> <a href="#" class="fas fa-eye"> <?php }?>
                     </div>
                     <div class="image">
                         <img src="<?php echo $pasta.$livro['capa'] ?>" alt="">
@@ -362,7 +363,7 @@
             'banca',
             'nota'
             ],
-            $criterio     
+            $criterio,"titulo ASC"   
         ); 
     ?>
     <section class="arrivals" id="vestibular">
