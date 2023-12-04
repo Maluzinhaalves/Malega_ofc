@@ -119,11 +119,6 @@ if(file_exists($_FILES['imagemUsuario']['tmp_name'])){ //Checa se a pessoa escol
         if(count($retorno) > 0){
             if(crypt($senhaUsuario,$salt) == $retorno[0]['senhaUsuario']){
                 $_SESSION['login']['usuarios'] = $retorno[0];
-                if(!empty($_SESSION['url_retorno'])){
-                    header('Location:' . $_SESSION['url_retorno']);
-                    $_SESSION['url_retorno'] = '';
-                    exit;
-                }
             }
         }
         header('Location: ../index.php');

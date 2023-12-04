@@ -319,7 +319,7 @@
                         <a href="#" class="fas fa-heart"></a>
                         <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['ativo'] == 1)){ ?>         
                         <a href="pag_livro.php?idLivro=<?php echo $livro['idLivro']?>&idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="fas fa-eye"></a>
-                        <?php } else{?> <a href="#" class="fas fa-eye"> <?php }?>
+                        <?php } else{?> <?php }?>
                     </div>
                     <div class="image">
                         <img src="<?php echo $pasta.$livro['capa'] ?>" alt="">
@@ -809,7 +809,7 @@
             <a href="#" class="fab fa-pinterest"></a>
         </div>
 
-        <div class="credit"> created by <span> MALEGA LIBROS </span> | todos os direitos reservados! </div>
+        <div class="credit"> criado por <span> MALEGA LIBROS </span> | todos os direitos reservados! </div>
 
     </section>
 

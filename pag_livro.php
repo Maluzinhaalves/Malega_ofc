@@ -630,14 +630,14 @@ $pasta = "imagensLivro/";
         </div>
       </div></footer>
     <section class="u-backlink u-clearfix u-grey-80">
-      <a class="u-link" href="https://website5604599.nicepage.io/website-templates" target="_blank">
-        <span>Website Templates</span>
+      <a class="u-link" target="_blank">
+        <span>Criado por</span>
       </a>
       <p class="u-text">
-        <span>created with</span>
+        <span>MALEGA LIBROS</span>
       </p>
-      <a class="u-link" href="https://website5604599.nicepage.io/html-website-builder" target="_blank">
-        <span>Visual HTML Editor</span>
+      <a class="u-link" target="_blank">
+        <span>Todos Os Direitos Reservados!</span>
       </a>. 
     </section>
   

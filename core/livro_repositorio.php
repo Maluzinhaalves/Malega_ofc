@@ -50,7 +50,6 @@ switch($acao){
             'banca' => $banca,
             'texto' => $texto
         ];
-
         insere(
             'livros',
             $dados
