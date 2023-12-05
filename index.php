@@ -316,7 +316,7 @@
                 <div class="swiper-slide box">
                     <div class="icons">    
                         <a href="<?php echo $livro['artigo']?>" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
+                        <!-- <a href="#" class="fas fa-heart"></a> -->
                         <?php if((isset($_SESSION['login'])) && ($_SESSION['login']['usuarios']['ativo'] == 1)){ ?>         
                         <a href="pag_livro.php?idLivro=<?php echo $livro['idLivro']?>&idUsuario=<?php echo $_SESSION['login']['usuarios']['idUsuario'] ?>" class="fas fa-eye"></a>
                         <?php } else{?> <?php }?>
@@ -817,24 +817,9 @@
 
     <!-- loader  -->
 
-    <div class="loader-container">
+   <!--  <div class="loader-container">
         <img src="image/loader-img.gif" alt="">
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    </div> -->
 
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
