@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
 </head>
 <body>
     <?php 
@@ -51,7 +52,7 @@
     <button class="btn btn-outline-sucess my-2 my-sm-0"
         type="submit">Buscar</button>
     </form>
-    <table align="center" border="1" width="500" bgcolor="pink">
+    <table align="center" border="1" width="500" bgcolor="gray">
         <thead>
             <?php
             foreach($result as $entidade):
@@ -72,7 +73,7 @@
         <tbody>
             <?php $pasta="imagensUsuario/"?>
                 <td><?php echo $entidade['idUsuario'] ?></td>
-                <td><img src="<?php echo $pasta.$entidade['imagemUsuario']?>"></td>
+                <td><img src="<?php echo $pasta.$entidade['imagemUsuario']?>"  width="200px" height="200px"></td>
                 <td><?php echo $entidade['nomeUsuario'] ?></td>
                 <td><?php echo $entidade['emailUsuario'] ?></td>
                 <td><?php echo $entidade['senhaUsuario'] ?></td>
@@ -86,7 +87,7 @@
     </table>
     </div>
     <div>
-    <a href="cadastro_usuario.php">Voltar</a>
+    <a class="btn btn-primary" href="cadastro_usuario.php">Voltar</a>
     </div>
 </body>
 </html>

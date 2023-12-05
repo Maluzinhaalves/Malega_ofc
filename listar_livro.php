@@ -89,7 +89,7 @@
     </div>
     
     <div>
-    <a href="cadastro_livro.php">Voltar</a>
+    <a class="btn btn-primary" href="cadastro_livro.php">Voltar</a>
     <!-- onclick="return confirm('Deseja excliur permanentemente o livro?');" -->
     </div>
 </body>

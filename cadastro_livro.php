@@ -97,7 +97,7 @@
             <div class="form-group col-12 col-md-6">
                 <div class="mb-3">
                     <label for="texto" class="form-label"><strong>Resumo</strong></label><br>
-                    <textarea type="text" name="texto" class="form-control"id="texto" rows="4" required><?php echo $livro['texto'] ?? '' ?></textarea>
+                    <textarea type="text" name="texto" class="form-control" id="texto" rows="4" required><?php echo $livro['texto'] ?? '' ?></textarea>
                 </div>
             </div>       
             
